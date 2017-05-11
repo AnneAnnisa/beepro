@@ -16,7 +16,6 @@ class BrandMigrate extends Migration
         //
         Schema::create('brand',function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id');
             $table->string('nama_brand');
 
         });

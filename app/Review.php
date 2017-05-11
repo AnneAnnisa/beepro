@@ -19,5 +19,11 @@ class Review extends Model
     public function product(){
        return $this->belongsTo('App\Product');
     }
+    public function memiliki(){
+       return $this->hasMany('App\Memiliki');
+    }
+    public function foto(){
+       return $this->hasMany('App\Foto');
+    }
 
 }

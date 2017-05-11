@@ -298,7 +298,7 @@
 
 
 <br>
-	<div class="brands">
+	<div class="brands" style="padding : 5em">
 		<div class="container">
 		<h3>Brand Store</h3>
 			<div class="brands-agile">
