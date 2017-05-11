@@ -174,13 +174,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<h2>Login Form</h2>
 		
 			<div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
-				<form>
+				<form action="{{url('simple')}}">
 					<input type="email" placeholder="Email Address" required=" " >
 					<input type="password" placeholder="Password" required=" " >
 					<div class="forgot">
 						<a href="#">Forgot Password?</a>
 					</div>
-					<input type="submit" value="Login">
+<!-- 					<a href="{{url('simple')}}"> -->
+					<input type="button" value="Login">
 				</form>
 			</div>
 			<h4>For New People</h4>

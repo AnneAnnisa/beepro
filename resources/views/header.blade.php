@@ -1,5 +1,5 @@
 
-	<div class="logo_products">
+	<div class="logo_products" style="padding-bottom:2em">
 		<div class="container">
 			<div class="w3ls_logo_products_left">
 				<h1><a href="{{url('home')}}">Bee-Pro</a></h1>
@@ -94,35 +94,10 @@
 <!-- 														<a href=""><h6 class="col-md-6 col-xs-6">Login Form</h6></a>
 														<a href=""><h6 class="col-md-6 col-xs-6">Signup</h6></a> -->
 					<ul id="signform" class="nav nav-tabs" role="tablist">
-						<li id="login1" class="active"><a href="#" style="padding:10%;color:white"><h5>Login</h5></a></li>
+						<li id="login1" class="active" onclick="loginGanti()"><a href="#" style="padding:10%;color:white"><h5>Login</h5></a></li>
 						<li id="signup1" onclick="signupGanti()"><a href="#" style="padding:10%"><h5>Signup</h5></a></li>
 					</ul>
 														<div class="form-group" id="isi-up">
-
-<!-- 														SIGNUP
-														<form action="#" method="post">
-															<span class="input input--ichiro">
-																<input class="input__field input__field--ichiro" type="nama" id="input-24" name="Name" placeholder=" " required="" />
-																<label class="input__label input__label--ichiro" for="input-24">
-																	<span class="input__label-content input__label-content--ichiro">Nama Lengkap</span>
-																</label>
-															</span>
-															<span class="input input--ichiro">
-																<input class="input__field input__field--ichiro" type="email" id="input-25" name="email" placeholder=" " required="" />
-																<label class="input__label input__label--ichiro" for="input-25">
-																	<span class="input__label-content input__label-content--ichiro">Email</span>
-																</label>
-															</span>
-															<span class="input input--ichiro">
-																<input class="input__field input__field--ichiro" type="password" id="input-26" name="Email" placeholder=" " required="" />
-																<label class="input__label input__label--ichiro" for="input-26">
-																	<span class="input__label-content input__label-content--ichiro">Password</span>
-																</label>
-															</span>
-															<button type="submit" class="btn btn-warning" style="margin-top:5%">submit</button>
-														</form> -->
-
-														<!-- LOGIN -->
 														<form action="#" method="post">
 															<span class="input input--ichiro">
 																<input class="input__field input__field--ichiro" type="email" id="input-25" name="email" placeholder=" " required="" />
@@ -136,9 +111,6 @@
 																	<span class="input__label-content input__label-content--ichiro">Password</span>
 																</label>
 															</span>
-															<div class="forgot">
-																<right><a href="#">Forgot Password?</a></right>
-															</div>	
 															<button type="submit" class="btn btn-warning" style="margin-top:5%">submit</button>
 														</form>
 														</div>
@@ -263,8 +235,8 @@
 	}
 
 	function loginGanti(){
-      document.getElementById("isi-up".innerHTML)='<form action="#" method="post"><span class="input input--ichiro"><input class="input__field input__field--ichiro" type="email" id="input-25" name="email" placeholder=" " required="" /><label class="input__label input__label--ichiro" for="input-25"><span class="input__label-content input__label-content--ichiro">Email</span></label></span><span class="input input--ichiro"><input class="input__field input__field--ichiro" type="password" id="input-26" name="Email" placeholder=" " required="" /><label class="input__label input__label--ichiro" for="input-26"><span class="input__label-content input__label-content--ichiro">Password</span></label></span><div class="forgot"><right><a href="#">Forgot Password?</a></right></div>	<button type="submit" class="btn btn-warning" style="margin-top:5%">submit</button></form>';
-      document.getElementById("signform").innerHTML='<li id="login1" class="active"><a href="#" style="padding:10%;color:white"><h5>Login</h5></a></li><li id="signup1" onclick="signupGanti()"><a href="#" style="padding:10%"><h5>Signup</h5></a></li>'
+      document.getElementById("isi-up").innerHTML='<form action="#" method="post"><span class="input input--ichiro"><input class="input__field input__field--ichiro" type="email" id="input-25" name="email" placeholder=" " required="" /><label class="input__label input__label--ichiro" for="input-25"><span class="input__label-content input__label-content--ichiro">Email</span></label></span><span class="input input--ichiro"><input class="input__field input__field--ichiro" type="password" id="input-26" name="Email" placeholder=" " required="" /><label class="input__label input__label--ichiro" for="input-26"><span class="input__label-content input__label-content--ichiro">Password</span></label></span><button type="submit" class="btn btn-warning" style="margin-top:5%">submit</button></form>';
+      document.getElementById("signform").innerHTML='<li id="login1" class="active" onclick="loginGanti()"><a href="#" style="padding:10%;color:white"><h5>Login</h5></a></li><li id="signup1" onclick="signupGanti()"><a href="#" style="padding:10%"><h5>Signup</h5></a></li>'
 	}
 
   $('#signup1').on('click', function(event){

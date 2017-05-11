@@ -42,7 +42,7 @@
 					<div id="myTabContent" class="tab-content">
 						<div role="tabpanel" class="tab-pane fade in active" id="expeditions" aria-labelledby="expeditions-tab">
 							<div class="agile-tp">
-								<h5>#KylieLipKit</h5>
+								<h5><a href="{{url('makeup-lips-kylie')}}">#KylieLipKit</a></h5>
 								<!-- <p class="w3l-ad">We've pulled together all our advertised offers into one place, so you won't miss out on a great deal.</p> -->
 							</div>
 							<div class="agile_top_brands_grids">
@@ -372,7 +372,7 @@
 			<div class="brands-agile-2">
 				<div class="col-md-2 w3layouts-brand">
 					<div class="brands-w3l">
-						<p><a href="#">URBAN BEAUTY UNITED</a></p>
+						<p><a href="{{url('makeup-lips-kylie')}}">KYLIE KIT</a></p>
 					</div>
 				</div>
 				<div class="col-md-2 w3layouts-brand">
@@ -407,13 +407,6 @@
 	</div>	
 <!--//brands-->
 <!--footer-->
-		
-		<div class="footer-copy">
-			
-			<div class="container">
-				<p>© 2017 Bee-Pro. All rights reserved</p>
-			</div>
-		</div>
 		
 	</div>	
 	<div class="footer-botm">

@@ -8,6 +8,17 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
+    protected $table = 'user';
+    protected $primaryKey = 'id';
+    public $timestamps = true;
+    public $incrementing = true;
+
+    protected $fillable = array(
+       'nama', 'email', 'password', 'path_foto', 'aboutme', 'remember_token'
+    );
+    public function mahasiswa_matakuliah(){
+        return $this->hasMany('App\Review');
+     }
 
     /**
      * The attributes that are mass assignable.

@@ -17,6 +17,7 @@ Route::get('/', function () {
 Route::get('home','homeController@index1');
 Route::get('makeup-face', function () {return view('makeup.makeup-face');});
 Route::get('makeup-lips', function () {return view('makeup.makeup-lips');});
+Route::get('makeup-lips-kylie', function () {return view('makeup.makeup-lips-kylie');});
 Route::get('makeup-eyes', function () {return view('makeup.makeup-eyes');});
 Route::get('makeup-kits', function () {return view('makeup.makeup-kits');});
 
@@ -30,5 +31,12 @@ Route::get('skincare-moisturizer', function () {return view('skincare.skincare-m
 
 Route::get('about-us', function () {return view('about');});
 Route::get('contact-us', function () {return view('contact');});
+
+// Route::get('simple', function () {return view('single');});
+
+Route::get('single', function () {return view('single');});
+Route::get('people', function () {return view('people');});
+Route::get('user', function () {return view('user');});
+Route::get('newreview', function () {return view('newreview');});
 
 
