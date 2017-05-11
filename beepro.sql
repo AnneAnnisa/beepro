@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2017 at 04:40 PM
+-- Generation Time: May 11, 2017 at 05:03 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `brand` (
   `id` int(10) UNSIGNED NOT NULL,
-  `nama_brand` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+  `nama_brand` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -48,7 +48,7 @@ INSERT INTO `brand` (`id`, `nama_brand`) VALUES
 CREATE TABLE `foto` (
   `id` int(10) UNSIGNED NOT NULL,
   `review_id` int(11) NOT NULL,
-  `path` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -73,7 +73,7 @@ INSERT INTO `foto` (`id`, `review_id`, `path`, `created_at`, `updated_at`) VALUE
 
 CREATE TABLE `hashtag` (
   `id` int(10) UNSIGNED NOT NULL,
-  `nama_hashtag` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_hashtag` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -94,7 +94,7 @@ INSERT INTO `hashtag` (`id`, `nama_hashtag`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `kategori` (
   `id` int(10) UNSIGNED NOT NULL,
-  `nama_kategori` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+  `nama_kategori` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -139,7 +139,7 @@ INSERT INTO `memiliki` (`id`, `review_id`, `hashtag_id`, `created_at`, `updated_
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -148,15 +148,15 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2017_05_11_051603_reviewMigrate', 1),
-(4, '2017_05_11_051700_memilikiMigrate', 1),
-(5, '2017_05_11_051714_hashtagMigrate', 1),
-(6, '2017_05_11_051725_fotoMigrate', 1),
-(7, '2017_05_11_052028_brandMigrate', 1),
-(8, '2017_05_11_052128_productMigrate', 1),
-(9, '2017_05_11_052200_kategoriMigrate', 1);
+(2, '2014_10_12_000000_create_users_table', 1),
+(3, '2014_10_12_100000_create_password_resets_table', 1),
+(4, '2017_05_11_051603_reviewMigrate', 1),
+(5, '2017_05_11_051700_memilikiMigrate', 1),
+(6, '2017_05_11_051714_hashtagMigrate', 1),
+(7, '2017_05_11_051725_fotoMigrate', 1),
+(8, '2017_05_11_052028_brandMigrate', 1),
+(9, '2017_05_11_052128_productMigrate', 1),
+(10, '2017_05_11_052200_kategoriMigrate', 1);
 
 -- --------------------------------------------------------
 
@@ -165,8 +165,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -180,7 +180,7 @@ CREATE TABLE `product` (
   `id` int(10) UNSIGNED NOT NULL,
   `brand_id` int(11) NOT NULL,
   `kategori_id` int(11) NOT NULL,
-  `nama_product` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+  `nama_product` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -201,10 +201,10 @@ CREATE TABLE `review` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `judul` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `isi` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `harga` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `toko` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `isi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `harga` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `toko` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `rating` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -225,26 +225,26 @@ INSERT INTO `review` (`id`, `user_id`, `product_id`, `judul`, `isi`, `harga`, `t
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
-  `nama` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `path_foto` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `aboutme` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `path_foto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `aboutme` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `user` (`id`, `nama`, `email`, `password`, `path_foto`, `aboutme`, `remember_token`, `created_at`, `updated_at`) VALUES
+INSERT INTO `users` (`id`, `nama`, `email`, `password`, `path_foto`, `aboutme`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'pina', 'p@p.p', '123', '/user/pina.jpg', 'hai aku pina', NULL, NULL, NULL),
 (2, 'anne', 'a@a.a', '123', '/user/anne.jpg', 'hjhjkh', NULL, NULL, NULL);
 
@@ -289,12 +289,6 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `password_resets`
---
-ALTER TABLE `password_resets`
-  ADD KEY `password_resets_email_index` (`email`);
-
---
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
@@ -307,11 +301,10 @@ ALTER TABLE `review`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Indexes for table `users`
 --
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `user_email_unique` (`email`);
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -346,7 +339,7 @@ ALTER TABLE `memiliki`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `product`
 --
@@ -358,9 +351,9 @@ ALTER TABLE `product`
 ALTER TABLE `review`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `user`
+ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
