@@ -98,7 +98,8 @@
 						<li id="signup1" onclick="signupGanti()"><a href="#" style="padding:10%"><h5>Signup</h5></a></li>
 					</ul>
 														<div class="form-group" id="isi-up">
-														<form action="#" method="post">
+														<form action="login" method="post">
+														 {{ csrf_field() }}
 															<span class="input input--ichiro">
 																<input class="input__field input__field--ichiro" type="email" id="input-25" name="email" placeholder=" " required="" />
 																<label class="input__label input__label--ichiro" for="input-25">
@@ -106,7 +107,7 @@
 																</label>
 															</span>
 															<span class="input input--ichiro">
-																<input class="input__field input__field--ichiro" type="password" id="input-26" name="Email" placeholder=" " required="" />
+																<input class="input__field input__field--ichiro" type="password" id="input-26" name="password" placeholder=" " required="" />
 																<label class="input__label input__label--ichiro" for="input-26">
 																	<span class="input__label-content input__label-content--ichiro">Password</span>
 																</label>

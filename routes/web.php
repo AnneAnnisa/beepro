@@ -39,4 +39,4 @@ Route::get('people', function () {return view('people');});
 Route::get('user', function () {return view('user');});
 Route::get('newreview', function () {return view('newreview');});
 
-
+Route::post('login', 'loginController@authenticate');

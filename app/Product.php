@@ -11,10 +11,13 @@ class Product extends Model
     public $timestamps = true;
     public $incrementing = true;
     protected $fillable = array(
-         'brand_id', 'review_id', 'nama_product'
+         'brand_id', 'kategori_id', 'nama_product'
     );
     public function brand(){
-       return $this->hasOne('App\Review');
+       return $this->belongsTo('App\Brand');
+    }
+    public function kategori(){
+       return $this->belongsTo('App\Kategori');
     }
     public function review(){
        return $this->hasMany('App\Review');
