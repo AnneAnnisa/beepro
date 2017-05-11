@@ -1,11 +1,12 @@
 @extends('review.masterReview')
+<!-- {{var_dump($hashtag[0])}} -->
 @section('kat')
 <li><a href="{{url('home')}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
 			<!-- SALAH NIH, HARUSNYA KATEGORI BESAR -->
-			<li class="active">{{$kategori->nama_kategori}}</li>
+			<li class="active">Makeup</li>
 @endsection
 @section('makeupa')
-<li class="active"><a href="{{url('makeup-face')}}">{{$kategori->nama_kategori}}</a></li>
+<li class="active"><a href="{{url('makeup-face')}}">#kylielipkit</a></li>
 @endsection
 
 @section('item')
@@ -13,7 +14,7 @@
 	<!--atas-->
 
 	<div class="col-md-12"><br></div>
-	<h1 style="text-align: left;">{{$hashtag->nama_hashtag}}</h1>
+	<h1 style="text-align: left;">#CompactPowder</h1>
 	<div class="col-md-12"  style="margin:10px">
 		<div class="col-md-4 top_brand_left" >
 			<div class="hover14 column">
