@@ -15,7 +15,11 @@
 
 
 <!-- REVIEW -->
+<<<<<<< HEAD
+	<div class="register" style="padding:5em">
+=======
 <!-- 	<div class="register">
+>>>>>>> 1422a16d12894714bab6662bbee63d849675e469
 		<div class="container">
 			<h2>New Review</h2>
 			<div class="login-form-grids">

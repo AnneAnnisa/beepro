@@ -40,31 +40,44 @@
 						<li role="presentation"><a href="#tours" role="tab" id="tours-tab" data-toggle="tab" aria-controls="tours">Popular</a></li>
 					</ul>
 					<div id="myTabContent" class="tab-content">
-						<div role="tabpanel" class="tab-pane fade in active" id="expeditions" aria-labelledby="expeditions-tab">
+						<!-- AWAL NIH -->
+	                	@foreach($hash as $index => $cont)
+						<div role="tabpanel" class="tab-pane fade in active" id="expeditions" aria-labelledby="expeditions-tab" style="padding-bottom:2%">
 							<div class="agile-tp">
-								<h5><a href="{{url('makeup-lips-kylie')}}">#KylieLipKit</a></h5>
+								<h5><a href="#" onclick="event.preventDefault(); document.getElementById('review{{$cont->id}}').submit();">{{$cont->nama_hashtag}}</a></h5>
+								<form id="review{{$cont->id}}" action="{{url('review')}}" method="POST" style="display :none">
+									{{ csrf_field() }}
+									<input class="form-control" name="idhashtag" type="text" value="{{$cont->id}}">
+								</form>
 								<!-- <p class="w3l-ad">We've pulled together all our advertised offers into one place, so you won't miss out on a great deal.</p> -->
 							</div>
-							<div class="agile_top_brands_grids">
-								<div class="col-md-4 top_brand_left">
+							<div class="agile_top_brands_grids" style="margin-top:0">
+								@foreach($cont->memiliki as $i => $rev)
+								<div class="col-md-4 top_brand_left" style="padding-bottom:3%">
 									<div class="hover14 column">
 										<div class="agile_top_brand_left_grid">
-<!-- 											<div class="agile_top_brand_left_grid_pos">
-												<img src="images/offer.png" alt=" " class="img-responsive" />
-											</div> -->
 											<div class="agile_top_brand_left_grid1">
 												<figure>
 													<div class="snipcart-item block" >
 														<div class="snipcart-thumb">
-															<a href="single.html"><img title=" " alt=" " class="img-responsive"src="images/kylie3.jpg" width="300" height="300" style=""/></a>		
-															<h5>Kylie Lip Kit!</h5>
-															<h4 style="text-align:left;"><img src="images/2.png"  class="img-circle" alt="Cinque Terre" width="304" height="236" style="width:10%; height:10%"> Tiara Amalia</h4>
+															@foreach($rev->review->foto as $revf)
+															<a href="single.html"><img title=" " alt=" " src="images{{$revf->path}}" width="300" height="300" style="" name="review" value="$rev->review->id"/></a>		
+															@endforeach
+
+															<h5>{{$rev->review->judul}}</h5>
+															
+															@foreach($user as $us)
+																@if($rev->review->user_id == $us->id)
+																	<h4 style="text-align:left;"><img src="images{{$us->path_foto}}"  class="img-circle" alt="Cinque Terre" width="304" height="236" style="width:10%; height:10%">  {{$us->nama}}</h4>
+																@endif
+															@endforeach
 															<div class="stars">
-																<i class="fa fa-star blue-star" aria-hidden="true"></i>
-																<i class="fa fa-star blue-star" aria-hidden="true"></i>
-																<i class="fa fa-star blue-star" aria-hidden="true"></i>
-																<i class="fa fa-star blue-star" aria-hidden="true"></i>
-																<i class="fa fa-star gray-star" aria-hidden="true"></i>
+																@for ($i = 0; $i < $rev->review->rating; $i++)
+																	<i class="fa fa-star blue-star" aria-hidden="true"></i>
+																@endfor
+																@for ($i = 0; $i < 5-$rev->review->rating; $i++)
+																	<i class="fa fa-star gray-star" aria-hidden="true"></i>
+																@endfor
 															</div>
 														</div>
 													</div>
@@ -73,63 +86,14 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-md-4 top_brand_left">
-									<div class="hover14 column">
-										<div class="agile_top_brand_left_grid">
-<!-- 											<div class="agile_top_brand_left_grid_pos">
-												<img src="images/offer.png" alt=" " class="img-responsive" />
-											</div> -->
-											<div class="agile_top_brand_left_grid1">
-												<figure>
-													<div class="snipcart-item block" >
-														<div class="snipcart-thumb">
-															<a href="single2.html"><img title=" " alt=" " class="img-responsive"src="images/kylie4.jpg" width="300" height="300" style=""/></a>	
-															<h5>Kylie Lip Kit!</h5>
-															<h4 style="text-align:left;"><img src="images/10.png"  class="img-circle" alt="Cinque Terre" width="304" height="236" style="width:10%; height:10%"> Vinsen</h4>
-															<div class="stars">
-																<i class="fa fa-star blue-star" aria-hidden="true"></i>
-																<i class="fa fa-star blue-star" aria-hidden="true"></i>
-																<i class="fa fa-star blue-star" aria-hidden="true"></i>
-																<i class="fa fa-star blue-star" aria-hidden="true"></i>
-																<i class="fa fa-star gray-star" aria-hidden="true"></i>
-															</div>
-														</div>
-													</div>
-												</figure>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4 top_brand_left">
-									<div class="hover14 column">
-										<div class="agile_top_brand_left_grid">
-<!-- 											<div class="agile_top_brand_left_grid_pos">
-												<img src="images/offer.png" alt=" " class="img-responsive" />
-											</div> -->
-											<div class="agile_top_brand_left_grid1">
-												<figure>
-													<div class="snipcart-item block" >
-														<div class="snipcart-thumb">
-															<a href="products.html"><img title=" " alt=" " class="img-responsive"src="images/kylie2.jpg" width="300" height="300" style=""/></a>	
-															<h5>Kylie Lip Kit!</h5>
-															<h4 style="text-align:left;"><img src="images/12.png"  class="img-circle" alt="Cinque Terre" width="304" height="236" style="width:10%; height:10%"> Kania Amalia</h4>
-															<div class="stars">
-																<i class="fa fa-star blue-star" aria-hidden="true"></i>
-																<i class="fa fa-star blue-star" aria-hidden="true"></i>
-																<i class="fa fa-star blue-star" aria-hidden="true"></i>
-																<i class="fa fa-star blue-star" aria-hidden="true"></i>
-																<i class="fa fa-star gray-star" aria-hidden="true"></i>
-															</div>
-														</div>
-													</div>
-												</figure>
-											</div>
-										</div>
-									</div>
-								</div>
+								@endforeach
 							</div>
 								<div class="clearfix"> </div>
 						</div>
+						@endforeach
+						<!-- AKHIR NEWEST -->
+
+
 						<div role="tabpanel" class="tab-pane fade" id="tours" aria-labelledby="tours-tab">
 							<div class="agile-tp">
 								<h5>This week</h5>
