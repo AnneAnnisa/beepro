@@ -40,3 +40,5 @@ Route::get('user', function () {return view('user');});
 Route::get('newreview', function () {return view('newreview');});
 
 
+// UDAH BACKEND ANNE
+Route::post('review', 'ReviewController@review');

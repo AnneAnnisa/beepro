@@ -15,7 +15,7 @@
 
 
 <!-- REVIEW -->
-	<div class="register">
+	<div class="register" style="padding:5em">
 		<div class="container">
 			<h2>New Review</h2>
 			<div class="login-form-grids">
