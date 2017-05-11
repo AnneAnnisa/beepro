@@ -17,7 +17,7 @@ class ProductMigrate extends Migration
         Schema::create('product',function(Blueprint $table) {
             $table->increments('id');
             $table->integer('brand_id');
-            $table->integer('review_id');
+            $table->integer('kategori_id');
             $table->string('nama_product');
 
         });
