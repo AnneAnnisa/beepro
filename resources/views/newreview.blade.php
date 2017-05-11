@@ -15,7 +15,11 @@
 
 
 <!-- REVIEW -->
+<<<<<<< HEAD
 	<div class="register" style="padding:5em">
+=======
+<!-- 	<div class="register">
+>>>>>>> 1422a16d12894714bab6662bbee63d849675e469
 		<div class="container">
 			<h2>New Review</h2>
 			<div class="login-form-grids">
@@ -85,10 +89,44 @@
 					<textarea name="Message" placeholder="Your message here..." required=""></textarea>
 					<input type="submit" value="Submit">
 				</form>
-			</div>
+			</div> -->
 
 <!-- //register -->
-
+<html>
+<head>
+<title>New Review</title>
+<!-- custom-theme -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Circle Sign Up Form Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //custom-theme -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+</head>
+<body>
+	<div class="main">	
+		<div class="w3layouts_main agileinfo w3">		
+			<div class="w3_agile_signup_form agileits">
+				<h1 class="w3_agileits w3ls">New Review</h1>
+				<div class="agile_login_form">
+					<form action="#" method="post" class="agileits_w3layouts_form">
+						<input type="text" name="Judul" placeholder="Judul" required="">
+						<textarea type="message" name="Review" placeholder="What I think about the product..." required=""></textarea> 
+						<input type="text" name="Tempat Belanja" placeholder="Tempat Belanja" required="">
+						<input type="text" name="Harga" placeholder="Harga" required="">
+						<input type="text" name="Hashtag" placeholder="Hashtag" required="">
+						<input type="submit" value="Submit">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
 
 
 <!-- //footer -->

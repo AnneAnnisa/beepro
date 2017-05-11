@@ -39,6 +39,12 @@ Route::get('people', function () {return view('people');});
 Route::get('user', function () {return view('user');});
 Route::get('newreview', function () {return view('newreview');});
 
+<<<<<<< HEAD
 
 // UDAH BACKEND ANNE
 Route::post('review', 'ReviewController@review');
+=======
+//Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('login', 'loginController@authenticate');
+Route::post('register', 'userController@register');
+>>>>>>> 1422a16d12894714bab6662bbee63d849675e469
