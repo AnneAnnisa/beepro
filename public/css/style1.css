@@ -91,8 +91,8 @@ input[type="submit"],.agileits_copyright p a,a{
     text-align: center;
     border: 40px solid #fe9126;
     border-radius: 100%;
-    height: 700px;
-    width: 700px;
+    height: 800px;
+    width: 800px;
     margin: 0 auto;
 }
 .w3_agile_signup_form input[type="text"], .w3_agile_signup_form input[type="password"], .w3_agile_signup_form input[type="email"] {
@@ -110,6 +110,20 @@ input[type="submit"],.agileits_copyright p a,a{
 }
 
 .w3_agile_signup_form textarea[type="message"]{
+    background-color: white;
+    width: 92%;
+    padding: .8em;
+    font-size: 1em;
+    margin: .8em 0;
+    outline: none;
+    color: #212121;
+    border: 1px solid #212121;
+    letter-spacing: 1px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.w3_agile_signup_form input[type="file"]{
     background: white;
     width: 92%;
     padding: .8em;
