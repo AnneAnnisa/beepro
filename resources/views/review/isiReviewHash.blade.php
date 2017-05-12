@@ -2,10 +2,6 @@
 <!-- {{var_dump($hashtag[0])}} -->
 @section('kat')
 	<li><a href="{{url('home')}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-		@foreach($hashtag as $hash)
-			<!-- SALAH NIH, HARUSNYA KATEGORI BESAR -->
-			<li class="active">Makeup</li>
-		@endforeach
 @endsection
 @section('makeupa')
 	@foreach($hashtag as $hash)

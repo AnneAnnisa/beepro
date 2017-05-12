@@ -18,6 +18,7 @@ class ReviewController extends Controller
     public function review(Request $request)
 	{
    		$hashtag=Hashtag::where('id','=',$request->idhashtag)->get();
+      // dd($hashtag);
    		$memiliki=Memiliki::where('hashtag_id', '=', $request->idhashtag)->get();
    		$review=Review::where('id','=',$memiliki)->get();
    		// $foto=Foto::where('review_id','=', $review->id);
@@ -34,7 +35,7 @@ class ReviewController extends Controller
     	$kategori=Kategori::all();
     	$foto=Foto::all();
 
-	    return view('review.isiReview',['hashtag' => $hashtag, 'product' =>$product, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori]);
+	    return view('review.isiReviewHash',['hashtag' => $hashtag, 'product' =>$product, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori]);
 	    // return view('review.isiReview',['hashtag' => $hashtag, 'memiliki' =>$memiliki]);
 	}
 }
