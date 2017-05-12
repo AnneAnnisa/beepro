@@ -46,11 +46,7 @@
 	                	@if($index<1)
 						<div role="tabpanel" class="tab-pane fade in active" id="expeditions" aria-labelledby="expeditions-tab" style="padding-bottom:2%">
 							<div class="agile-tp">
-								<h5><a href="#" onclick="event.preventDefault(); document.getElementById('review{{$cont->id}}').submit();">{{$cont->nama_hashtag}}</a></h5>
-								<form id="review{{$cont->id}}" action="{{url('review')}}" method="POST" style="display :none">
-									{{ csrf_field() }}
-									<input class="form-control" name="idhashtag" type="text" value="{{$cont->id}}">
-								</form>
+								<h5><a href="{{ route('review.eh', ['isiny' => $cont->id ]) }}" >{{$cont->nama_hashtag}}</a></h5>
 								<!-- <p class="w3l-ad">We've pulled together all our advertised offers into one place, so you won't miss out on a great deal.</p> -->
 							</div>
 							<div class="agile_top_brands_grids" style="margin-top:0">
@@ -71,8 +67,12 @@
 															<h5>{{$rev->review->judul}}</h5>
 															
 															@foreach($user as $us)
-																@if($rev->review->user_id == $us->id)
-																	<h4 style="text-align:left;"><img src="images{{$us->path_foto}}"  class="img-circle" alt="Cinque Terre" width="304" height="236" style="width:10%; height:10%">  {{$us->nama}}</h4>
+															<!-- dd({{$us->id}}) -->
+																@if($rev->review->users_id == $us->id)
+																<h4 style="text-align:left;">
+																	<div class="col-md-3" style="padding:0"><p><img src="{{url('images')}}{{$us->path_foto}}"  class="img-circle" alt="Cinque Terre" height="50px" width="50px"></p></div>
+																	<div class="col-md-9"><p style="text-align:left; font-size:150%"> {{str_limit($us->nama,11)}}</p></div>
+																</h4>
 																@endif
 															@endforeach
 															<div class="stars">
