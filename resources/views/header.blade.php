@@ -42,7 +42,11 @@
 												<div class="multi-gd-img">
 													<ul class="multi-column-dropdown">
 														<h6>All Make Up</h6>
-														<li><a href="{{url('makeup-face')}}">Face</a></li>
+														<li><a href="#" onclick="event.preventDefault(); document.getElementById('face').submit();">Face</a></li>
+														<form id="face" action="{{url('makeup')}}" method="POST" style="display :none">
+															{{ csrf_field() }}
+															<input class="form-control" name="kategori" type="text" value="Face">
+														</form>
 														<li><a href="{{url('makeup-lips')}}">Lips</a></li>
 														<li><a href="{{url('makeup-eyes')}}">Eyes</a></li>
 														<li><a href="{{url('makeup-kits')}}"> Make Up Kits </a></li>

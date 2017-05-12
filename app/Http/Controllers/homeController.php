@@ -17,7 +17,7 @@ class homeController extends Controller
 {
     public function index1(Request $request)
     {
-    	$hash=Hashtag::all();
+    	$hash=Hashtag::all()->sortByDesc('updated_at');
     	$prod=Product::all();
     	$review=Review::all();
     	$memiliki=Memiliki::all();

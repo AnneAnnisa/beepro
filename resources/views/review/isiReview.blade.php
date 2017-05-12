@@ -2,9 +2,9 @@
 <!-- {{var_dump($hashtag[0])}} -->
 @section('kat')
 	<li><a href="{{url('home')}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-		@foreach($hashtag as $hash)
+		@foreach($kategori as $kat)
 			<!-- SALAH NIH, HARUSNYA KATEGORI BESAR -->
-			<li class="active">Makeup</li>
+			<li class="active">{{$kat->nama_kategori}}</li>
 		@endforeach
 @endsection
 @section('makeupa')
