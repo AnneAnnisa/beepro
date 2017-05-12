@@ -42,8 +42,9 @@ Route::get('newreview', function () {return view('newreview');});
 
 // UDAH BACKEND ANNE
 Route::post('review', 'ReviewController@review');
-Route::post('makeup', 'ReviewController@makeup');
-
+Route::get('review', function () {return back();});
+Route::post('makeup/{isinya}', 'ReviewController@makeup');
+Route::get('makeup/{isinya}',['uses' => 'ReviewController@makeupEh', 'as' => 'makeup.eh']);
 
 
 

@@ -26,8 +26,10 @@
 
 							<div class="snipcart-item block" >
 								<div class="snipcart-thumb">
-									@foreach($rev->review->foto as $revf)
-									<a href="{{url('single')}}"><img title=" " alt=" " class="" src="images{{$revf->path}}" width="280" height="280" style=""/></a>		
+									@foreach($rev->review->foto as $kk => $revf)
+									@if($kk == 0)
+										<a href="{{url('single')}}"><img title=" " alt=" " class="" src="images{{$revf->path}}" width="280" height="280" style=""/></a>		
+									@endif
 									@endforeach
 									<h3 style="margin-bottom:16px">{{$rev->review->judul}}</h3>
 									@foreach($user as $us)

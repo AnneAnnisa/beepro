@@ -1,5 +1,5 @@
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="js/minicart.min.js"></script>
+<script src="{{url('plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
+<script src="{{url('js/minicart.min.js')}}"></script>
 <script>
 	// Mini Cart
 	paypal.minicart.render({
@@ -11,8 +11,8 @@
 	}
 </script>
 <!-- main slider-banner -->
-<script src="js/skdslider.min.js"></script>
-<link href="css/skdslider.css" rel="stylesheet">
+<script src="{{url('js/skdslider.min.js')}}"></script>
+<link href="{{url('css/skdslider.css')}}" rel="stylesheet">
 <script type="text/javascript">
 		jQuery(document).ready(function(){
 			jQuery('#demo1').skdslider({'delay':5000, 'animationSpeed': 2000,'showNextPrev':true,'showPlayButton':true,'autoSlide':true,'animationType':'fading'});
