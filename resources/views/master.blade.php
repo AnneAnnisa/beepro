@@ -38,6 +38,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	});
 </script>
 <!-- start-smoth-scrolling -->
+<!-- tags autocomplete -->
+<link href="magicsuggest/magicsuggest-min.css" rel="stylesheet">
+<script src="magicsuggest/magicsuggest-min.js"></script>
 </head>
 	
 <body>

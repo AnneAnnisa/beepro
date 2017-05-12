@@ -4,15 +4,40 @@
 			<div class="w3ls_logo_products_left">
 				<h1><a href="{{url('home')}}">Bee-Pro</a></h1>
 			</div>
-		<div class="w3l_search">
+<!-- 		<div class="w3l_search">
 			<form action="#" method="post">
-				<input type="search" name="Search" placeholder="#Search with Hashtag" required="">
+				<input type="search" id="magicsuggest" name="Search" placeholder="#Search with Hashtag" required="" class-"ms-ctn form-control ms-ctn-focus">
 				<button type="submit" class="btn btn-default search" aria-label="Left Align">
 					<i class="fa fa-search" aria-hidden="true"> </i>
 				</button>
 				<div class="clearfix"></div>
 			</form>
-		</div>
+		</div> -->
+
+		<div class ="form-group">
+			<div id="magicsuggest" class="ms-ctn form-control ms-ctn-focus" style="">
+				<div class="ms-sel-ctn">
+					<input class="" placeholder="Search with hashtag" style="width: 470px;" type="text">
+					<div style="display: none;"></div>
+				</div>
+				<div class="ms-trigger"> 
+					<div class="ms-trigger-ico"></div>
+				</div>
+				<div class="ms-res-ctn dropdown-menu style="display:block; height: 99px;">
+					<div class="ms-res-item" data-json="{"id":"Paris","name":"Paris"}">Paris</div>
+					<div class="ms-res-item" data-json="{"id":"New York","name":"Paris"}">New York</div>
+					<div class="ms-res-item" data-json="{"id":"Paris","name":"Gotham"}">Gotham</div>
+				</div>	
+			</div>
+		</div>			
+		<script type="text/javascript">
+			$(function() {
+				$('#magicsuggest').magicSuggest({
+					  allowFreeEntries: false,
+ 					 data: ['Paris', 'New York', 'Gotham']
+				    });
+			});
+		</script>
 			
 			<div class="clearfix"> </div>
 		</div>
