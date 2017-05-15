@@ -11,7 +11,7 @@ class Review extends Model
     public $timestamps = true;
     public $incrementing = true;
     protected $fillable = array(
-         'user_id', 'product_id', 'judul', 'isi', 'harga', 'toko', 'rating'
+         'users_id', 'product_id', 'judul', 'isi', 'harga', 'toko', 'rating'
     );
     public function user(){
        return $this->hasOne('App\User');

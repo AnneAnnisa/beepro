@@ -67,7 +67,7 @@
 												<div class="multi-gd-img">
 													<ul class="multi-column-dropdown">
 														<h6>All Make Up</h6>
-														<li><a href="{{url('makeup-face')}}">Face</a></li>
+														<li><a href="{{ route('makeup.eh', ['isinya' => 'Face' ]) }}" >Face</a></li>
 														<li><a href="{{url('makeup-lips')}}">Lips</a></li>
 														<li><a href="{{url('makeup-eyes')}}">Eyes</a></li>
 														<li><a href="{{url('makeup-kits')}}"> Make Up Kits </a></li>

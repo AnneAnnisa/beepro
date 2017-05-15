@@ -15,11 +15,10 @@ use DB;
 
 class ReviewController extends Controller
 {
-    public function review(Request $request)
+  public function review($isiny)
 	{
-   		$hashtag=Hashtag::where('id','=',$request->idhashtag)->get();
-      // dd($hashtag);
-   		$memiliki=Memiliki::where('hashtag_id', '=', $request->idhashtag)->get();
+   		$hashtag=Hashtag::where('id','=',$isiny)->get();
+   		$memiliki=Memiliki::where('hashtag_id', '=', $isiny)->get();
    		$review=Review::where('id','=',$memiliki)->get();
    		// $foto=Foto::where('review_id','=', $review->id);
    		// $user=User::where('id','=', $review->user_id);
@@ -38,4 +37,69 @@ class ReviewController extends Controller
 	    return view('review.isiReviewHash',['hashtag' => $hashtag, 'product' =>$product, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori]);
 	    // return view('review.isiReview',['hashtag' => $hashtag, 'memiliki' =>$memiliki]);
 	}
+
+  public function makeup(Request $request)
+  {
+      $kategori=Kategori::where('nama_kategori','=',$request->kategori)->get();
+      $hashtag=Hashtag::all();
+      $memiliki=Memiliki::all();
+      $review=Review::all();
+      // $foto=Foto::where('review_id','=', $review->id);
+      // $user=User::where('id','=', $review->user_id);
+      // $product=Product::where('id','=', $review->product_id);
+      // $brand=Brand::where('id','=',$product->brand_id);
+      // $kategori=Kategori::where('id','=',$product->kategori_id);
+      // $review=Review::all();
+      // $hash=Hashtag::all();
+      // $memiliki=Memiliki::all();
+      $product=Product::all();
+      $brand=Brand::all();
+      $user=User::all();
+      $foto=Foto::all();
+
+      $isi = DB::table('review')
+            ->join('memiliki', 'review.id', '=', 'memiliki.review_id')
+            ->join('foto', 'review.id', '=', 'foto.review_id')
+            ->join('users', 'users.id', '=', 'review.users_id')
+            ->join('product', 'product.id', '=', 'review.product_id')
+            ->select('review.*', 'memiliki.*', 'foto.*', 'users.*', 'product.*')
+            ->get();
+
+      return view('review.isiReview',['hashtag' => $hashtag, 'product' =>$product, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori, 'isi' =>$isi]);
+      // return view('review.isiReview',['hashtag' => $hashtag, 'memiliki' =>$memiliki]);
+  }
+
+  public function makeupEh($isinya)
+  {
+      $kategori=Kategori::where('nama_kategori','=',$isinya)->get();
+      $memiliki=Memiliki::all();
+      $review=Review::all();
+      // $foto=Foto::where('review_id','=', $review->id);
+      // $user=User::where('id','=', $review->user_id);
+      // $product=Product::where('id','=', $review->product_id);
+      // $brand=Brand::where('id','=',$product->brand_id);
+      // $kategori=Kategori::where('id','=',$product->kategori_id);
+      // $review=Review::all();
+      // $hash=Hashtag::all();
+      // $memiliki=Memiliki::all();
+      $product=Product::all();
+      $brand=Brand::all();
+      $user=User::all();
+      $foto=Foto::all();
+
+      $isi = DB::table('review')
+            ->join('memiliki', 'review.id', '=', 'memiliki.review_id')
+            ->join('users', 'users.id', '=', 'review.users_id')
+            ->join('product', 'product.id', '=', 'review.product_id')
+            ->select('review.*', 'memiliki.*', 'users.*', 'product.*')
+            ->distinct()->get();
+
+      dd($isi);
+      // exit();
+      $hashtag=Hashtag::all();
+      $tag=Hashtag::where('id','=',$isi)->get();
+
+      return view('review.isiReview',['hashtag' => $hashtag, 'product' =>$product, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori, 'isi' =>$isi]);
+      // return view('review.isiReview',['hashtag' => $hashtag, 'memiliki' =>$memiliki]);
+  }
 }

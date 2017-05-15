@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2017 at 05:03 PM
+-- Generation Time: May 12, 2017 at 11:19 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -63,7 +63,8 @@ INSERT INTO `foto` (`id`, `review_id`, `path`, `created_at`, `updated_at`) VALUE
 (3, 3, '/review/3.jpg', NULL, NULL),
 (4, 4, '/review/4.jpg', NULL, NULL),
 (5, 5, '/review/p1.jpg', NULL, NULL),
-(6, 6, '/review/1.jpg', NULL, NULL);
+(6, 6, '/review/1.jpg', NULL, NULL),
+(7, 1, '/review/2.jpg', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -83,8 +84,8 @@ CREATE TABLE `hashtag` (
 --
 
 INSERT INTO `hashtag` (`id`, `nama_hashtag`, `created_at`, `updated_at`) VALUES
-(1, '#kylielipkit', NULL, NULL),
-(2, '#powder', NULL, NULL);
+(1, '#kylielipkit', NULL, '2017-05-19 17:00:00'),
+(2, '#powder', NULL, '2017-05-07 17:00:00');
 
 -- --------------------------------------------------------
 
@@ -103,7 +104,8 @@ CREATE TABLE `kategori` (
 
 INSERT INTO `kategori` (`id`, `nama_kategori`) VALUES
 (1, 'lip'),
-(2, 'makeup');
+(2, 'makeup'),
+(3, 'Face');
 
 -- --------------------------------------------------------
 
@@ -188,7 +190,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `brand_id`, `kategori_id`, `nama_product`) VALUES
-(1, 1, 1, 'kylie lip kit'),
+(1, 1, 3, 'kylie lip kit'),
 (2, 2, 1, 'llll');
 
 -- --------------------------------------------------------
@@ -199,7 +201,7 @@ INSERT INTO `product` (`id`, `brand_id`, `kategori_id`, `nama_product`) VALUES
 
 CREATE TABLE `review` (
   `id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `users_id` int(11) NOT NULL DEFAULT '0',
   `product_id` int(11) NOT NULL,
   `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `isi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -214,7 +216,7 @@ CREATE TABLE `review` (
 -- Dumping data for table `review`
 --
 
-INSERT INTO `review` (`id`, `user_id`, `product_id`, `judul`, `isi`, `harga`, `toko`, `rating`, `created_at`, `updated_at`) VALUES
+INSERT INTO `review` (`id`, `users_id`, `product_id`, `judul`, `isi`, `harga`, `toko`, `rating`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 'kylie', 'lipliplip', '12300', 'summarecon', 1, NULL, NULL),
 (2, 2, 1, 'bagus pol', 'vvfdfdfg', '2123', 'dfdffds', 3, NULL, NULL),
 (3, 1, 2, 'efff', 'fweewr', '244', 'dfsdfsd', 0, NULL, NULL),
@@ -246,7 +248,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `nama`, `email`, `password`, `path_foto`, `aboutme`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'pina', 'p@p.p', '123', '/user/pina.jpg', 'hai aku pina', NULL, NULL, NULL),
-(2, 'anne', 'a@a.a', '123', '/user/anne.jpg', 'hjhjkh', NULL, NULL, NULL);
+(2, 'anne annisa aulia', 'a@a.a', '123', '/user/anne.jpg', 'hjhjkh', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -319,7 +321,7 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT for table `foto`
 --
 ALTER TABLE `foto`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `hashtag`
 --
@@ -329,7 +331,7 @@ ALTER TABLE `hashtag`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `memiliki`
 --

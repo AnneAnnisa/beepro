@@ -2,9 +2,9 @@
 <!-- {{var_dump($hashtag[0])}} -->
 @section('kat')
 	<li><a href="{{url('home')}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-		@foreach($hashtag as $hash)
+		@foreach($kategori as $kat)
 			<!-- SALAH NIH, HARUSNYA KATEGORI BESAR -->
-			<li class="active">Makeup</li>
+			<li class="active">{{$kat->nama_kategori}}</li>
 		@endforeach
 @endsection
 @section('makeupa')
@@ -28,9 +28,9 @@
 
 							<div class="snipcart-item block" >
 								<div class="snipcart-thumb">
-									<a href="{{url('single')}}"><img title=" " alt=" " class="img-responsive"src="images/powder1.jpg" width="280" height="280" style=""/></a>		
+									<a href="{{url('single')}}"><img title=" " alt=" " class="img-responsive"src="{{url('images/powder1.jpg')}}" width="280" height="280" style=""/></a>		
 									<h3 style="margin-bottom:16px">With and Without</h3>
-									<h4 style="text-align:left;"><img src="images/2.png"  class="img-circle" alt="Cinque Terre" width="304" height="236" style="width:15%; height:15%"> Tiara Amalia</h4>
+									<h4 style="text-align:left;"><img src="{{url('images/2.png')}}"  class="img-circle" alt="Cinque Terre" width="304" height="236" style="width:15%; height:15%"> Tiara Amalia</h4>
 									<div class="stars">
 										<i class="fa fa-star blue-star" aria-hidden="true"></i>
 										<i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -55,9 +55,9 @@
 						<figure>
 							<div class="snipcart-item block" >
 								<div class="snipcart-thumb">
-									<a href="{{url('single')}}"><img title=" " alt=" " class="img-responsive"src="images/powder2.jpg" width="280" height="280" style=""/></a>		
+									<a href="{{url('single')}}"><img title=" " alt=" " class="img-responsive"src="{{url('images/powder2.jpg')}}" width="280" height="280" style=""/></a>		
 									<h3 style="margin-bottom:16px">Bronze Catrice</h3>
-									<h4 style="text-align:left;"><img src="images/10.png"  class="img-circle" alt="Cinque Terre" width="304" height="236" style="width:15%; height:15%"> Vinsen</h4>
+									<h4 style="text-align:left;"><img src="{{url('images/10.png')}}"  class="img-circle" alt="Cinque Terre" width="304" height="236" style="width:15%; height:15%"> Vinsen</h4>
 									<div class="stars">
 										<i class="fa fa-star blue-star" aria-hidden="true"></i>
 										<i class="fa fa-star blue-star" aria-hidden="true"></i>
