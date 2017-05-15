@@ -53,3 +53,6 @@ Route::get('makeup/{isinya}',['uses' => 'ReviewController@makeupEh', 'as' => 'ma
 //Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('login', 'loginController@authenticate');
 Route::post('register', 'userController@register');
+
+Route::get('autocomplete', 'userController@autocomplete');
+Route::get('search/{term}', 'userController@search');

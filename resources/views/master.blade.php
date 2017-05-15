@@ -40,8 +40,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 <!-- start-smoth-scrolling -->
 <!-- tags autocomplete -->
-<link href="magicsuggest/magicsuggest-min.css" rel="stylesheet">
-<script src="magicsuggest/magicsuggest-min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//codeorigin.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="//codeorigin.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+
+<script src="{{url('public/plugins/jQueryUI/jquery-ui.min.js')}}"></script>
 </head>
 	
 <body>

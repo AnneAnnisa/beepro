@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Hashtag;
 
 class userController extends Controller
 {
@@ -19,5 +20,24 @@ class userController extends Controller
         $user->save();
 
         return redirect()->back();
+    }
+
+    public function autocomplete(Request $request) 
+    {
+        $query = $request->get('term');
+        $item = Hashtag::where('nama_hashtag','LIKE','%'.$query.'%')->get();
+
+        if(count($item) == 0) {
+            $result[] =  'Not found';
+        }
+        else {
+            foreach($item as $key=>$value) {
+            $result[] = $value->nama_hashtag;
+
+            }
+        }
+
+        return $result;
+        
     }
 }
