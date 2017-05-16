@@ -15,75 +15,75 @@ class brandSeeder extends Seeder
         DB::table('brand')->delete();
 
         Brand::create([
-        	'nama_brand' => '#LAKME',
+        	'nama_brand' => 'LAKME',
         ]);
 
         Brand::create([
-        	'nama_brand' => '#NYKAA',
+        	'nama_brand' => 'NYKAA',
         ]);
 
         Brand::create([
-        	'nama_brand' => '#THE BODY SHOP',
+        	'nama_brand' => 'THE BODY SHOP',
         ]);  
 
         Brand::create([
-        	'nama_brand' => '#THE FACE SHOP',
+        	'nama_brand' => 'THE FACE SHOP',
         ]);     
 
         Brand::create([
-        	'nama_brand' => '#MAYBELINNE NEW YORK',
+        	'nama_brand' => 'MAYBELINNE NEW YORK',
         ]);
 
         Brand::create([
-        	'nama_brand' => '#ETUDE',
+        	'nama_brand' => 'ETUDE',
         ]);
 
         Brand::create([
-        	'nama_brand' => '#INNISFREE',
+        	'nama_brand' => 'INNISFREE',
         ]);  
 
         Brand::create([
-        	'nama_brand' => '#NYX',
+        	'nama_brand' => 'NYX',
         ]); 
 
         Brand::create([
-        	'nama_brand' => '#COLORBAR',
+        	'nama_brand' => 'COLORBAR',
         ]);
 
         Brand::create([
-        	'nama_brand' => '#M.A.C',
+        	'nama_brand' => 'M.A.C',
         ]);
 
         Brand::create([
-        	'nama_brand' => '#MARC JACOBS',
+        	'nama_brand' => 'MARC JACOBS',
         ]);  
 
         Brand::create([
-        	'nama_brand' => '#THEBALM',
+        	'nama_brand' => 'THEBALM',
         ]);     
 
         Brand::create([
-        	'nama_brand' => '#KYLIE KIT',
+        	'nama_brand' => 'KYLIE KIT',
         ]);
 
         Brand::create([
-        	'nama_brand' => '#ORIFLAME',
+        	'nama_brand' => 'ORIFLAME',
         ]);
 
         Brand::create([
-        	'nama_brand' => '#KYLIE',
+        	'nama_brand' => 'KYLIE',
         ]);  
 
         Brand::create([
-        	'nama_brand' => '#L\'OREAL PARIS',
+        	'nama_brand' => 'L\'OREAL PARIS',
         ]);          
 
         Brand::create([
-        	'nama_brand' => '#BIODERMA',
+        	'nama_brand' => 'BIODERMA',
         ]);  
 
         Brand::create([
-        	'nama_brand' => '#KIEHL\'S',
+        	'nama_brand' => 'KIEHL\'S',
         ]); 
 
     }
