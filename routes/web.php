@@ -55,4 +55,4 @@ Route::post('login', 'loginController@authenticate');
 Route::post('register', 'userController@register');
 
 Route::get('autocomplete', 'userController@autocomplete');
-Route::get('search/{term}', 'userController@search');
+Route::get('search', 'userController@search');
