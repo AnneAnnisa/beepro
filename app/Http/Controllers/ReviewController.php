@@ -88,7 +88,7 @@ class ReviewController extends Controller
       //       ->select('review.*', 'memiliki.*', 'users.*', 'product.*')
       //       ->distinct()->get();
 
-      $isi = DB::select("select * from kategori, review, users, memiliki, hashtag, brand where review.kategori_id=kategori.id and review.brand_id=brand.id and kategori.nama_kategori='$isinya' and review.users_id=users.id and memiliki.review_id=review.id and memiliki.hashtag_id=hashtag.id order by hashtag.updated_at");
+      $isi = DB::select("select * from kategori, foto, review, users, memiliki, hashtag, brand where review.kategori_id=kategori.id and foto.review_id=review.id and review.brand_id=brand.id and kategori.nama_kategori='$isinya' and review.users_id=users.id and memiliki.review_id=review.id and memiliki.hashtag_id=hashtag.id order by hashtag.updated_at, hashtag.id, foto.id");
       // dd($isi);
       $brand=Brand::all();
       $user=User::all();
