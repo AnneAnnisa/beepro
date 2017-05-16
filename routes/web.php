@@ -60,9 +60,7 @@ Route::get('search', 'userController@search');
 // BACKEND PINA HEHEHEHE
 Route::get('newreview', 'ReviewController@newreview');
 Route::post('newreview', 'ReviewController@savenewreview');
-<<<<<<< HEAD
+
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
-=======
->>>>>>> d70cea10d05dde88d944f6102cc8cc6e82f040e9

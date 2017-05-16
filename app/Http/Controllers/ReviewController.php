@@ -125,9 +125,19 @@ class ReviewController extends Controller
     $review->rating = $request->rating; //db->form
     $review->save();
 
-    $hashtag = new Hashtag;
-    $review_id = DB::table('review')->first();
-    dd($review->id);
+    $datahashtag = $request->hashtag;
+    $arrayhashtag = explode(" ", $datahashtag);
+    foreach($arrayhashtag as $data) {
+      $hashtagfix = "#".$data;
+      $hashtag = new Hashtag;
+      $hashtag->nama_hashtag = $hashtagfix;
+      $hashtag->save();
+    }
+    //$hashtag = new Hashtag;
+
+    // $review_id = DB::table('review')->first();
+    // $hashtag->nama_hashtag = $request->hashtag;
+    // $hashtag->save();
   
   }
 
