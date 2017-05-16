@@ -15,23 +15,23 @@ class hashtagSeeder extends Seeder
         DB::table('hashtag')->delete();
 
         Hashtag::create([
-        	'nama_hashtag' => 'kylie',
+        	'nama_hashtag' => '#kylie',
         ]);
 
         Hashtag::create([
-        	'nama_hashtag' => 'lipkit',
+        	'nama_hashtag' => '#lipkit',
         ]);
 
         Hashtag::create([
-        	'nama_hashtag' => 'etude',
+        	'nama_hashtag' => '#etude',
         ]);
 
         Hashtag::create([
-            'nama_hashtag' => 'lipgloss',
+            'nama_hashtag' => '#lipgloss',
         ]);
 
         Hashtag::create([
-            'nama_hashtag' => 'viva',
+            'nama_hashtag' => '#viva',
         ]);
     }
 }

@@ -14,6 +14,6 @@ class Brand extends Model
          'nama_brand'
     );
     public function product(){
-       return $this->hasMany('App\Product');
+       return $this->hasMany('App\Review');
     }
 }

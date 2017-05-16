@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Hashtag;
-use App\Product;
 use App\Review;
 use App\Memiliki;
 use App\Brand;
@@ -28,13 +27,12 @@ class ReviewController extends Controller
     	// $review=Review::all();
     	// $hash=Hashtag::all();
     	// $memiliki=Memiliki::all();
-    	$product=Product::all();
     	$brand=Brand::all();
     	$user=User::all();
     	$kategori=Kategori::all();
     	$foto=Foto::all();
 
-	    return view('review.isiReviewHash',['hashtag' => $hashtag, 'product' =>$product, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori]);
+	    return view('review.isiReviewHash',['hashtag' => $hashtag, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori]);
 	    // return view('review.isiReview',['hashtag' => $hashtag, 'memiliki' =>$memiliki]);
 	}
 
@@ -52,7 +50,6 @@ class ReviewController extends Controller
       // $review=Review::all();
       // $hash=Hashtag::all();
       // $memiliki=Memiliki::all();
-      $product=Product::all();
       $brand=Brand::all();
       $user=User::all();
       $foto=Foto::all();
@@ -61,11 +58,12 @@ class ReviewController extends Controller
             ->join('memiliki', 'review.id', '=', 'memiliki.review_id')
             ->join('foto', 'review.id', '=', 'foto.review_id')
             ->join('users', 'users.id', '=', 'review.users_id')
-            ->join('product', 'product.id', '=', 'review.product_id')
+            ->join('brand', 'brand.id', '=', 'review.brand_id')
+            ->join('kategori', 'kategori.id', '=', 'review.kategori_id')
             ->select('review.*', 'memiliki.*', 'foto.*', 'users.*', 'product.*')
             ->get();
 
-      return view('review.isiReview',['hashtag' => $hashtag, 'product' =>$product, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori, 'isi' =>$isi]);
+      return view('review.isiReview',['hashtag' => $hashtag, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori, 'isi' =>$isi]);
       // return view('review.isiReview',['hashtag' => $hashtag, 'memiliki' =>$memiliki]);
   }
 
@@ -83,7 +81,6 @@ class ReviewController extends Controller
       // $hash=Hashtag::all();
       // $memiliki=Memiliki::all();
 
-      $product=Product::all();
       // $isi = DB::table('review')
       //       ->join('memiliki', 'review.id', '=', 'memiliki.review_id')
       //       ->join('users', 'users.id', '=', 'review.users_id')
@@ -91,7 +88,7 @@ class ReviewController extends Controller
       //       ->select('review.*', 'memiliki.*', 'users.*', 'product.*')
       //       ->distinct()->get();
 
-      $isi = DB::select("select * from product, kategori, review, users, memiliki, hashtag where product.kategori_id=kategori.id and kategori.nama_kategori='$isinya' and review.product_id=product.id and review.users_id=users.id and memiliki.review_id=review.id and memiliki.hashtag_id=hashtag.id order by hashtag.updated_at");
+      $isi = DB::select("select * from kategori, foto, review, users, memiliki, hashtag, brand where review.kategori_id=kategori.id and foto.review_id=review.id and review.brand_id=brand.id and kategori.nama_kategori='$isinya' and review.users_id=users.id and memiliki.review_id=review.id and memiliki.hashtag_id=hashtag.id order by hashtag.updated_at, hashtag.id, foto.id");
       // dd($isi);
       $brand=Brand::all();
       $user=User::all();
@@ -102,7 +99,7 @@ class ReviewController extends Controller
       // $tag = DB::select("select * from")
       // dd($tag);
 
-      return view('review.isiReview',['hashtag' => $hashtag, 'product' =>$product, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori, 'isi' =>$isi]);
+      return view('review.isiReview',['hashtag' => $hashtag, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori, 'isi' =>$isi]);
       // return view('review.isiReview',['hashtag' => $hashtag, 'memiliki' =>$memiliki]);
   }
 

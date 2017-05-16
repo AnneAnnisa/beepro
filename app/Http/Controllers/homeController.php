@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Hashtag;
-use App\Product;
 use App\Review;
 use App\Memiliki;
 use App\Brand;
@@ -18,7 +17,6 @@ class homeController extends Controller
     public function index1(Request $request)
     {
     	$hash=Hashtag::all()->sortByDesc('updated_at');
-    	$prod=Product::all();
     	$review=Review::all();
     	$memiliki=Memiliki::all();
     	$brand=Brand::all();
@@ -42,6 +40,6 @@ class homeController extends Controller
 		        ->get();
 
 
-    	return view('index',['hash' => $hash, 'prod' =>$prod, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto]);
+    	return view('index',['hash' => $hash, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto]);
     }
 }

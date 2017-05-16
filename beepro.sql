@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2017 at 11:19 AM
+-- Generation Time: May 16, 2017 at 10:13 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `brand` (
   `id` int(10) UNSIGNED NOT NULL,
-  `nama_brand` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `nama_brand` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -36,8 +36,8 @@ CREATE TABLE `brand` (
 --
 
 INSERT INTO `brand` (`id`, `nama_brand`) VALUES
-(1, 'kylie'),
-(2, 'nykaa');
+(1, 'NYX'),
+(2, 'THE FACE SHOP');
 
 -- --------------------------------------------------------
 
@@ -48,7 +48,7 @@ INSERT INTO `brand` (`id`, `nama_brand`) VALUES
 CREATE TABLE `foto` (
   `id` int(10) UNSIGNED NOT NULL,
   `review_id` int(11) NOT NULL,
-  `path` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `path` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -59,12 +59,11 @@ CREATE TABLE `foto` (
 
 INSERT INTO `foto` (`id`, `review_id`, `path`, `created_at`, `updated_at`) VALUES
 (1, 1, '/review/1.jpg', NULL, NULL),
-(2, 2, '/review/2.jpg', NULL, NULL),
-(3, 3, '/review/3.jpg', NULL, NULL),
-(4, 4, '/review/4.jpg', NULL, NULL),
-(5, 5, '/review/p1.jpg', NULL, NULL),
-(6, 6, '/review/1.jpg', NULL, NULL),
-(7, 1, '/review/2.jpg', NULL, NULL);
+(2, 1, '/review/2.jpg', NULL, NULL),
+(3, 2, '/review/3.jpg', NULL, NULL),
+(4, 3, '/review/4.jpg', NULL, NULL),
+(5, 4, '/review/5.jpg', NULL, NULL),
+(6, 5, '/review/p1.jpg', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -74,7 +73,7 @@ INSERT INTO `foto` (`id`, `review_id`, `path`, `created_at`, `updated_at`) VALUE
 
 CREATE TABLE `hashtag` (
   `id` int(10) UNSIGNED NOT NULL,
-  `nama_hashtag` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_hashtag` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -84,8 +83,8 @@ CREATE TABLE `hashtag` (
 --
 
 INSERT INTO `hashtag` (`id`, `nama_hashtag`, `created_at`, `updated_at`) VALUES
-(1, '#kylielipkit', NULL, '2017-05-19 17:00:00'),
-(2, '#powder', NULL, '2017-05-07 17:00:00');
+(1, '#kylielipkit', NULL, NULL),
+(2, '#powder', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -95,7 +94,7 @@ INSERT INTO `hashtag` (`id`, `nama_hashtag`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `kategori` (
   `id` int(10) UNSIGNED NOT NULL,
-  `nama_kategori` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `nama_kategori` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -103,9 +102,8 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`id`, `nama_kategori`) VALUES
-(1, 'lip'),
-(2, 'makeup'),
-(3, 'Face');
+(1, 'Face'),
+(2, 'Makeup');
 
 -- --------------------------------------------------------
 
@@ -128,10 +126,10 @@ CREATE TABLE `memiliki` (
 INSERT INTO `memiliki` (`id`, `review_id`, `hashtag_id`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, NULL, NULL),
 (2, 2, 1, NULL, NULL),
-(3, 3, 1, NULL, NULL),
-(4, 4, 1, NULL, NULL),
-(5, 5, 2, NULL, NULL),
-(6, 6, 1, NULL, NULL);
+(3, 1, 2, NULL, NULL),
+(4, 3, 1, NULL, NULL),
+(5, 4, 1, NULL, NULL),
+(6, 5, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -141,7 +139,7 @@ INSERT INTO `memiliki` (`id`, `review_id`, `hashtag_id`, `created_at`, `updated_
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -150,48 +148,14 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(2, '2014_10_12_000000_create_users_table', 1),
-(3, '2014_10_12_100000_create_password_resets_table', 1),
-(4, '2017_05_11_051603_reviewMigrate', 1),
-(5, '2017_05_11_051700_memilikiMigrate', 1),
-(6, '2017_05_11_051714_hashtagMigrate', 1),
-(7, '2017_05_11_051725_fotoMigrate', 1),
-(8, '2017_05_11_052028_brandMigrate', 1),
-(9, '2017_05_11_052128_productMigrate', 1),
-(10, '2017_05_11_052200_kategoriMigrate', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `password_resets`
---
-
-CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `product`
---
-
-CREATE TABLE `product` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `brand_id` int(11) NOT NULL,
-  `kategori_id` int(11) NOT NULL,
-  `nama_product` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `product`
---
-
-INSERT INTO `product` (`id`, `brand_id`, `kategori_id`, `nama_product`) VALUES
-(1, 1, 3, 'kylie lip kit'),
-(2, 2, 1, 'llll');
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2017_05_11_051603_reviewMigrate', 1),
+(4, '2017_05_11_051700_memilikiMigrate', 1),
+(5, '2017_05_11_051714_hashtagMigrate', 1),
+(6, '2017_05_11_051725_fotoMigrate', 1),
+(7, '2017_05_11_052028_brandMigrate', 1),
+(8, '2017_05_11_052200_kategoriMigrate', 1);
 
 -- --------------------------------------------------------
 
@@ -201,12 +165,13 @@ INSERT INTO `product` (`id`, `brand_id`, `kategori_id`, `nama_product`) VALUES
 
 CREATE TABLE `review` (
   `id` int(10) UNSIGNED NOT NULL,
-  `users_id` int(11) NOT NULL DEFAULT '0',
-  `product_id` int(11) NOT NULL,
-  `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `isi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `harga` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `toko` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `users_id` int(11) NOT NULL,
+  `brand_id` int(11) NOT NULL,
+  `kategori_id` int(11) NOT NULL,
+  `judul` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `isi` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `harga` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `toko` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `rating` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -216,13 +181,12 @@ CREATE TABLE `review` (
 -- Dumping data for table `review`
 --
 
-INSERT INTO `review` (`id`, `users_id`, `product_id`, `judul`, `isi`, `harga`, `toko`, `rating`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'kylie', 'lipliplip', '12300', 'summarecon', 1, NULL, NULL),
-(2, 2, 1, 'bagus pol', 'vvfdfdfg', '2123', 'dfdffds', 3, NULL, NULL),
-(3, 1, 2, 'efff', 'fweewr', '244', 'dfsdfsd', 0, NULL, NULL),
-(4, 1, 2, 'fefewfw', '2dfdf', '444 ', 'ffdf', 3, NULL, NULL),
-(5, 2, 1, '1222222', '122222', '12222', '1222', 3, NULL, NULL),
-(6, 1, 1, 'test 2', 'fdsfdsfdsf', '123', 'ddd', 2, NULL, NULL);
+INSERT INTO `review` (`id`, `users_id`, `brand_id`, `kategori_id`, `judul`, `isi`, `harga`, `toko`, `rating`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1, 'test 1', 'ehehehe', '9090', 'buka tok', 3, NULL, NULL),
+(2, 2, 2, 1, 'test 2', 'ffff', '90', 'fff', 2, NULL, NULL),
+(3, 1, 2, 2, 'test 3', 'fdfvdfv', '33', 'ffff', 4, NULL, NULL),
+(4, 2, 1, 2, 'test 4', 'dfsdf', '3', 'fdf', 2, NULL, NULL),
+(5, 1, 2, 2, 'test 5', 'vfdvfdv', '4', 'dfd', 5, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -232,11 +196,11 @@ INSERT INTO `review` (`id`, `users_id`, `product_id`, `judul`, `isi`, `harga`, `
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
-  `nama` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `path_foto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `aboutme` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `path_foto` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `aboutme` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -247,8 +211,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nama`, `email`, `password`, `path_foto`, `aboutme`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'pina', 'p@p.p', '123', '/user/pina.jpg', 'hai aku pina', NULL, NULL, NULL),
-(2, 'anne annisa aulia', 'a@a.a', '123', '/user/anne.jpg', 'hjhjkh', NULL, NULL, NULL);
+(1, 'anne annisa aulia', 'aa', '123', '/user/anne.jpg', '', NULL, NULL, NULL),
+(2, 'pina', 'pp', '123', '/user/pina.jpg', '', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -291,12 +255,6 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `product`
---
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `review`
 --
 ALTER TABLE `review`
@@ -321,7 +279,7 @@ ALTER TABLE `brand`
 -- AUTO_INCREMENT for table `foto`
 --
 ALTER TABLE `foto`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `hashtag`
 --
@@ -331,7 +289,7 @@ ALTER TABLE `hashtag`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `memiliki`
 --
@@ -341,17 +299,12 @@ ALTER TABLE `memiliki`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT for table `product`
---
-ALTER TABLE `product`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users`
 --

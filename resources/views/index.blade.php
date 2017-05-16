@@ -43,7 +43,7 @@
 						<!-- AWAL NIH -->
 	                	@foreach($hash as $index => $cont)
 	                	<!-- UNTUK BERAPA hashtag TERBARU YANG DIAMBIL -->
-	                	@if($index<1)
+	                	@if($index<2)
 						<div role="tabpanel" class="tab-pane fade in active" id="expeditions" aria-labelledby="expeditions-tab" style="padding-bottom:2%">
 							<div class="agile-tp">
 								<h5><a href="{{ route('review.eh', ['isiny' => $cont->id ]) }}" >{{$cont->nama_hashtag}}</a></h5>
@@ -51,6 +51,7 @@
 							</div>
 							<div class="agile_top_brands_grids" style="margin-top:0">
 								@foreach($cont->memiliki as $i => $rev)
+								@if($i<3)
 								<div class="col-md-4 top_brand_left" style="padding-bottom:3%">
 									<div class="hover14 column">
 										<div class="agile_top_brand_left_grid">
@@ -90,6 +91,7 @@
 										</div>
 									</div>
 								</div>
+								@endif
 								@endforeach
 							</div>
 								<div class="clearfix"> </div>
