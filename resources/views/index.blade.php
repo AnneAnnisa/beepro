@@ -43,7 +43,7 @@
 						<!-- AWAL NIH -->
 	                	@foreach($hash as $index => $cont)
 	                	<!-- UNTUK BERAPA hashtag TERBARU YANG DIAMBIL -->
-	                	@if($index<1)
+	                	@if($index<2)
 						<div role="tabpanel" class="tab-pane fade in active" id="expeditions" aria-labelledby="expeditions-tab" style="padding-bottom:2%">
 							<div class="agile-tp">
 								<h5><a href="{{ route('review.eh', ['isiny' => $cont->id ]) }}" >{{$cont->nama_hashtag}}</a></h5>

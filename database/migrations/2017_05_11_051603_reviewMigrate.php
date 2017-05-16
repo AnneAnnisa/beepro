@@ -16,7 +16,8 @@ class ReviewMigrate extends Migration
         Schema::create('review', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('users_id');
-            $table->integer('product_id');
+            $table->integer('brand_id');
+            $table->integer('kategori_id');
             $table->string('judul');
             $table->string('isi');
             $table->string('harga');
