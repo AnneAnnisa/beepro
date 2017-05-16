@@ -125,17 +125,29 @@ class ReviewController extends Controller
     $review->rating = $request->rating; //db->form
     $review->save();
 
+    $review_id = DB::table('review')->first();
     $datahashtag = $request->hashtag;
     $arrayhashtag = explode(" ", $datahashtag);
     foreach($arrayhashtag as $data) {
       $hashtagfix = "#".$data;
-      $hashtag = new Hashtag;
-      $hashtag->nama_hashtag = $hashtagfix;
-      $hashtag->save();
+      $cek = DB::select('SELECT * FROM hashtag WHERE nama_hashtag = "'.$hashtagfix.'"')[0];
+      if(isset($cek)){
+        $hashtag = new Hashtag;
+        $hashtag->nama_hashtag = $hashtagfix;
+        $hashtag->save();
+      }
+      $memiliki = new Memiliki;
+      $memiliki->review_id = $review_id;
+      $hashtag_id = DB::select('SELECT id FROM hashtag WHERE nama_hashtag = "'.$hashtagfix.'"')[0];
+      $memiliki->hashtag_id = $hashtag_id;
     }
+    return redirect('single');
+
+    
+    
     //$hashtag = new Hashtag;
 
-    // $review_id = DB::table('review')->first();
+    // 
     // $hashtag->nama_hashtag = $request->hashtag;
     // $hashtag->save();
   
