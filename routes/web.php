@@ -37,7 +37,7 @@ Route::get('contact-us', function () {return view('contact');});
 Route::get('single', function () {return view('single');});
 Route::get('people', function () {return view('people');});
 Route::get('user', function () {return view('user');});
-//Route::get('newreview', function () {return view('newreview');});
+Route::get('newreview', function () {return view('newreview');});
 
 
 // UDAH BACKEND ANNE
@@ -55,11 +55,14 @@ Route::post('login', 'loginController@authenticate');
 Route::post('register', 'userController@register');
 
 Route::get('autocomplete', 'userController@autocomplete');
-Route::get('search/{term}', 'userController@search');
+Route::get('search', 'userController@search');
 
 // BACKEND PINA HEHEHEHE
 Route::get('newreview', 'ReviewController@newreview');
 Route::post('newreview', 'ReviewController@savenewreview');
+<<<<<<< HEAD
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
+=======
+>>>>>>> d70cea10d05dde88d944f6102cc8cc6e82f040e9
