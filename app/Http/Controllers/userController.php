@@ -11,7 +11,8 @@ class userController extends Controller
     //
     public function register(Request $req)
     {
-    	//dd ($req->all());
+    	// dd ($req->all(), "this is laptop");
+        //dd('masuk');
         $user = new User;
         $user->nama = $req->input('nama');
         $user->email = $req->input('email');
