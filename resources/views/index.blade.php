@@ -51,7 +51,7 @@
 							</div>
 							<div class="agile_top_brands_grids" style="margin-top:0">
 								@foreach($cont->memiliki as $i => $rev)
-								@if($i<6)
+								@if($i<3)
 								<div class="col-md-4 top_brand_left" style="padding-bottom:3%">
 									<div class="hover14 column">
 										<div class="agile_top_brand_left_grid">

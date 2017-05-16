@@ -56,9 +56,9 @@
 													<ul class="multi-column-dropdown">
 														<h6>All Make Up</h6>
 														<li><a href="{{ route('makeup.eh', ['isinya' => 'Face' ]) }}" >Face</a></li>
-														<li><a href="{{url('makeup-lips')}}">Lips</a></li>
-														<li><a href="{{url('makeup-eyes')}}">Eyes</a></li>
-														<li><a href="{{url('makeup-kits')}}"> Make Up Kits </a></li>
+														<li><a href="{{ route('makeup.eh', ['isinya' => 'Lips' ]) }}">Lips</a></li>
+														<li><a href="{{ route('makeup.eh', ['isinya' => 'Eyes' ]) }}">Eyes</a></li>
+														<li><a href="{{ route('makeup.eh', ['isinya' => 'Make Up Kits' ]) }}"> Make Up Kits </a></li>
 													</ul>
 												</div>	
 											</div>
@@ -71,9 +71,9 @@
 												<div class="multi-gd-img">
 													<ul class="multi-column-dropdown">
 														<h6>All Skin Care</h6>
-														<li><a href="{{url('skincare-cleanser')}}">Cleanser</a></li>
-														<li><a href="{{url('skincare-moisturizer')}}">Moisturizer</a></li>
-														<li><a href="{{url('skincare-lipcare')}}">Lip Care</a></li>
+														<li><a href="{{ route('makeup.eh', ['isinya' => 'Cleanser' ]) }}">Cleanser</a></li>
+														<li><a href="{{ route('makeup.eh', ['isinya' => 'Moisturizer' ]) }}">Moisturizer</a></li>
+														<li><a href="{{ route('makeup.eh', ['isinya' => 'Lip Care' ]) }}">Lip Care</a></li>
 													</ul>
 												</div>		
 											</div>
@@ -86,9 +86,9 @@
 												<div class="multi-gd-img">
 													<ul class="multi-column-dropdown">
 														<h6>All Personal Care</h6>
-														<li><a href="{{url('personalcare-bath')}}">Bath</a></li>
-														<li><a href="{{url('personalcare-body')}}">Body</a></li>
-														<li><a href="{{url('personalcare-handsfeets')}}">Hands & Feet</a></li>
+														<li><a href="{{ route('makeup.eh', ['isinya' => 'Bath' ]) }}">Bath</a></li>
+														<li><a href="{{ route('makeup.eh', ['isinya' => 'Body' ]) }}">Body</a></li>
+														<li><a href="{{ route('makeup.eh', ['isinya' => 'Hands & Feet' ]) }}">Hands & Feet</a></li>
 													</ul>
 												</div>
 												
