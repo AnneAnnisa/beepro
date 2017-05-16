@@ -37,7 +37,7 @@ Route::get('contact-us', function () {return view('contact');});
 Route::get('single', function () {return view('single');});
 Route::get('people', function () {return view('people');});
 Route::get('user', function () {return view('user');});
-Route::get('newreview', function () {return view('newreview');});
+//Route::get('newreview', function () {return view('newreview');});
 
 
 // UDAH BACKEND ANNE
@@ -56,3 +56,7 @@ Route::post('register', 'userController@register');
 
 Route::get('autocomplete', 'userController@autocomplete');
 Route::get('search/{term}', 'userController@search');
+
+// BACKEND PINA HEHEHEHE
+Route::get('newreview', 'ReviewController@newreview');
+Route::post('newreview', 'ReviewController@savenewreview');

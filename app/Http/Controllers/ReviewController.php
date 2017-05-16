@@ -105,4 +105,14 @@ class ReviewController extends Controller
       return view('review.isiReview',['hashtag' => $hashtag, 'product' =>$product, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori, 'isi' =>$isi]);
       // return view('review.isiReview',['hashtag' => $hashtag, 'memiliki' =>$memiliki]);
   }
+
+  public function newreview(){
+    return view('newreview');
+  }
+
+  public function savenewreview(Request $request){
+    $review = new Review; // bikin variabel baru utk review yg disave
+    $review->judul = $request->judul;
+  }
+
 }
