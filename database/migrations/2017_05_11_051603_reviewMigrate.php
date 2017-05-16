@@ -34,6 +34,6 @@ class ReviewMigrate extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('review');
     }
 }

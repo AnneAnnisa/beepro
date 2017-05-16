@@ -31,5 +31,6 @@ class FotoMigrate extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('foto');
     }
 }

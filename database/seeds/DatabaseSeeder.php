@@ -13,5 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(hashtagSeeder::class);
         $this->call(kategoriSeed::class);
+        $this->call(brandSeeder::class);
+            
     }
 }
