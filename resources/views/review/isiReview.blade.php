@@ -2,15 +2,18 @@
 <!-- {{var_dump($hashtag[0])}} -->
 @section('kat')
 	<li><a href="{{url('home')}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-		@foreach($kategori as $kat)
-			<!-- SALAH NIH, HARUSNYA KATEGORI BESAR -->
+		@foreach($kategori as $o => $kat)
+		@if($o<1)
+			@if($kat->id == 1 || $kat->id == 2 || $kat->id == 3 || $kat->id == 4)
+			<li class="active">Make Up</li>
+			@elseif($kat->id == 5 || $kat->id == 6 || $kat->id == 7)
+			<li class="active">Skin Care</li>
+			@elseif($kat->id >7)
+			<li class="active">Personal Care</li>
+			@endif
 			<li class="active">{{$kat->nama_kategori}}</li>
+		@endif
 		@endforeach
-@endsection
-@section('makeupa')
-	@foreach($hashtag as $hash)
-	<li class="active"><a href="{{url('makeup-face')}}">{{$hash->nama_hashtag}}</a></li>
-	@endforeach
 @endsection
 
 @section('item')
@@ -18,12 +21,19 @@
 	<!--atas-->
 
 	<!-- <div class="col-md-12"><br></div> -->
-	@foreach($hashtag as $hash)
-	<div class="col-md-12"  style="margin:10px">
-		<p style="text-align: left; padding-bottom:1%; font-size:200%"><b>{{$hash->nama_hashtag}}<b></p>
+	@foreach($hashtag as $yy => $hash)
+	<?php $tempId=-1; $tempAtas=-1 ?>
+	@foreach($isi as $a)
+		@if($a->nama_hashtag == $hash->nama_hashtag && $tempAtas==-1)
+		<div class="col-md-12"  style="margin:10px">
+			<p style="text-align: left; padding-bottom:1%; font-size:200%"><b>{{$hash->nama_hashtag}}<b></p>
+		<?php $tempAtas=0 ?>
+		@endif
+	@endforeach
 		<!-- INI ISINYA -->
 		@foreach($isi as $ii)
-		@if($ii->nama_hashtag == $hash->nama_hashtag)
+		@if($ii->nama_hashtag == $hash->nama_hashtag && $ii->review_id!=$tempId)
+		<?php $tempId=$ii->review_id ?>		
 		<div class="col-md-4 top_brand_left" style="padding-bottom:3%">
 			<div class="hover14 column">
 				<div class="agile_top_brand_left_grid">
@@ -31,11 +41,7 @@
 						<figure>
 							<div class="snipcart-item block" >
 								<div class="snipcart-thumb">
-									<?php $tempFoto=0 ?>
-									@if($tempFoto==0)
-									<?php $tempFoto=1 ?>
-									<a href={{url('single')}}><img title=" " alt=" " src="{{url('images/1.jpg')}}" width="300" height="200" style="" name="review" value="$rev->review->id"/></a>	
-									@endif	
+									<a href="{{url('single')}}"><img title=" " alt=" " src="{{url('images')}}{{$ii->path}}" width="300" height="200" style="" name="review" value="$rev->review->id"/></a>
 									<h3 style="margin-bottom:16px">{{$ii->judul}}</h3>
 									<h4 style="text-align:left;">
 										<div class="col-md-3" style="padding:0"><p><img src="{{url('images')}}{{$ii->path_foto}}"  class="img-circle" alt="Cinque Terre" height="50px" width="50px"></p></div>
@@ -58,6 +64,13 @@
 		</div>
 		@endif
 		@endforeach
+		@if($tempId==-1 && $tempAtas==-1 && $yy==0)
+		<div class="col-md-2"></div>
+		<div class="col-md-8" style="padding : 2em">
+			<h3 style="text-align:center; font-size:250%">Sorry We Have No Review</h3>
+		</div>
+		<div class="col-md-2"></div>
+		@endif
 		<!-- AKHIR ISI -->
 	</div>
 	@endforeach

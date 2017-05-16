@@ -44,7 +44,6 @@ Route::get('newreview', function () {return view('newreview');});
 Route::post('review/{isiny}', 'ReviewController@review');
 Route::get('review/{isiny}',['uses' => 'ReviewController@review', 'as' => 'review.eh']);
 Route::get('review', function () {return back();});
-
 Route::post('makeup/{isinya}', 'ReviewController@makeupEh');
 Route::get('makeup/{isinya}',['uses' => 'ReviewController@makeupEh', 'as' => 'makeup.eh']);
 
@@ -53,6 +52,3 @@ Route::get('makeup/{isinya}',['uses' => 'ReviewController@makeupEh', 'as' => 'ma
 //Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('login', 'loginController@authenticate');
 Route::post('register', 'userController@register');
-
-Route::get('autocomplete', 'userController@autocomplete');
-Route::get('search', 'userController@search');

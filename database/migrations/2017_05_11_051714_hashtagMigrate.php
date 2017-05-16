@@ -29,5 +29,6 @@ class HashtagMigrate extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('hashtag');
     }
 }

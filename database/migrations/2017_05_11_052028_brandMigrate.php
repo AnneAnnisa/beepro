@@ -17,6 +17,7 @@ class BrandMigrate extends Migration
         Schema::create('brand',function(Blueprint $table) {
             $table->increments('id');
             $table->string('nama_brand');
+            $table->timestamps();
 
         });
 
