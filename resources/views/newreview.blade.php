@@ -38,66 +38,58 @@
 					<div class="agile_login_form">
 						<form action="" method="post" class="agileits_w3layouts_form">
 							<center>
-								<input type="text" name="Judul" placeholder="Judul" required="">
-								<textarea type="message" name="Review" placeholder="What I think about the product..." required=""></textarea> 
-								<input type="text" name="Tempat Belanja" placeholder="Tempat Belanja" required="">
-<!-- 											<select name="Kategori">
-											  <option value="MakeUp">MakeUp</option>
-											  <option value="SkinCare">SkinCare</option>
-											  <option value="PersonalCare">PersonalCare</option>
+								<input type="text" name="judul" placeholder="Judul" required="">
+								<textarea type="message" name="isi" placeholder="What I think about the product..." required=""></textarea> 
+								<input type="text" name="tempat_belanja" placeholder="Tempat Belanja" required="">
+								
+								<center>
+									<div class="col-md-12">
+										<div class="col-md-5">
+											<label>Kategori</label><br>
+											<select name="kategori" placeholder="Kategori">
+												<datalist id="Kategori">
+													@foreach($kategori as $kategori)
+														<option value="{{$kategori->id}}">{{$kategori->nama_kategori}}</option>
+													@endforeach
+												</datalist>
 											</select>
-										-->
-										<input list="Kategori" name="Kategori">
-										<datalist id="Kategori">
-											<option value="MakeUp_Face">MakeUp_Face</option>
-											<option value="MakeUp_Lips">MakeUp_Lips</option>
-											<option value="MakeUp_Eyes">MakeUp_Eyes</option>
-											<option value="MakeUp_Kits">MakeUp_Kits</option>	  											    
-											<option value="SkinCare_Cleanser">SkinCare_Cleanser</option>
-											<option value="SkinCare_Moisturizer">SkinCare_Moisturizer</option>
-											<option value="SkinCare_Lipcare">SkinCare_Lipcare</option>														
-											<option value="PersonalCare_Bath">PersonalCare_Bath</option>
-											<option value="PersonalCare_Body">PersonalCare_Body</option>											
-											<option value="PersonalCare_HandsAndFeet">PersonalCare_HandsAndFeet</option>
-										</datalist>
-<!-- 
-										<input list="MakeUp" name="MakeUp">
-										<datalist id="MakeUp">
-											<option value="Face">Face</option>
-											<option value="Lips">Lips</option>
-											<option value="Eyes">Eyes</option>
-											<option value="MakeUpKits">MakeUpKits</option>
-										</datalist>
+										</div>
+										<div class="col-md-7">
+											<label>Brand</label><br>
+											<select name="brand" placeholder="Brand">
+												<datalist id="Brand">
+													@foreach($brand as $brand)
+														<option value="{{$brand->id}}">{{$brand->nama_brand}}</option>
+													@endforeach
+												</datalist>
+											</select>
+										</div>
+									</div>
+								</center>
+								
 
-
-										<input list="SkinCare" name="SkinCare">
-										<datalist id="SkinCare">
-											<option value="Cleanser">Cleanser</option>
-											<option value="Moisturizer">Moisturizer</option>
-											<option value="LipCare">LipCare</option>
-										</datalist>
-
-										<input list="PersonalCare" name="PersonalCare">
-										<datalist id="PersonalCare">
-											<option value="Bath">Bath</option>
-											<option value="Body">Body</option>
-											<option value="HandsAndFeet">HandsAndFeet</option>
-										</datalist> -->
-
-										<input type="text" name="Harga" placeholder="Harga" required="">
-										<input type="text" name="Hashtag" placeholder="Hashtag" required="">
-										<input type="file" name="Upload" placeholder="Upload">
-										<input type="submit" value="submit" name="submit">
-									</center>
-								</form>				
-
-							</div>
-						</div>
+								<input type="number" name="harga" placeholder="Harga" required="">
+								<input type="text" name="hashtag" placeholder="Hashtag" required="">
+								<input type="file" name="foto" placeholder="Upload Foto">
+								<input type="hidden" name="_token" value="{{csrf_token()}}">
+								
+								<div>
+									<label>Rating</label>
+									<label class="radio-inline"><input type="radio" name="rating" value="1">1</label>
+									<label class="radio-inline"><input type="radio" name="rating" value="2">2</label>
+									<label class="radio-inline"><input type="radio" name="rating" value="3">3</label>
+									<label class="radio-inline"><input type="radio" name="rating" value="4">4</label>
+									<label class="radio-inline"><input type="radio" name="rating" value="5">5</label>
+								</div>
+								<input type="submit" value="submit" name="submit">
+							</center>
+						</form>				
 					</div>
 				</div>
-			</body>
-
-			</html>
+			</div>
+		</div>
+	</body>
+</html>
 
 
 			<!-- //footer -->

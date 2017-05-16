@@ -11,6 +11,7 @@ use App\User;
 use App\Foto;
 use App\Kategori;
 use DB;
+use App\Auth;
 
 class ReviewController extends Controller
 {
@@ -104,12 +105,30 @@ class ReviewController extends Controller
   }
 
   public function newreview(){
-    return view('newreview');
+    $this->data['kategori'] = DB::table('kategori')->get();
+    $this->data['brand'] = DB::table('brand')->get();
+    //dd($this->data['kategori']);
+    return view('newreview', $this->data);
+
   }
 
   public function savenewreview(Request $request){
     $review = new Review; // bikin variabel baru utk review yg disave
-    $review->judul = $request->judul;
+
+    $review->users_id = 1; //db->form
+    $review->judul = $request->judul; //db->form
+    $review->isi = $request->isi; //db->form
+    $review->toko = $request->tempat_belanja; //db->form
+    $review->kategori_id = $request->kategori; //db->form
+    $review->brand_id = $request->brand; //db->form
+    $review->harga = $request->harga; //db->form
+    $review->rating = $request->rating; //db->form
+    $review->save();
+
+    $hashtag = new Hashtag;
+    $review_id = DB::table('review')->first();
+    dd($review->id);
+  
   }
 
 }

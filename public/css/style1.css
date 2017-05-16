@@ -91,11 +91,12 @@ input[type="submit"],.agileits_copyright p a,a{
     text-align: center;
     border: 40px solid #fe9126;
     border-radius: 100%;
-    height: 800px;
+    height: 910px;
     width: 800px;
     margin: 0 auto;
 }
-.w3_agile_signup_form input[type="text"], .w3_agile_signup_form input[type="password"], .w3_agile_signup_form input[type="email"] {
+
+.w3_agile_signup_form input[type="number"], .w3_agile_signup_form input[type="text"], .w3_agile_signup_form input[type="password"], .w3_agile_signup_form input[type="email"] {
     background-color: white;
     width: 92%;
     padding: .8em;
