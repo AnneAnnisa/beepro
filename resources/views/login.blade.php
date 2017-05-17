@@ -171,7 +171,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- login -->
 	<div class="login">
 		<div class="container">
-			<h2>Login Form</h2>
+			<h2>Login h Form</h2>
 		
 			<div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
 				<form action="{{url('simple')}}">

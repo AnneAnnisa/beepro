@@ -37,7 +37,7 @@ Route::get('contact-us', function () {return view('contact');});
 Route::get('single', function () {return view('single');});
 Route::get('people', function () {return view('people');});
 Route::get('user', function () {return view('user');});
-//Route::get('newreview', function () {return view('newreview');});
+Route::get('newreview', function () {return view('newreview');});
 
 
 // UDAH BACKEND ANNE
@@ -52,15 +52,21 @@ Route::get('makeup/{isinya}',['uses' => 'ReviewController@makeupEh', 'as' => 'ma
 
 //Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('login', 'loginController@authenticate');
-Route::post('register', 'userController@register');
+Route::post('registerx', 'userController@register');
 
 
 Route::get('autocomplete', 'userController@autocomplete');
-Route::get('search/{term}', 'userController@search');
+Route::get('search', 'userController@search');
 
 // BACKEND PINA HEHEHEHE
 Route::get('newreview', 'ReviewController@newreview');
 Route::post('newreview', 'ReviewController@savenewreview');
 
+<<<<<<< HEAD
 Route::get('editprofile/{id}', 'userController@editprofile');
 Route::post('editprofile', 'userController@updateprofile');
+=======
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
+>>>>>>> 9ed86da9bef58c9fde7550858c47589a06d04906

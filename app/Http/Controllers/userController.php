@@ -11,7 +11,8 @@ class userController extends Controller
     //
     public function register(Request $req)
     {
-    	//dd ($req->all());
+    	// dd ($req->all(), "this is laptop");
+        //dd('masuk');
         $user = new User;
         $user->nama = $req->input('nama');
         $user->email = $req->input('email');
@@ -23,6 +24,24 @@ class userController extends Controller
     }
 
     public function autocomplete(Request $request) 
+    {
+        $query = $request->get('term');
+        $item = Hashtag::where('nama_hashtag','LIKE','%'.$query.'%')->get();
+
+        if(count($item) == 0) {
+            $result[] =  'Not found';
+        }
+        else {
+            foreach($item as $key=>$value) {
+            $result[] = $value->nama_hashtag;
+            }
+        }
+
+        return $result;
+        
+    }
+
+    public function search(Request $request) 
     {
         $query = $request->get('term');
         $item = Hashtag::where('nama_hashtag','LIKE','%'.$query.'%')->get();
