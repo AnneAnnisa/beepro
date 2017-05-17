@@ -99,15 +99,19 @@
 										</ul>
 									</li>
 									<li><a href="{{url('about-us')}}">About Us</a></li>
-									<li><a href="{{url('contact-us')}}">Contact Us</a></li>
 
+									<?php if(session('user') != NULL){ ?>
+									<li><a href="{{url('newreview')}}"><span class="glyphicon glyphicon-pencil" style="color:white"></span>Review</a></li>
+									<?php } else { ?> 
+									<li><a href="{{url('contact-us')}}">Contact Us</a></li>
+									<?php } ?> 
 									
 
 
 
 									<li class="dropdown">
 									<?php if(session('user') != NULL){ ?>
-															<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <?php echo session ('user')["nama"]; ?>  </a>  
+															<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user" style="color:white"></span> <?php echo session ('user')["nama"]; ?>  </a>  
 															
 															<ul class="dropdown-menu multi-column columns-3">
 											<div class="row">
@@ -125,7 +129,7 @@
 												</div>		
 											</div>
 										</ul>
-															<?php } else { ?> 
+									<?php } else { ?> 
 															
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login</a>
 										<ul class="dropdown-menu multi-column columns-3">

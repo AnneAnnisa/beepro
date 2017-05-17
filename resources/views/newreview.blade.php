@@ -66,10 +66,10 @@
 									</div>
 								</center>
 								
-
+								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<input type="number" name="harga" placeholder="Harga" required="">
 								<input type="text" name="hashtag" placeholder="Hashtag" required="">
-								<input type="file" name="foto" placeholder="Upload Foto">
+								<input type="file" name="photo" id="photo" placeholder="Upload Foto">
 								<input type="hidden" name="_token" value="{{csrf_token()}}">
 								
 								<div>

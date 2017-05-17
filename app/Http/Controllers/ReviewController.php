@@ -11,7 +11,14 @@ use App\User;
 use App\Foto;
 use App\Kategori;
 use DB;
-use App\Auth;
+// use App\Auth;
+use Validator, Input, Redirect, Hash; 
+use App\Thread;
+use App\Comment;
+use App\Donate;
+use File;
+use Response;
+use Auth;
 
 class ReviewController extends Controller
 {
@@ -141,6 +148,22 @@ class ReviewController extends Controller
     $review->rating = $request->rating; //db->form
     //dd($review);
     $review->save();
+    // $idbesar=Review::orderBy('id','desc')->first();
+
+
+    // $file = $request->file('photo');
+    // // dd($file);
+    // $sname= 1;
+    // $destinationPath = storage_path().'/images/review'.'/';
+    // Input::file('image')->getClientOriginalExtension();
+    // $filename = $sname.'_'.$file->getClientOriginalName();
+    $fot = new Foto;
+    $fot->path='/review/123.jpg';
+    $fot->review_id=1;
+    $fot->save();
+
+    $idbesar=Review::orderBy('id','desc')->first();
+    // dd($idbesar);
 
     $review_id = DB::table('review')->orderby('id', 'desc')->first();
     $datahashtag = $request->hashtag;
@@ -160,7 +183,7 @@ class ReviewController extends Controller
 
       $memiliki->save();
     }
-    return redirect('single/');  
+    return redirect()->route('isiReview.eh', ['isin' => $idbesar]);
   }
 
 //utk edit review
