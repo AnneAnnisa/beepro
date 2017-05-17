@@ -34,16 +34,19 @@
 								<div class="snipcart-thumb">
 									<a href="{{url('single')}}"><img title=" " alt=" " src="{{url('images')}}{{$ii->path}}" width="300" height="250" style="" name="review" value="$rev->review->id"/></a>
 									<h3 style="margin-bottom:16px"><b>{{$ii->judul}}</b></h3>
+									<a href="{{ route('people.eh', ['isin' => $ii->users_id ]) }}">
 									<h4 style="text-align:left;">
 										<div class="col-md-3" style="padding:0"><p><img src="{{url('images')}}{{$ii->path_foto}}"  class="img-circle" alt="Cinque Terre" height="50px" width="50px"></p></div>
 										<div class="col-md-9"><p style="text-align:left; font-size:100%"> {{str_limit($ii->nama,11)}}</p></div>
 									</h4>
+									</a>
 									<div class="stars">
+										@for ($i = 0; $i < $ii->rating; $i++)
 										<i class="fa fa-star blue-star" aria-hidden="true"></i>
-										<i class="fa fa-star blue-star" aria-hidden="true"></i>
-										<i class="fa fa-star blue-star" aria-hidden="true"></i>
-										<i class="fa fa-star blue-star" aria-hidden="true"></i>
+										@endfor
+										@for ($i = 0; $i < 5-$ii->rating; $i++)
 										<i class="fa fa-star gray-star" aria-hidden="true"></i>
+										@endfor
 									</div>
 								</div>
 							</div>

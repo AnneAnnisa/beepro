@@ -1,19 +1,13 @@
 @extends('review.masterReview')
-<!-- {{var_dump($hashtag[0])}} -->
 @section('kat')
-	<li><a href="{{url('home')}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-@endsection
-@section('makeupa')
-	@foreach($hashtag as $hash)
-	<li class="active"><b>{{$hash->nama_hashtag}}</b></li>
-	@endforeach
+	<h1>Search result for {{$query}}</h1>
 @endsection
 
 @section('item')
-<div class="col-md-10">
+<div class="col-md-12">
 	<!--atas-->
-
-	@foreach($hashtag as $index => $cont)
+ 
+	@foreach($item as $index => $cont)
 	<div class="agile-tp"><h1 style="text-align: left; font-size:180%">{{$cont->nama_hashtag}}</h1></div>
 	
 	<div class="col-md-12"  style="margin:10px">
@@ -28,18 +22,16 @@
 								<div class="snipcart-thumb">
 									@foreach($rev->review->foto as $kk => $revf)
 									@if($kk == 0)
-										<a href="{{ route('isiReview.eh', ['isin' => $rev->review->id ]) }}"><img title=" " alt=" " class="" src="{{url('images')}}{{$revf->path}}" width="280" height="280" style=""/></a>		
+										<a href="{{url('single')}}"><img title=" " alt=" " class="" src="{{url('images')}}{{$revf->path}}" width="280" height="280" style=""/></a>		
 									@endif
 									@endforeach
 									<h3 style="margin-bottom:0">{{$rev->review->judul}}</h3>
 									@foreach($user as $us)
 										@if($rev->review->users_id == $us->id)
-										<a href="{{ route('people.eh', ['isin' => $us->id ]) }}">
 											<h4 style="text-align:left;">
-												<div class="col-md-2" style="padding:0"><p><img src="{{url('images')}}{{$us->path_foto}}"  class="img-circle" alt="Cinque Terre" height="50px" width="50px"></p></div>
-												<div class="col-md-10"><p style="text-align:left; font-size:150%"> {{str_limit($us->nama,10)}}</p></div>
+												<div class="col-md-3" style="padding:0"><p><img src="{{url('images')}}{{$us->path_foto}}"  class="img-circle" alt="Cinque Terre" height="50px" width="50px"></p></div>
+												<div class="col-md-9"><p style="text-align:left; font-size:150%"> {{str_limit($us->nama,11)}}</p></div>
 											</h4>
-										</a>
 										@endif
 									@endforeach
 
@@ -62,7 +54,8 @@
 		@endforeach
 	</div>
 	@endforeach
-		<!--kiri-->
-
+		<!--kiri
+ -->
 </div>
+
 @endsection

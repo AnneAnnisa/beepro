@@ -23,6 +23,7 @@ class ReviewMigrate extends Migration
             $table->string('harga');
             $table->string('toko');
             $table->integer('rating');
+            $table->integer('lihat');
             $table->timestamps();
         });
     }

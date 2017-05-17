@@ -21,6 +21,7 @@ class homeController extends Controller
         $memiliki=Memiliki::all();
         $brand=Brand::all();
         $user=User::all();
+        $isi = DB::select("select * from kategori, foto, review, users, brand where review.kategori_id=kategori.id and foto.review_id=review.id and review.brand_id=brand.id and review.users_id=users.id order by review.lihat desc");
         // dd(session('user')['id']);
         $foto=DB::table('foto')
                ->join('review', function ($join) {
@@ -28,7 +29,7 @@ class homeController extends Controller
                })
                ->get();
 
-        return view('index',['hash' => $hash, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto]);
+        return view('index',['isi' => $isi,'hash' => $hash, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto]);
     }
 
     public function autocomplete(Request $request) 
@@ -51,29 +52,28 @@ class homeController extends Controller
 
     public function search(Request $request) 
     {
-        $query = $request->get('term');
+        $query = $request->get('search');
         $item = Hashtag::where('nama_hashtag','LIKE','%'.$query.'%')->get();
+        $review = Review::whereHas('memiliki', function ($result) use ($query){
+            $result->join('review', 'review.id', '=', 'memiliki.review_id');    })    ->with(['memiliki' => function($result2) use ($query){
+        $result2->join('hashtag', 'hashtag.id', '=', 'memiliki.hashtag_id')->where('hashtag.nama_hashtag', 'like', '%'.$query.'%');
+    }])->get();
 
-        if(count($item) == 0) {
-            $result[] =  'Not found';
-        }
-        else {
-            foreach($item as $key=>$value) {
-            $result[] = $value->nama_hashtag;
+        $foto=DB::table('foto')
+        ->join('review', function ($join) {
+       $join->on('review.id', '=', 'foto.review_id');
+        })->get();
 
-            }
-        }
+        $brand=Brand::all();
+        $user=User::all();
 
-        $hashtag=Hashtag::where('nama_hashtag','LIKE','%'.$query.'%')->get();
-        $review=Review::where('judul','LIKE','%'.$query.'%')->get();
-
-        // $brand=Brand::all();
-        // $user=User::all();
-        // $kategori=Kategori::all();
-        // $foto=Foto::all();
-
-        // return view('review.isiReviewHash',['hashtag' => $hashtag, 'review' =>$review, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori]);
-        // return $result;
-        dd($review);        
+        return view('searchresult',[
+            'review' => $review,
+            'query' => $query,
+            'item' => $item,
+            'user' => $user,
+            'foto' => $foto,
+            'brand' => $brand,
+        ]); 
     }
 }
