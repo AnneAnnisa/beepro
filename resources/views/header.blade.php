@@ -79,6 +79,7 @@
 											</div>
 										</ul>
 									</li>
+								
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Personal Care<b class="caret"></b></a>
 										<ul class="dropdown-menu multi-column columns-3">
@@ -98,7 +99,13 @@
 									<li><a href="{{url('about-us')}}">About Us</a></li>
 									<li><a href="{{url('contact-us')}}">Contact Us</a></li>
 									
+
+													
+
 									<li class="dropdown">
+									<?php if(session('user') != NULL){ ?>
+															<h2><?php echo session ('user')["nama"]; ?></h2>
+															<?php } else { ?>
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login</a>
 										<ul class="dropdown-menu multi-column columns-3">
 											<div class="row">
@@ -107,11 +114,20 @@
 <!-- 														<a href=""><h6 class="col-md-6 col-xs-6">Login Form</h6></a>
 														<a href=""><h6 class="col-md-6 col-xs-6">Signup</h6></a> -->
 					<ul id="signform" class="nav nav-tabs" role="tablist">
-						<li id="login1" class="active" onclick="loginGanti()"><a href="#" style="padding:10%;color:white"><h5>Login</h5></a></li>
+					<?php $login = 'login'; 
+						// if ($_SESSION != NULL)
+						 	//$login = $_SESSION["nama"]; ?>
+						
+
+						<li id="login1" class="active" onclick="loginGanti()"><a href="#" style="padding:10%;color:white"><h5> <?php echo $login ?> 
+						</h5></a></li>
 						<li id="signup1" onclick="signupGanti()"><a href="#" style="padding:10%"><h5>Signup</h5></a></li>
 					</ul>
 														<div class="form-group" id="isi-up">
-														<form action="login" method="post">
+														<?php if(session('user') != NULL){ ?>
+															<h2><?php echo session ('user')["nama"]; ?></h2>
+															<?php } else { ?>
+														<form action="loginx" method="POST">
 														 {{ csrf_field() }}
 															<span class="input input--ichiro">
 																<input class="input__field input__field--ichiro" type="email" id="input-25" name="email" placeholder=" " required="" />
@@ -127,9 +143,10 @@
 															</span>
 															<button type="submit" class="btn btn-warning" style="margin-top:5%">submit</button>
 														</form>
+														<?php } ?>
 														</div>
 													</ul>
-												</div>
+												</div><?php } ?>
 											</div>
 										</ul>
 									</li>
@@ -187,6 +204,8 @@
                     <div class="modal-body" style="bgcolor:white">
 					 	<div class="row">
 							<!-- <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s"> -->
+							
+
 							<div class="col-md-6 top_brand_left">
 								<h3>Login Form</h3><br>
 								<div class="form-group">
@@ -203,6 +222,9 @@
 								</div>
 
 							</div>
+
+
+
 							<div class="col-md-6 top_brand_left">
 								<h3>Register Here</h3><br>
 								<form>
