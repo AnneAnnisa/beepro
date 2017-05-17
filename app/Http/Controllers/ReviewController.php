@@ -141,16 +141,30 @@ class ReviewController extends Controller
       $hashtag_id = DB::select('SELECT id FROM hashtag WHERE nama_hashtag = "'.$hashtagfix.'"')[0];
       $memiliki->hashtag_id = $hashtag_id;
     }
-    return redirect('single');
-
-    
-    
-    //$hashtag = new Hashtag;
-
-    // 
-    // $hashtag->nama_hashtag = $request->hashtag;
-    // $hashtag->save();
-  
+    return redirect('single');  
   }
+
+//utk edit review
+    public function editreview($id)
+    {
+        $this->data['review'] = Review::find($id);
+
+        return view('editreview', $this->data);
+   }
+   
+    public function updatereview(Request $request, $id)
+    {
+        $review = Review::find($id);
+        $review->judul = $request->get('judul');
+        $review->isi = $request->get('isi');
+        $review->toko = $request->get('toko');
+        $review->kategori_id = $request->get('kategori');
+        $review->brand_id = $request->get('brand');
+        $review->harga = $request->get('harga');
+        $review->rating = $request->get('rating');
+
+        $review->save();
+        return redirect('listreview');
+    }
 
 }

@@ -57,15 +57,21 @@ Route::post('registerx', 'userController@register');
 Route::get('autocomplete', 'homeController@autocomplete');
 Route::post('search', 'homeController@search');
 
-// BACKEND PINA HEHEHEHE
+// halaman utk review
 Route::get('newreview', 'ReviewController@newreview');
 Route::post('newreview', 'ReviewController@savenewreview');
 
+Route::get('editreview/{id}', 'ReviewController@editreview');
+Route::post('editreview/{id}', 'ReviewController@updatereview');
 
+///halaman profile
 Route::get('editprofile/{id}', 'userController@editprofile');
 Route::post('editprofile', 'userController@updateprofile');
 
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
+
+
+
 
