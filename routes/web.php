@@ -62,11 +62,11 @@ Route::get('search', 'userController@search');
 Route::get('newreview', 'ReviewController@newreview');
 Route::post('newreview', 'ReviewController@savenewreview');
 
-<<<<<<< HEAD
+
 Route::get('editprofile/{id}', 'userController@editprofile');
 Route::post('editprofile', 'userController@updateprofile');
-=======
+
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
->>>>>>> 9ed86da9bef58c9fde7550858c47589a06d04906
+
