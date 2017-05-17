@@ -106,9 +106,9 @@
 							<div class="agile-tp">
 								<h5>3 Trending Review!</h5>
 							</div>
-							<div class="agile_top_brands_grids">
 						@foreach($isi as $xx => $ree)
 						@if($xx < 3)
+							<div class="agile_top_brands_grids">
 								<div class="col-md-4 top_brand_left">
 									<div class="hover14 column">
 										<div class="agile_top_brand_left_grid">
@@ -139,19 +139,19 @@
 										</div>
 									</div>
 								</div>
+							</div>
 						@endif
 						@endforeach
-							</div>
+								<div class="clearfix"> </div>
 						</div>
-					</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-
 <br>
+
 	<div class="brands" style="padding : 5em">
 		<div class="container">
 		<h3>Brand Store</h3>
