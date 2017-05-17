@@ -6,8 +6,7 @@
 	<div class="container">
 		<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
 			<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-			<li class="active">Make Up</li>
-			<li class="active">Face</li>
+			<li class="active">Write Review!</li>
 		</ol>
 	</div>
 </div>

@@ -2,106 +2,67 @@
 @section('content')
 
 <!-- breadcrumbs -->
+@foreach($user as $iss)
 <div class="breadcrumbs">
 	<div class="container">
 		<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
 			<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+			<li class="active">{{$iss->nama}}</li>
 		</ol>
 	</div>
 </div>
 
 <!-- //breadcrumbs -->
-<div class="products">
+<div class="products" style="padding-top:1em">
 	<div class="container">
 		<div class="agileinfo_single">
 			<div class="col-md-12">
-				<h2 style="text-align:center;">Tiara Amalia</h2> 
+				<h2 style="text-align:center;">{{$iss->nama}}</h2> 
 			</div>
 			<div class="col-md-12 ">
-				<div class="col-md-2">
-				</div>
-				<div class="col-lg-8 col-lg-offset-5">
-					<img id="example" src="images/10.png" alt=" " class="img-responsive" align="middle">
-				</div>
-				<div class="col-md-2">
+				<div class="col-lg-8 col-lg-offset-2">
+					<img id="example" src="{{url('/images')}}{{$iss->path_foto}}" alt=" " class="img-responsive" align="middle">
 				</div>
 			</div>
 			<div class="col-md-12">
 				<div class="col-md-2">
-
 				</div>
 				<div class="col-md-8" align="center">
-					<br><h4 style="text-align: center;">About Me:</h4>
-					<p align="justify" style="margin:5px">Hi semuaa! Aku mau sharing soal lippies yang lagi hits banget baik di Indonesia maupun di luar negri, cepet banget sold out nya sejak dirilis. Produk apakah itu? Yak tepat sekali, lippies yang akan aku review kali ini adalah Kylie Lip Kit.Sekarang Kylie Matte Lip Kit tersedia dalam 15 warna, sampe ada warna hitam dan biru segala, tapi aku hanya punya dua warna yaitu Koko K dan Posie K. Awalnya sempet mau beli Candy K juga tapi mengurungkan niat deh dan nyobain dua warna dulu. Yuk langsung kita mulai aja reviewnya.</p>
+					<br><h3 style="text-align: center; font-size:150%">About Me:</h3>
+					<p align="justify" style="margin:5px">{{$iss->aboutme}}</p>
 				</div>
 				<div class="col-md-2">
 				</div>
 			</div>
 			<div class="col-md-12"  style="margin:5px">
-				<br><h4 style="text-align: center;">Review:</h4><br>
+				<br><h4 style="text-align: center; font-size:150%">Review:</h4><br>
 				<div class="col-md-2">
 				</div>
+				@foreach($revv as $ii => $iss)
+				@if($ii<'4')
 				<div class="col-md-2"  style="margin:5px">
-				<a href="{{url('')}}/single">
-					<img id="example" src="images/kylie2.jpg" alt=" " class="img-responsive">
-					<p> Review 1 </p></a>
+					<a href="{{ route('isiReview.eh', ['isin' => $iss->review_id ]) }}">
+					<img id="example" src="{{url('/images')}}{{$iss->path}}" alt=" " class="img-responsive">
+					<p> {{$iss->judul}} </p></a>
 					<div class="stars">
+						@for ($i = 0; $i < $iss->rating; $i++)
 						<i class="fa fa-star blue-star" aria-hidden="true"></i>
-						<i class="fa fa-star blue-star" aria-hidden="true"></i>
-						<i class="fa fa-star blue-star" aria-hidden="true"></i>
-						<i class="fa fa-star blue-star" aria-hidden="true"></i>
+						@endfor
+						@for ($i = 0; $i < 5-$iss->rating; $i++)
 						<i class="fa fa-star gray-star" aria-hidden="true"></i>
+						@endfor
 					</div>
 				</div>
-				<div class="col-md-2"  style="margin:5px">
-				<a href="{{url('')}}/single">
-					<img id="example" src="images/kylie3.jpg" alt=" " class="img-responsive">
-					<p> Review 2 </p></a>
-					<div class="stars">
-						<i class="fa fa-star blue-star" aria-hidden="true"></i>
-						<i class="fa fa-star blue-star" aria-hidden="true"></i>
-						<i class="fa fa-star blue-star" aria-hidden="true"></i>
-						<i class="fa fa-star gray-star" aria-hidden="true"></i>
-						<i class="fa fa-star gray-star" aria-hidden="true"></i>
-					</div>
-				</div>
-				<div class="col-md-2"  style="margin:5px">
-				<a href="{{url('')}}/single">
-					<img id="example" src="images/kylie2.jpg" alt=" " class="img-responsive"> 
-					<p> Review 3 </p></a>
-					<div class="stars">
-						<i class="fa fa-star blue-star" aria-hidden="true"></i>
-						<i class="fa fa-star blue-star" aria-hidden="true"></i>
-						<i class="fa fa-star gray-star" aria-hidden="true"></i>
-						<i class="fa fa-star gray-star" aria-hidden="true"></i>
-						<i class="fa fa-star gray-star" aria-hidden="true"></i>
-					</div>
-				</div>
-				<div class="col-md-2"  style="margin:5px">
-				<a href="{{url('')}}/single">
-					<img id="example" src="images/kylie3.jpg" alt=" " class="img-responsive">
-					<p> Review 4 </p></a>
-					<div class="stars">
-						<i class="fa fa-star blue-star" aria-hidden="true"></i>
-						<i class="fa fa-star blue-star" aria-hidden="true"></i>
-						<i class="fa fa-star blue-star" aria-hidden="true"></i>
-						<i class="fa fa-star blue-star" aria-hidden="true"></i>
-						<i class="fa fa-star gray-star" aria-hidden="true"></i>
-					</div>
-				</div>
+				@endif
+				@endforeach
 				<div class="col-md-2">
 				</div>
 			</div>
 		</div>
-		<div class="col-md-2">
-
-		</div>
+		<div class="col-md-2"></div>
 	</div>
-
-
 </div>
-</div>
-</div>
+@endforeach
 
 <!-- new -->
 <div class="newproducts-w3agile">
@@ -109,23 +70,32 @@
 		<h3>Popular</h3>
 		<div class="agile_top_brands_grids">
 			<!--yeee-->
+			@foreach($isi as $xx => $ree)
+			@if($xx < 4)
 			<div class="agile_top_brands_grids">
-				<div class="col-md-4 top_brand_left">
+				<div class="col-md-3 top_brand_left">
 					<div class="hover14 column">
 						<div class="agile_top_brand_left_grid">
 							<div class="agile_top_brand_left_grid1">
 								<figure>
 									<div class="snipcart-item block" >
 										<div class="snipcart-thumb">
-											<a href="products.html"><img title=" " alt=" " src="images/kylie3.jpg" style="max-width:100%"/></a>		
-											<h5>Kylie Lip Kit!</h5>
-											<h4 style="text-align:left;"><img src="images/2.png"  class="img-circle" alt="Cinque Terre" width="304" height="236" style="width:10%; height:10%"> Tiara Amalia</h4>
+											<a href="{{ route('isiReview.eh', ['isin' => $ree->review_id ]) }}"><img title=" " alt=" " class="" src="{{url('images')}}{{$ree->path}}" width="200" height="200" style=""/></a>
+											<h5>{{$ree->judul}}</h5>
+											<a href="{{ route('people.eh', ['isin' => $ree->users_id ]) }}">
+											<h4 style="text-align:left;">
+												<div class="col-md-2" style="padding:0"><p><img src="{{url('images')}}{{$ree->path_foto}}"  class="img-circle" alt="Cinque Terre" height="50px" width="50px"></p></div>
+												<div class="col-md-10"><p style="text-align:left; font-size:100%"> {{str_limit($ree->nama,10)}}</p></div>
+											</h4>
+											</a>
+											<!-- <h4 style="text-align:left;"><img src="images/2.png"  class="img-circle" alt="Cinque Terre" width="304" height="236" style="width:10%; height:10%"> Tiara Amalia</h4> -->
 											<div class="stars">
+												@for ($i = 0; $i < $ree->rating; $i++)
 												<i class="fa fa-star blue-star" aria-hidden="true"></i>
-												<i class="fa fa-star blue-star" aria-hidden="true"></i>
-												<i class="fa fa-star blue-star" aria-hidden="true"></i>
-												<i class="fa fa-star blue-star" aria-hidden="true"></i>
+												@endfor
+												@for ($i = 0; $i < 5-$ree->rating; $i++)
 												<i class="fa fa-star gray-star" aria-hidden="true"></i>
+												@endfor
 											</div>
 										</div>
 									</div>
@@ -134,66 +104,9 @@
 						</div>
 					</div>
 				</div>
-
-				<!--yeee-->
-				<!--yeee-->
-				<div class="agile_top_brands_grids">
-					<div class="col-md-4 top_brand_left">
-						<div class="hover14 column">
-							<div class="agile_top_brand_left_grid">
-								<div class="agile_top_brand_left_grid1">
-									<figure>
-										<div class="snipcart-item block" >
-											<div class="snipcart-thumb">
-												<a href="products.html"><img title=" " alt=" " src="images/kylie3.jpg" style="max-width:100%"/></a>		
-												<h5>Kylie Lip Kit!</h5>
-												<h4 style="text-align:left;"><img src="images/2.png"  class="img-circle" alt="Cinque Terre" width="304" height="236" style="width:10%; height:10%"> Tiara Amalia</h4>
-												<div class="stars">
-													<i class="fa fa-star blue-star" aria-hidden="true"></i>
-													<i class="fa fa-star blue-star" aria-hidden="true"></i>
-													<i class="fa fa-star blue-star" aria-hidden="true"></i>
-													<i class="fa fa-star blue-star" aria-hidden="true"></i>
-													<i class="fa fa-star gray-star" aria-hidden="true"></i>
-												</div>
-											</div>
-										</div>
-									</figure>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!--yeee-->										
-				<!--yeee-->
-				<div class="agile_top_brands_grids">
-					<div class="col-md-4 top_brand_left">
-						<div class="hover14 column">
-							<div class="agile_top_brand_left_grid">
-								<div class="agile_top_brand_left_grid1">
-									<figure>
-										<div class="snipcart-item block" >
-											<div class="snipcart-thumb">
-												<a href="products.html"><img title=" " alt=" " src="images/kylie3.jpg" style="max-width:100%"/></a>		
-												<h5>Kylie Lip Kit!</h5>
-												<h4 style="text-align:left;"><img src="images/2.png"  class="img-circle" alt="Cinque Terre" width="304" height="236" style="width:10%; height:10%"> Tiara Amalia</h4>
-												<div class="stars">
-													<i class="fa fa-star blue-star" aria-hidden="true"></i>
-													<i class="fa fa-star blue-star" aria-hidden="true"></i>
-													<i class="fa fa-star blue-star" aria-hidden="true"></i>
-													<i class="fa fa-star blue-star" aria-hidden="true"></i>
-													<i class="fa fa-star gray-star" aria-hidden="true"></i>
-												</div>
-											</div>
-										</div>
-									</figure>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
-
+			@endif
+			@endforeach
 			<!--yeee-->
 			<div class="clearfix"> </div>
 		</div>
@@ -259,12 +172,12 @@
 </div>
 <!-- //footer -->	
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="{{url('')}}/js/bootstrap.min.js"></script>
 
 <!-- top-header and slider -->
 <!-- here stars scrolling icon -->
 <script type="text/javascript">
-	$(document).ready(function() {
+$(document).ready(function() {
 			/*
 				var defaults = {
 				containerID: 'toTop', // fading element id
@@ -277,6 +190,6 @@
 				$().UItoTop({ easingType: 'easeOutQuart' });
 
 			});
-		</script>
+</script>
 
-		@endsection
+@endsection

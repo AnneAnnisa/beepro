@@ -34,7 +34,7 @@ Route::get('contact-us', function () {return view('contact');});
 
 // Route::get('simple', function () {return view('single');});
 
-Route::get('people', function () {return view('people');});
+// Route::get('people', function () {return view('people');});
 Route::get('user', function () {return view('user');});
 Route::get('newreview', function () {return view('newreview');});
 
@@ -52,6 +52,9 @@ Route::get('brand/{isinya}',['uses' => 'ReviewController@brand', 'as' => 'brand.
 
 Route::post('review/{isin}', 'ReviewController@lihatReview');
 Route::get('review/{isin}',['uses' => 'ReviewController@lihatReview', 'as' => 'isiReview.eh']);
+
+Route::post('people/{isin}', 'ReviewController@people');
+Route::get('people/{isin}',['uses' => 'ReviewController@people', 'as' => 'people.eh']);
 // Route::get('review', function () {return view('single');});
 
 //Route::get('auth/login', 'Auth\AuthController@getLogin');

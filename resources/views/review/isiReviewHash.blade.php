@@ -34,10 +34,12 @@
 									<h3 style="margin-bottom:0">{{$rev->review->judul}}</h3>
 									@foreach($user as $us)
 										@if($rev->review->users_id == $us->id)
+										<a href="{{ route('people.eh', ['isin' => $us->id ]) }}">
 											<h4 style="text-align:left;">
-												<div class="col-md-3" style="padding:0"><p><img src="{{url('images')}}{{$us->path_foto}}"  class="img-circle" alt="Cinque Terre" height="50px" width="50px"></p></div>
-												<div class="col-md-9"><p style="text-align:left; font-size:150%"> {{str_limit($us->nama,11)}}</p></div>
+												<div class="col-md-2" style="padding:0"><p><img src="{{url('images')}}{{$us->path_foto}}"  class="img-circle" alt="Cinque Terre" height="50px" width="50px"></p></div>
+												<div class="col-md-10"><p style="text-align:left; font-size:150%"> {{str_limit($us->nama,10)}}</p></div>
 											</h4>
+										</a>
 										@endif
 									@endforeach
 

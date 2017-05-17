@@ -18,7 +18,10 @@ class ReviewController extends Controller
   public function review($isiny)
 	{
    		$hashtag=Hashtag::where('id','=',$isiny)->get();
-   		$memiliki=Memiliki::where('hashtag_id', '=', $isiny)->get();
+   		$memiliki=Memiliki::where('hashtag_id', '=', $isiny)
+      ->orderBy('review_id','desc')
+      ->get();
+      // dd($memiliki);
    		$review=Review::where('id','=',$memiliki)->get();
     	$brand=Brand::all();
     	$user=User::all();
@@ -33,6 +36,11 @@ class ReviewController extends Controller
   {
       $review= DB::select("select * from kategori, foto, review, users, brand where review.kategori_id=kategori.id and foto.review_id=review.id and review.brand_id=brand.id and review.id='$isin' and review.users_id=users.id");
       // dd($review);
+      $tota = DB::select("select lihat from review where id='$isin'");
+      // $totaa = $tota+1;
+      // dd($tota[0]->lihat);
+      $tot =Review::where('id', '=', $isin)
+        ->update(['lihat' => $tota[0]->lihat+1]);
 
       $hashtag=Hashtag::all();
       $memiliki= DB::select("select * from memiliki, hashtag where memiliki.review_id='$isin' and memiliki.hashtag_id=hashtag.id order by memiliki.id");
@@ -42,6 +50,27 @@ class ReviewController extends Controller
       $foto=Foto::all();
 
       return view('review.single',['hashtag' => $hashtag, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori]);    
+  }
+
+  public function people($isin)
+  {
+      $brand=Brand::all();
+      $kategori=Kategori::all();
+      $memiliki=Memiliki::all();
+      $review=Review::all();
+
+
+      $isi = DB::select("select * from kategori, foto, review, users, brand where review.kategori_id=kategori.id and foto.review_id=review.id and review.brand_id=brand.id and review.users_id=users.id order by review.lihat desc");
+
+      $revv = DB::select("select * from foto, review, users where foto.review_id=review.id and review.users_id='$isin' and users.id='$isin' order by review.lihat desc");
+      // dd($isi);
+      $user=User::where('id','=',$isin)->get();
+      $foto=Foto::all();
+      $hashtag = DB::table('hashtag')
+                      ->orderBy('updated_at', 'desc')
+                      ->get();
+
+      return view('people',['hashtag' => $hashtag, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori, 'isi' =>$isi, 'revv' => $revv]);    
   }
 
   public function brand($isinya)
@@ -127,7 +156,7 @@ class ReviewController extends Controller
 
       $memiliki->save();
     }
-    return redirect('single');  
+    return redirect('single/');  
   }
 
 //utk edit review

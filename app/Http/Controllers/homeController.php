@@ -21,6 +21,7 @@ class homeController extends Controller
         $memiliki=Memiliki::all();
         $brand=Brand::all();
         $user=User::all();
+        $isi = DB::select("select * from kategori, foto, review, users, brand where review.kategori_id=kategori.id and foto.review_id=review.id and review.brand_id=brand.id and review.users_id=users.id order by review.lihat desc");
         // dd(session('user')['id']);
         $foto=DB::table('foto')
                ->join('review', function ($join) {
@@ -28,7 +29,7 @@ class homeController extends Controller
                })
                ->get();
 
-        return view('index',['hash' => $hash, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto]);
+        return view('index',['isi' => $isi,'hash' => $hash, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto]);
     }
 
     public function autocomplete(Request $request) 
