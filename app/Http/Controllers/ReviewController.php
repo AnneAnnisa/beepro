@@ -20,14 +20,6 @@ class ReviewController extends Controller
    		$hashtag=Hashtag::where('id','=',$isiny)->get();
    		$memiliki=Memiliki::where('hashtag_id', '=', $isiny)->get();
    		$review=Review::where('id','=',$memiliki)->get();
-   		// $foto=Foto::where('review_id','=', $review->id);
-   		// $user=User::where('id','=', $review->user_id);
-   		// $product=Product::where('id','=', $review->product_id);
-   		// $brand=Brand::where('id','=',$product->brand_id);
-   		// $kategori=Kategori::where('id','=',$product->kategori_id);
-    	// $review=Review::all();
-    	// $hash=Hashtag::all();
-    	// $memiliki=Memiliki::all();
     	$brand=Brand::all();
     	$user=User::all();
     	$kategori=Kategori::all();
@@ -36,6 +28,21 @@ class ReviewController extends Controller
 	    return view('review.isiReviewHash',['hashtag' => $hashtag, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori]);
 	    // return view('review.isiReview',['hashtag' => $hashtag, 'memiliki' =>$memiliki]);
 	}
+
+  public function lihatReview($isin)
+  {
+      $review= DB::select("select * from kategori, foto, review, users, brand where review.kategori_id=kategori.id and foto.review_id=review.id and review.brand_id=brand.id and review.id='$isin' and review.users_id=users.id");
+      // dd($review);
+
+      $hashtag=Hashtag::all();
+      $memiliki= DB::select("select * from memiliki, hashtag where memiliki.review_id='$isin' and memiliki.hashtag_id=hashtag.id order by memiliki.id");
+      $brand=Brand::all();
+      $user=User::all();
+      $kategori=Kategori::all();
+      $foto=Foto::all();
+
+      return view('review.single',['hashtag' => $hashtag, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori]);    
+  }
 
   public function brand($isinya)
   {
@@ -102,32 +109,64 @@ class ReviewController extends Controller
     $review->rating = $request->rating; //db->form
     $review->save();
 
-    $review_id = DB::table('review')->first();
+    $review_id = DB::table('review')->orderby('id', 'desc')->first();
     $datahashtag = $request->hashtag;
     $arrayhashtag = explode(" ", $datahashtag);
     foreach($arrayhashtag as $data) {
       $hashtagfix = "#".$data;
-      $cek = DB::select('SELECT * FROM hashtag WHERE nama_hashtag = "'.$hashtagfix.'"')[0];
+      $cek = DB::select('SELECT * FROM hashtag WHERE nama_hashtag = "'.$hashtagfix.'"');
       if(isset($cek)){
         $hashtag = new Hashtag;
         $hashtag->nama_hashtag = $hashtagfix;
         $hashtag->save();
       }
       $memiliki = new Memiliki;
-      $memiliki->review_id = $review_id;
+      $memiliki->review_id = $review_id->id;
       $hashtag_id = DB::select('SELECT id FROM hashtag WHERE nama_hashtag = "'.$hashtagfix.'"')[0];
-      $memiliki->hashtag_id = $hashtag_id;
+      $memiliki->hashtag_id = $hashtag_id->id;
+
+      $memiliki->save();
     }
-    return redirect('single');
-
-    
-    
-    //$hashtag = new Hashtag;
-
-    // 
-    // $hashtag->nama_hashtag = $request->hashtag;
-    // $hashtag->save();
-  
+    return redirect('single');  
   }
+
+//utk edit review
+    public function editreview($id)
+    {
+        $this->data['review'] = Review::find($id);
+        $this->data['kategori'] = DB::table('kategori')->get();
+        $this->data['brand'] = DB::table('brand')->get();
+        $hashhashtag = DB::select('SELECT h.* FROM memiliki m, hashtag h, review r 
+                                 WHERE m.hashtag_id = h.id 
+                                 AND m.review_id = r.id AND r.id = '.$id);
+        //$this->data['hashtag'] = array();
+        $arrayhashtag = array();
+        $x = 0;
+        foreach($hashhashtag as $data) {
+          $arrayhashtag[$x++] = substr($data->nama_hashtag, -(strlen($data->nama_hashtag)-1));
+        }
+        $hashtag = '';
+        foreach($arrayhashtag as $data) {
+          $hashtag = $hashtag." ";
+          $hashtag = $hashtag.$data;
+        }
+        $this->data['hashtag'] = $hashtag;
+
+        return view('editreview', $this->data);
+   }
+    public function updatereview(Request $request, $id)
+    {
+        $review = Review::find($id);
+        $review->judul = $request->get('judul');
+        $review->isi = $request->get('isi');
+        $review->toko = $request->get('toko');
+        $review->kategori_id = $request->get('kategori');
+        $review->brand_id = $request->get('brand');
+        $review->harga = $request->get('harga');
+        $review->rating = $request->get('rating');
+
+        $review->save();
+        return redirect('listreview');
+    }
 
 }

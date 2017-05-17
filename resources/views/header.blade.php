@@ -98,6 +98,13 @@
 									</li>
 									<li><a href="{{url('about-us')}}">About Us</a></li>
 									<li><a href="{{url('contact-us')}}">Contact Us</a></li>
+<<<<<<< HEAD
+=======
+									@if(Auth::check())
+									<li><a href="{{url('contact-us')}}">SELESAI_LOGIN</a></li>
+									@endif
+									
+>>>>>>> 6aae97f1526c40f445d83414f320c8e9672c0e62
 
 
 									<li class="dropdown">
@@ -287,7 +294,7 @@
 	}
 
 	function loginGanti(){
-      document.getElementById("isi-up").innerHTML='<form action="login" method="post"> {{ csrf_field() }} <span class="input input--ichiro"><input class="input__field input__field--ichiro" type="email" id="input-25" name="email" placeholder=" " required="" /><label class="input__label input__label--ichiro" for="input-25"><span class="input__label-content input__label-content--ichiro">email</span></label></span><span class="input input--ichiro"><input class="input__field input__field--ichiro" type="password" id="input-26" name="password" placeholder=" " required="" /><label class="input__label input__label--ichiro" for="input-26"><span class="input__label-content input__label-content--ichiro">Password</span></label></span><button type="submit" class="btn btn-warning" style="margin-top:5%">submit</button></form>';
+      document.getElementById("isi-up").innerHTML='<form action="{{url('/login')}}" method="post"> {{ csrf_field() }} <span class="input input--ichiro"><input class="input__field input__field--ichiro" type="email" id="input-25" name="email" placeholder=" " required="" /><label class="input__label input__label--ichiro" for="input-25"><span class="input__label-content input__label-content--ichiro">email</span></label></span><span class="input input--ichiro"><input class="input__field input__field--ichiro" type="password" id="input-26" name="password" placeholder=" " required="" /><label class="input__label input__label--ichiro" for="input-26"><span class="input__label-content input__label-content--ichiro">Password</span></label></span><button type="submit" class="btn btn-warning" style="margin-top:5%">submit</button></form>';
       document.getElementById("signform").innerHTML='<li id="login1" class="active" onclick="loginGanti()"><a href="#" style="padding:10%;color:white"><h5>Login</h5></a></li><li id="signup1" onclick="signupGanti()"><a href="#" style="padding:10%"><h5>Signup</h5></a></li>'
 	}
 

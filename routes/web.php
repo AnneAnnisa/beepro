@@ -34,16 +34,15 @@ Route::get('contact-us', function () {return view('contact');});
 
 // Route::get('simple', function () {return view('single');});
 
-Route::get('single', function () {return view('single');});
 Route::get('people', function () {return view('people');});
 Route::get('user', function () {return view('user');});
 Route::get('newreview', function () {return view('newreview');});
 
 
 // UDAH BACKEND ANNE
-Route::post('review/{isiny}', 'ReviewController@review');
-Route::get('review/{isiny}',['uses' => 'ReviewController@review', 'as' => 'review.eh']);
-Route::get('review', function () {return back();});
+Route::post('hashtag/{isiny}', 'ReviewController@review');
+Route::get('hashtag/{isiny}',['uses' => 'ReviewController@review', 'as' => 'review.eh']);
+Route::get('hashtag', function () {return back();});
 
 Route::post('makeup/{isinya}', 'ReviewController@makeupEh');
 Route::get('makeup/{isinya}',['uses' => 'ReviewController@makeupEh', 'as' => 'makeup.eh']);
@@ -51,6 +50,9 @@ Route::get('makeup/{isinya}',['uses' => 'ReviewController@makeupEh', 'as' => 'ma
 Route::post('brand/{isinya}', 'ReviewController@brand');
 Route::get('brand/{isinya}',['uses' => 'ReviewController@brand', 'as' => 'brand.eh']);
 
+Route::post('review/{isin}', 'ReviewController@lihatReview');
+Route::get('review/{isin}',['uses' => 'ReviewController@lihatReview', 'as' => 'isiReview.eh']);
+// Route::get('review', function () {return view('single');});
 
 //Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('loginx', 'loginController@authenticate');
@@ -60,19 +62,24 @@ Route::get('logout', 'loginController@logout');
 Route::get('autocomplete', 'homeController@autocomplete');
 Route::post('search', 'homeController@search');
 
-// BACKEND PINA HEHEHEHE
+// halaman utk review
 Route::get('newreview', 'ReviewController@newreview');
 Route::post('newreview', 'ReviewController@savenewreview');
 
+
+Route::get('editreview/{id}', 'ReviewController@editreview');
+Route::post('editreview/{id}', 'ReviewController@updatereview');
+
+///halaman profile
 Route::get('editprofile/{id}', 'userController@editprofile');
 Route::post('editprofile/{id}', 'userController@update');
 
+<<<<<<< HEAD
 Auth::routes();
 // Route::post('editprofile', 'userController@updateprofile');
-
-Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');
+=======
+Route::post('editprofile', 'userController@updateprofile');
+>>>>>>> 6aae97f1526c40f445d83414f320c8e9672c0e62
 
 Auth::routes();
 

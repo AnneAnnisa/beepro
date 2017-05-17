@@ -61,7 +61,7 @@
 														<div class="snipcart-thumb">
 															@foreach($rev->review->foto as $kk => $revf)
 															@if($kk == 0)
-															<a href="single.html"><img title=" " alt=" " src="images{{$revf->path}}" width="300" height="300" style="" name="review" value="$rev->review->id"/></a>		
+															<a href="{{ route('isiReview.eh', ['isin' => $rev->review->id ]) }}"><img title=" " alt=" " src="images{{$revf->path}}" width="300" height="300" style="" name="review" value="$rev->review->id"/></a>		
 															@endif
 															@endforeach
 
