@@ -73,13 +73,13 @@
 								<input type="file" name="foto" placeholder="Upload Foto" >
 								<input type="hidden" name="_token" value="{{csrf_token()}}">
 								
-								<div>
+								<div >
 									<label>Rating</label>
-									<label class="radio-inline"><input type="radio" name="rating" value="1">1</label>
-									<label class="radio-inline"><input type="radio" name="rating" value="2">2</label>
-									<label class="radio-inline"><input type="radio" name="rating" value="3">3</label>
-									<label class="radio-inline"><input type="radio" name="rating" value="4">4</label>
-									<label class="radio-inline"><input type="radio" name="rating" value="5">5</label>
+									<label class="radio-inline"><input type="radio" name="rating" value="1" {{$review->rating == 1 ? "checked" : ""}}>1</label>
+									<label class="radio-inline"><input type="radio" name="rating" value="2" {{$review->rating == 2 ? "checked" : ""}}>2</label>
+									<label class="radio-inline"><input type="radio" name="rating" value="3" {{$review->rating == 3 ? "checked" : ""}}>3</label>
+									<label class="radio-inline"><input type="radio" name="rating" value="4" {{$review->rating == 4 ? "checked" : ""}}>4</label>
+									<label class="radio-inline"><input type="radio" name="rating" value="5" {{$review->rating == 5 ? "checked" : ""}}>5</label>
 								</div>
 								<input type="submit" value="submit" name="submit">
 							</center>
