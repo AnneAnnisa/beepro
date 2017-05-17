@@ -51,29 +51,33 @@ class homeController extends Controller
 
     public function search(Request $request) 
     {
-        $query = $request->get('term');
-        $item = Hashtag::where('nama_hashtag','LIKE','%'.$query.'%')->get();
+        $query = $request->get('search');
+        $item = Hashtag::where('nama_hashtag','LIKE','%'.$query.'%')->pluck('id')->toArray();
 
-        if(count($item) == 0) {
-            $result[] =  'Not found';
-        }
-        else {
-            foreach($item as $key=>$value) {
-            $result[] = $value->nama_hashtag;
+        // foreach ($item as $key) {
+        //   # code...
+        //   $hashtag[$i] = $key->id;
+        //   $i++;
+        // }
 
-            }
-        }
+        // $hash= Memiliki::join('memiliki','memiliki.hashtag_id','=',$item->id);
 
-        $hashtag=Hashtag::where('nama_hashtag','LIKE','%'.$query.'%')->get();
-        $review=Review::where('judul','LIKE','%'.$query.'%')->get();
+        // $i=0;
+        // foreach ($result as $key) {
+        //   $review = Review::get($key);
+        //   $review_id[$i] = Review::where('id_review','=','')->get();
+        //   $i++;
+        // }
+       
+        // return view('searchresult',[
+        //     'result' => $result,
+        // ]); 
 
-        // $brand=Brand::all();
-        // $user=User::all();
-        // $kategori=Kategori::all();
-        // $foto=Foto::all();
+        // $result = DB::table('memiliki')->whereHas(function($result) use($query, $item) {
+        //     $result->join('hashtag', 'hashtag.id', '=', 'memiliki.hashtag_id')
+        //                 ->join('review', 'review.id', '=', 'memiliki.review_id')
+        //                 ->where('hashtag.id', '=', $item->id);
+        // })->get();
 
-        // return view('review.isiReviewHash',['hashtag' => $hashtag, 'review' =>$review, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori]);
-        // return $result;
-        dd($review);        
     }
 }

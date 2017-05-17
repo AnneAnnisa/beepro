@@ -8,8 +8,10 @@
 
 
     <div class="w3l_search">
-			<form action="{{url('/')}}" method="post">
-				<input type="search" id="hashtag" name="Search" placeholder="#Search with Hashtag" required="" class-"ms-ctn form-control ms-ctn-focus">
+			<form action="{{url('search')}}" method="post">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			{{ csrf_field() }}
+				<input type="search" id="hashtag" name="search" placeholder="#Search with Hashtag" required="" class-"ms-ctn form-control ms-ctn-focus">
 				<button type="submit" class="btn btn-default search" aria-label="Left Align">
 					<i class="fa fa-search" aria-hidden="true"> </i>
 				</button>
