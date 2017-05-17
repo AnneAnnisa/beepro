@@ -98,14 +98,30 @@
 									</li>
 									<li><a href="{{url('about-us')}}">About Us</a></li>
 									<li><a href="{{url('contact-us')}}">Contact Us</a></li>
-									
 
-													
 
 									<li class="dropdown">
 									<?php if(session('user') != NULL){ ?>
-															<h2><?php echo session ('user')["nama"]; ?></h2>
-															<?php } else { ?>
+															<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <?php echo session ('user')["nama"]; ?>  </a>  
+															
+															<ul class="dropdown-menu multi-column columns-3">
+											<div class="row">
+												<div class="multi-gd-img">
+													<ul class="multi-column-dropdown">
+														<!-- <h6>All Skin Care</h6> -->
+														<!-- <li><a href="{{ route('makeup.eh', ['isinya' => 'Cleanser' ]) }}">Edit profile</a></li> -->
+
+														<!-- <li><a href="{{ route('makeup.eh', ['isinya' => 'Cleanser' ]) }}">Edit profile</a></li> -->
+														<li> <a href="{{url('/editprofile/'.session('user')['id'])}}">edit profile</a> </li>
+														<!-- <li> <a href="{{url('/editprofile')}}">how it works</a> </li> -->
+														<li> <a href="{{url('/logout')}}">Log out</a></li>
+														<!-- <li><a href="{{ route('makeup.eh', ['isinya' => 'Lip Care' ]) }}">Lip Care</a></li> -->
+													</ul>
+												</div>		
+											</div>
+										</ul>
+															<?php } else { ?> 
+															
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login</a>
 										<ul class="dropdown-menu multi-column columns-3">
 											<div class="row">

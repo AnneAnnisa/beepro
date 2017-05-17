@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Hashtag;
+use Illuminate\Support\Facades\Auth;
+use Session;
 
 class userController extends Controller
 {
@@ -69,4 +71,12 @@ class userController extends Controller
         $user->save();
    }
    
+
+  public function getLogout(Request $req){
+        Auth::logout();
+        Session::flush();
+        return Redirect::to('beepro/public/home');
+    } 
+
 }
+

@@ -55,6 +55,7 @@ Route::get('brand/{isinya}',['uses' => 'ReviewController@brand', 'as' => 'brand.
 //Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('loginx', 'loginController@authenticate');
 Route::post('registerx', 'userController@register');
+Route::get('logout', 'loginController@logout');
 
 Route::get('autocomplete', 'homeController@autocomplete');
 Route::post('search', 'homeController@search');
@@ -67,7 +68,7 @@ Route::get('editprofile/{id}', 'userController@editprofile');
 Route::post('editprofile/{id}', 'userController@update');
 
 Auth::routes();
-Route::post('editprofile', 'userController@updateprofile');
+// Route::post('editprofile', 'userController@updateprofile');
 
 Auth::routes();
 
