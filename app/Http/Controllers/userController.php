@@ -23,13 +23,6 @@ class userController extends Controller
         return redirect()->back();
     }
 
-
-public function editprofile($id)
-    {
-        $data['user'] = User::find($id);
-        return view('editprofile', $data);
-    }
-
     /**
      * Update the specified resource in storage.
      *
