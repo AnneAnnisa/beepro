@@ -20,14 +20,6 @@ class ReviewController extends Controller
    		$hashtag=Hashtag::where('id','=',$isiny)->get();
    		$memiliki=Memiliki::where('hashtag_id', '=', $isiny)->get();
    		$review=Review::where('id','=',$memiliki)->get();
-   		// $foto=Foto::where('review_id','=', $review->id);
-   		// $user=User::where('id','=', $review->user_id);
-   		// $product=Product::where('id','=', $review->product_id);
-   		// $brand=Brand::where('id','=',$product->brand_id);
-   		// $kategori=Kategori::where('id','=',$product->kategori_id);
-    	// $review=Review::all();
-    	// $hash=Hashtag::all();
-    	// $memiliki=Memiliki::all();
     	$brand=Brand::all();
     	$user=User::all();
     	$kategori=Kategori::all();
@@ -36,6 +28,21 @@ class ReviewController extends Controller
 	    return view('review.isiReviewHash',['hashtag' => $hashtag, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori]);
 	    // return view('review.isiReview',['hashtag' => $hashtag, 'memiliki' =>$memiliki]);
 	}
+
+  public function lihatReview($isin)
+  {
+      $review= DB::select("select * from kategori, foto, review, users, brand where review.kategori_id=kategori.id and foto.review_id=review.id and review.brand_id=brand.id and review.id='$isin' and review.users_id=users.id");
+      // dd($review);
+
+      $hashtag=Hashtag::all();
+      $memiliki= DB::select("select * from memiliki, hashtag where memiliki.review_id='$isin' and memiliki.hashtag_id=hashtag.id order by memiliki.id");
+      $brand=Brand::all();
+      $user=User::all();
+      $kategori=Kategori::all();
+      $foto=Foto::all();
+
+      return view('review.single',['hashtag' => $hashtag, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori]);    
+  }
 
   public function brand($isinya)
   {

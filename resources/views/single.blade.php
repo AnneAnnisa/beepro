@@ -14,7 +14,7 @@
 		<div class="container">
 			<div class="agileinfo_single">
 				<div class="col-md-12">
-					<h1 style="text-align:center;margin-bottom:20px">Kylie Lip Kit!</h1>
+					<h1 style="text-align:center;margin-bottom:20px;font-size:200%">Kylie Lip Kit!</h1>
 				</div>
 				<div class="col-md-12">
 					<div class="col-md-2">
