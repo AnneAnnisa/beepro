@@ -48,6 +48,8 @@ Route::get('review', function () {return back();});
 Route::post('makeup/{isinya}', 'ReviewController@makeupEh');
 Route::get('makeup/{isinya}',['uses' => 'ReviewController@makeupEh', 'as' => 'makeup.eh']);
 
+Route::post('brand/{isinya}', 'ReviewController@brand');
+Route::get('brand/{isinya}',['uses' => 'ReviewController@brand', 'as' => 'brand.eh']);
 
 
 //Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -62,9 +64,15 @@ Route::get('newreview', 'ReviewController@newreview');
 Route::post('newreview', 'ReviewController@savenewreview');
 
 Route::get('editprofile/{id}', 'userController@editprofile');
+Route::post('editprofile/{id}', 'userController@update');
+
+Auth::routes();
 Route::post('editprofile', 'userController@updateprofile');
 
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

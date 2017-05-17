@@ -275,12 +275,12 @@
 			<div class="brands-agile">
 				<div class="col-md-2 w3layouts-brand">
 					<div class="brands-w3l">
-						<p><a href="#">LAKME</a></p>
+						<p><a href="{{ route('brand.eh', ['isinya' => 'LAKME' ]) }}">LAKME</a></p>
 					</div>
 				</div>
 				<div class="col-md-2 w3layouts-brand">
 					<div class="brands-w3l">
-						<p><a href="#">NYKAA</a></p>
+						<p><a href="{{ route('brand.eh', ['isinya' => 'NYKAA' ]) }}">NYKAA</a></p>
 					</div>
 				</div>
 				<div class="col-md-2 w3layouts-brand">

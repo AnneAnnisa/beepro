@@ -14,77 +14,59 @@ class brandSeeder extends Seeder
     {
         DB::table('brand')->delete();
 
-        Brand::create([
-        	'nama_brand' => 'LAKME',
-        ]);
-
-        Brand::create([
-        	'nama_brand' => 'NYKAA',
-        ]);
-
-        Brand::create([
-        	'nama_brand' => 'THE BODY SHOP',
-        ]);  
-
-        Brand::create([
-        	'nama_brand' => 'THE FACE SHOP',
-        ]);     
-
-        Brand::create([
-        	'nama_brand' => 'MAYBELINNE NEW YORK',
-        ]);
-
-        Brand::create([
-        	'nama_brand' => 'ETUDE',
-        ]);
-
-        Brand::create([
-        	'nama_brand' => 'INNISFREE',
-        ]);  
-
-        Brand::create([
-        	'nama_brand' => 'NYX',
-        ]); 
-
-        Brand::create([
-        	'nama_brand' => 'COLORBAR',
-        ]);
-
-        Brand::create([
-        	'nama_brand' => 'M.A.C',
-        ]);
-
-        Brand::create([
-        	'nama_brand' => 'MARC JACOBS',
-        ]);  
-
-        Brand::create([
-        	'nama_brand' => 'THEBALM',
-        ]);     
-
-        Brand::create([
-        	'nama_brand' => 'KYLIE KIT',
-        ]);
-
-        Brand::create([
-        	'nama_brand' => 'ORIFLAME',
-        ]);
-
-        Brand::create([
-        	'nama_brand' => 'KYLIE',
-        ]);  
-
-        Brand::create([
-        	'nama_brand' => 'L\'OREAL PARIS',
-        ]);          
-
-        Brand::create([
-        	'nama_brand' => 'BIODERMA',
-        ]);  
-
-        Brand::create([
-        	'nama_brand' => 'KIEHL\'S',
-        ]); 
-
+        DB::table('brand')->insert(array(
+            'nama_brand' => 'LAKME',
+        ));
+        DB::table('brand')->insert(array(
+            'nama_brand' => 'KIEHL\'S',
+        ));
+        DB::table('brand')->insert(array(
+            'nama_brand' => 'BIODERMA',
+        ));
+        DB::table('brand')->insert(array(
+            'nama_brand' => 'L\'OREAL PARIS',
+        ));
+        DB::table('brand')->insert(array(
+            'nama_brand' => 'KYLIE',
+        ));
+        DB::table('brand')->insert(array(
+            'nama_brand' => 'MARC JACOBS',
+        ));
+        DB::table('brand')->insert(array(
+            'nama_brand' => 'THEBALM',
+        ));
+        DB::table('brand')->insert(array(
+            'nama_brand' => 'KYLIE KIT',
+        ));
+        DB::table('brand')->insert(array(
+            'nama_brand' => 'ORIFLAME',
+        ));
+        DB::table('brand')->insert(array(
+            'nama_brand' => 'NYX',
+        ));
+        DB::table('brand')->insert(array(
+            'nama_brand' => 'COLORBAR',
+        ));
+        DB::table('brand')->insert(array(
+            'nama_brand' => 'M.A.C',
+        ));
+        DB::table('brand')->insert(array(
+            'nama_brand' => 'ETUDE',
+        ));
+        DB::table('brand')->insert(array(
+            'nama_brand' => 'INNISFREE',
+        ));
+        DB::table('brand')->insert(array(
+            'nama_brand' => 'MAYBELINNE NEW YORK',
+        ));
+        DB::table('brand')->insert(array(
+            'nama_brand' => 'THE FACE SHOP',
+        ));
+        DB::table('brand')->insert(array(
+            'nama_brand' => 'THE BODY SHOP',
+        ));
+        DB::table('brand')->insert(array(
+            'nama_brand' => 'NYKAA',
+        ));
     }
 }

@@ -36,54 +36,21 @@
 				<div class="w3_agile_signup_form agileits">
 					<h1 class="w3_agileits w3ls">Edit Profile</h1>
 					<div class="agile_login_form">
-						<form action="editprofile" method="post" class="agileits_w3layouts_form">
-							<center>
-							<input  type="hidden" name="nama" placeholder="nama" required="" value="{!! csrf_field() !!}">
-							 <!-- <input  type="text" name="nama" placeholder="nama" required="" "> -->
-								<input type="text" name="nama" placeholder="nama" required="">
-								<!-- //<textarea type="text" name="email" placeholder="email" required=""></textarea>  -->
-								<input type="text" name="email" placeholder="email" required="">
-								<input type="text" name="password" placeholder="new password" required="">
-								<textarea type="text" name="aboutme" placeholder="I am..." required=""></textarea> 
-								<input type="text" name="foto" placeholder="foto belum" required="">
-								<!-- <input type="text" name="aboutme" placeholder="I am ..." required=""> -->
-								<!-- <textarea type="text" name="aboutme" placeholder="I am..." required=""></textarea>  -->
+						<form action="{{url('editprofile/'.$user->id)}}" method="POST">
+						{{csrf_field()}}
+						<div>
+						<input type="text" name="nama" value="{{$user->nama}}">
+						<input type="text" name="email"  value="{{$user->email}}" placeholder="email" required="">
+						<textarea type="text" name="aboutme" placeholder="I am..." required=""></textarea> 
+						<input type="text" name="foto" placeholder="foto belum" required="">
 
-<!-- 											<select name="Kategori">
-											  <option value="MakeUp">MakeUp</option>
-											  <option value="SkinCare">SkinCare</option>
-											  <option value="PersonalCare">PersonalCare</option>
-											</select>
-										-->
-										
-<!-- 
-										<input list="MakeUp" name="MakeUp">
-										<datalist id="MakeUp">
-											<option value="Face">Face</option>
-											<option value="Lips">Lips</option>
-											<option value="Eyes">Eyes</option>
-											<option value="MakeUpKits">MakeUpKits</option>
-										</datalist>
+						</div>
+						<input type="submit" value="submit" name="submit">
 
-
-										<input list="SkinCare" name="SkinCare">
-										<datalist id="SkinCare">
-											<option value="Cleanser">Cleanser</option>
-											<option value="Moisturizer">Moisturizer</option>
-											<option value="LipCare">LipCare</option>
-										</datalist>
-
-										<input list="PersonalCare" name="PersonalCare">
-										<datalist id="PersonalCare">
-											<option value="Bath">Bath</option>
-											<option value="Body">Body</option>
-											<option value="HandsAndFeet">HandsAndFeet</option>
-										</datalist> -->
-
-										
-										<input type="submit" value="submit" name="submit">
+					</form>
+																	
 									</center>
-								</form>				
+											
 
 							</div>
 						</div>
