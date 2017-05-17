@@ -53,7 +53,7 @@ class userController extends Controller
         // $user->password = $request->input('password');
         // //$user->telepon = $request->input('telepon');
         // $user->path_foto = $request->input('path_foto');
-        $user->aboutme = $request->input('about_me');
+        $user->aboutme = $request->input('aboutme');
       
         //$user->password = $request->input('password');
         $user->save();

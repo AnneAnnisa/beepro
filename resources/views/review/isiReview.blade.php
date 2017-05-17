@@ -3,7 +3,7 @@
 @section('kat')
 	<li><a href="{{url('home')}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
 		@foreach($kategori as $o => $kat)
-		@if($o<1)
+		@if($o < 1)
 			@if($kat->id == 1 || $kat->id == 2 || $kat->id == 3 || $kat->id == 4)
 			<li class="active">Make Up</li>
 			@elseif($kat->id == 5 || $kat->id == 6 || $kat->id == 7)

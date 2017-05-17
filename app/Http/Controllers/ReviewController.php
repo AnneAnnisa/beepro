@@ -12,13 +12,6 @@ use App\Foto;
 use App\Kategori;
 use DB;
 // use App\Auth;
-use Validator, Input, Redirect, Hash; 
-use App\Thread;
-use App\Comment;
-use App\Donate;
-use File;
-use Response;
-use Auth;
 
 class ReviewController extends Controller
 {
@@ -137,8 +130,8 @@ class ReviewController extends Controller
 
   public function savenewreview(Request $request){
     $review = new Review; // bikin variabel baru utk review yg disave
-
-    $review->users_id = 1; //db->form
+    // dd($request->idid);
+    $review->users_id = $request->idid; //db->form
     $review->judul = $request->judul; //db->form
     $review->isi = $request->isi; //db->form
     $review->toko = $request->tempat_belanja; //db->form
@@ -148,7 +141,7 @@ class ReviewController extends Controller
     $review->rating = $request->rating; //db->form
     //dd($review);
     $review->save();
-    // $idbesar=Review::orderBy('id','desc')->first();
+    $idbesar=Review::orderBy('id','desc')->first();
 
 
     // $file = $request->file('photo');
@@ -159,7 +152,7 @@ class ReviewController extends Controller
     // $filename = $sname.'_'.$file->getClientOriginalName();
     $fot = new Foto;
     $fot->path='/review/123.jpg';
-    $fot->review_id=1;
+    $fot->review_id=$idbesar->id;
     $fot->save();
 
     $idbesar=Review::orderBy('id','desc')->first();
@@ -181,133 +174,10 @@ class ReviewController extends Controller
       $hashtag_id = DB::select('SELECT id FROM hashtag WHERE nama_hashtag = "'.$hashtagfix.'"')[0];
       $memiliki->hashtag_id = $hashtag_id->id;
 
-
-
-class ReviewController extends Controller
-{
-
-    public function review($isiny)
-  	{
-     		$hashtag=Hashtag::where('id','=',$isiny)->get();
-     		$memiliki=Memiliki::where('hashtag_id', '=', $isiny)->get();
-     		$review=Review::where('id','=',$memiliki)->get();
-      	$brand=Brand::all();
-      	$user=User::all();
-      	$kategori=Kategori::all();
-      	$foto=Foto::all();
-
-  	    return view('review.isiReviewHash',['hashtag' => $hashtag, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori]);
-  	    // return view('review.isiReview',['hashtag' => $hashtag, 'memiliki' =>$memiliki]);
-  	}
-
-    public function lihatReview($isin)
-    {
-        $review= DB::select("select * from kategori, foto, review, users, brand where review.kategori_id=kategori.id and foto.review_id=review.id and review.brand_id=brand.id and review.id='$isin' and review.users_id=users.id");
-        // dd($review);
-
-        $hashtag=Hashtag::all();
-        $memiliki= DB::select("select * from memiliki, hashtag where memiliki.review_id='$isin' and memiliki.hashtag_id=hashtag.id order by memiliki.id");
-        $brand=Brand::all();
-        $user=User::all();
-        $kategori=Kategori::all();
-        $foto=Foto::all();
-
-        return view('review.single',['hashtag' => $hashtag, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori]);    
+      $memiliki->save();
     }
-
-    public function brand($isinya)
-    {
-        $brand=Brand::where('nama_brand','=',$isinya)->get();
-        $kategori=Kategori::all();
-        $memiliki=Memiliki::all();
-        $review=Review::all();
-
-
-        $isi = DB::select("select * from kategori, foto, review, users, memiliki, hashtag, brand where review.kategori_id=kategori.id and foto.review_id=review.id and review.brand_id=brand.id and brand.nama_brand='$isinya' and review.users_id=users.id and memiliki.review_id=review.id and memiliki.hashtag_id=hashtag.id order by hashtag.updated_at, hashtag.id, foto.id");
-        // dd($isi);
-        $user=User::all();
-        $foto=Foto::all();
-        $hashtag = DB::table('hashtag')
-                        ->orderBy('updated_at', 'desc')
-                        ->get();
-        // $tag = DB::select("select * from")
-        // dd($tag);
-
-        return view('review.isiReviewBrand',['hashtag' => $hashtag, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori, 'isi' =>$isi]);
-        // return view('review.isiReview',['hashtag' => $hashtag, 'memiliki' =>$memiliki]);
-    }
-
-    public function makeupEh($isinya)
-    {
-        $kategori=Kategori::where('nama_kategori','=',$isinya)->get();
-        $memiliki=Memiliki::all();
-        $review=Review::all();
-
-
-        $isi = DB::select("select * from kategori, foto, review, users, memiliki, hashtag, brand where review.kategori_id=kategori.id and foto.review_id=review.id and review.brand_id=brand.id and kategori.nama_kategori='$isinya' and review.users_id=users.id and memiliki.review_id=review.id and memiliki.hashtag_id=hashtag.id order by hashtag.updated_at, hashtag.id, foto.id");
-        // dd($isi);
-        $brand=Brand::all();
-        $user=User::all();
-        $foto=Foto::all();
-        $hashtag = DB::table('hashtag')
-                        ->orderBy('updated_at', 'desc')
-                        ->get();
-        // $tag = DB::select("select * from")
-        // dd($tag);
-
-        return view('review.isiReview',['hashtag' => $hashtag, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori, 'isi' =>$isi]);
-        // return view('review.isiReview',['hashtag' => $hashtag, 'memiliki' =>$memiliki]);
-    }
-    return redirect()->route('isiReview.eh', ['isin' => $idbesar]);
+    return redirect('people/'.$request->idid);  
   }
-
-
-    public function newreview(){
-      $this->data['kategori'] = DB::table('kategori')->get();
-      $this->data['brand'] = DB::table('brand')->get();
-      //dd($this->data['kategori']);
-      return view('newreview', $this->data);
-    } 
-
-    public function single(){
-      return view('single');
-    } 
-
-    public function savenewreview(Request $request){
-      $review = new Review; // bikin variabel baru utk review yg disave
-
-      $review->users_id = 1; //db->form
-      $review->judul = $request->judul; //db->form
-      $review->isi = $request->isi; //db->form
-      $review->toko = $request->tempat_belanja; //db->form
-      $review->kategori_id = $request->kategori; //db->form
-      $review->brand_id = $request->brand; //db->form
-      $review->harga = $request->harga; //db->form
-      $review->rating = $request->rating; //db->form
-      $review->save();
-      //dd($review);
-      
-      $review_id = DB::table('review')->orderby('id', 'desc')->first();
-      $datahashtag = $request->hashtag;
-      $arrayhashtag = explode(" ", $datahashtag);
-      foreach($arrayhashtag as $data) {
-        $hashtagfix = "#".$data;
-        $cek = DB::select('SELECT * FROM hashtag WHERE nama_hashtag = "'.$hashtagfix.'"');
-        if(isset($cek)){
-          $hashtag = new Hashtag;
-          $hashtag->nama_hashtag = $hashtagfix;
-          $hashtag->save();
-        }
-        $memiliki = new Memiliki;
-        $memiliki->review_id = $review_id->id;
-        $hashtag_id = DB::select('SELECT id FROM hashtag WHERE nama_hashtag = "'.$hashtagfix.'"')[0];
-        $memiliki->hashtag_id = $hashtag_id->id;
-
-        $memiliki->save();
-      }
-      return redirect('single');  
-    }
-
 
 //utk edit review
     public function editreview($id)
@@ -335,8 +205,7 @@ class ReviewController extends Controller
         $this->data['hashtag'] = $hashtag;
 
         return view('editreview', $this->data);
-    }
-    
+   }
     public function updatereview(Request $request, $id)
     {
         $review = Review::find($id);
@@ -351,13 +220,9 @@ class ReviewController extends Controller
         $review->save();
         return redirect('listreview');
     }
-    
-    public function listreview(){
-      return view('listreview');
-    } 
-    
+  public function listreview(){
+    return view('listreview');
+  } 
+
+
 }
-
-
-
-

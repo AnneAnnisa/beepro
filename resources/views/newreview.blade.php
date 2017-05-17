@@ -37,6 +37,9 @@
 					<div class="agile_login_form">
 						<form action="" method="post" class="agileits_w3layouts_form">
 							<center>
+								<?php if(session('user') != NULL){ ?>
+								<input type="hidden" name="idid" placeholder="Judul" value="<?php echo session ('user')["id"]; ?>">
+								<?php } ?>
 								<input type="text" name="judul" placeholder="Judul" required="">
 								<textarea type="message" name="isi" placeholder="What I think about the product..." required=""></textarea> 
 								<input type="text" name="tempat_belanja" placeholder="Tempat Belanja" required="">

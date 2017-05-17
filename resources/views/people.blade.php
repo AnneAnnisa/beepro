@@ -20,7 +20,7 @@
 				<h2 style="text-align:center;">{{$iss->nama}}</h2> 
 			</div>
 			<div class="col-md-12 ">
-				<div class="col-lg-8 col-lg-offset-2">
+				<div class="col-lg-8 col-lg-offset-2" style="padding:0 15em">
 					<img id="example" src="{{url('/images')}}{{$iss->path_foto}}" alt=" " class="img-responsive" align="middle">
 				</div>
 			</div>

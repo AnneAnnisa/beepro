@@ -26,7 +26,7 @@
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 		<!-- //custom-theme -->
-		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="{{url('css/style1.css')}}" rel="stylesheet" type="text/css" media="all" />
 		<!-- js -->
 		<link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
 	</head>
@@ -42,8 +42,8 @@
 
 						<input type="text" name="nama" value="{{$user->nama}}"><br>
 						<input type="text" name="email"  value="{{$user->email}}" placeholder="email" required=""><br>
-						<textarea type="text" name="aboutme" placeholder="I am..." required=""></textarea> <br>
-						<input type="text" name="foto" placeholder="foto belum" required=""><br>
+						<textarea type="message" name="aboutme" placeholder="I am..." value="" required="">{{$user->aboutme}}</textarea> <br>
+						<!-- <input type="text" name="foto" placeholder="foto belum" required=""><br> -->
 
 						</div>
 						<input type="submit" value="submit" name="submit">

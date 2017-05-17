@@ -111,17 +111,17 @@
 
 									<li class="dropdown">
 									<?php if(session('user') != NULL){ ?>
-															<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user" style="color:white"></span> <?php echo session ('user')["nama"]; ?>  </a>  
-															
-															<ul class="dropdown-menu multi-column columns-3">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user" style="color:white"></span> <?php echo session ('user')["nama"]; ?>  </a>  
+									
+									<ul class="dropdown-menu multi-column columns-3">
 											<div class="row">
 												<div class="multi-gd-img">
 													<ul class="multi-column-dropdown">
 														<!-- <h6>All Skin Care</h6> -->
 														<!-- <li><a href="{{ route('makeup.eh', ['isinya' => 'Cleanser' ]) }}">Edit profile</a></li> -->
-
+														<li><a href="{{ route('people.eh', ['isin' => session('user')['id'] ]) }}">myProfile</a></li>
 														<!-- <li><a href="{{ route('makeup.eh', ['isinya' => 'Cleanser' ]) }}">Edit profile</a></li> -->
-														<li> <a href="{{url('/editprofile/'.session('user')['id'])}}">edit profile</a> </li>
+														<li> <a href="{{url('/editprofile/'.session('user')['id'])}}">editProfile</a> </li>
 														<!-- <li> <a href="{{url('/editprofile')}}">how it works</a> </li> -->
 														<li> <a href="{{url('/logout')}}">Log out</a></li>
 														<!-- <li><a href="{{ route('makeup.eh', ['isinya' => 'Lip Care' ]) }}">Lip Care</a></li> -->
