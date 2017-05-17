@@ -38,21 +38,30 @@ public function editprofile($id)
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateprofile(Request $request, $id)
     {
         $user = User::find($id);
         $user->nama = $request->input('nama');
+<<<<<<< HEAD
          $user->email = $request->input('email');
         // $user->password = $request->input('password');
         // //$user->telepon = $request->input('telepon');
         // $user->path_foto = $request->input('path_foto');
         $user->aboutme = $request->input('about_me');
+=======
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        //$user->telepon = $request->input('telepon');
+        $user->path_foto = $request->input('path_foto');
+        $user->aboutme = $request->input('aboutme');
+>>>>>>> 5ce3bfb10e02c51b64d7964ee84bb1a1e73f5a71
       
         //$user->password = $request->input('password');
         $user->save();
 
         return redirect('home');
     }
+
 
 // ----------------------------------
 //     public function editprofile()
