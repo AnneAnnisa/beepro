@@ -10,7 +10,7 @@
 @endsection
 
 @section('item')
-<div class="col-md-12">
+<div class="col-md-10">
 	<!--atas-->
 
 	@foreach($hashtag as $index => $cont)
@@ -28,7 +28,7 @@
 								<div class="snipcart-thumb">
 									@foreach($rev->review->foto as $kk => $revf)
 									@if($kk == 0)
-										<a href="{{url('single')}}"><img title=" " alt=" " class="" src="{{url('images')}}{{$revf->path}}" width="280" height="280" style=""/></a>		
+										<a href="{{ route('isiReview.eh', ['isin' => $rev->review->id ]) }}"><img title=" " alt=" " class="" src="{{url('images')}}{{$revf->path}}" width="280" height="280" style=""/></a>		
 									@endif
 									@endforeach
 									<h3 style="margin-bottom:0">{{$rev->review->judul}}</h3>
@@ -63,5 +63,4 @@
 		<!--kiri-->
 
 </div>
-
 @endsection
