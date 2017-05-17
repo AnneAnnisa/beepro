@@ -52,7 +52,9 @@ Route::get('brand/{isinya}',['uses' => 'ReviewController@brand', 'as' => 'brand.
 
 Route::post('review/{isin}', 'ReviewController@lihatReview');
 Route::get('review/{isin}',['uses' => 'ReviewController@lihatReview', 'as' => 'isiReview.eh']);
+
 // Route::get('review', function () {return view('single');});
+Route::get('single', function () {return view('single');});
 
 //Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('loginx', 'loginController@authenticate');

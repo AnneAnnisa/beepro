@@ -133,12 +133,15 @@ class ReviewController extends Controller
 //utk edit review
     public function editreview($id)
     {
+     // dd($id);
         $this->data['review'] = Review::find($id);
         $this->data['kategori'] = DB::table('kategori')->get();
         $this->data['brand'] = DB::table('brand')->get();
         $hashhashtag = DB::select('SELECT h.* FROM memiliki m, hashtag h, review r 
                                  WHERE m.hashtag_id = h.id 
                                  AND m.review_id = r.id AND r.id = '.$id);
+        $rating = DB::select('SELECT rating FROM review WHERE id = "'.$id.'"');
+        //dd($rating);
         //$this->data['hashtag'] = array();
         $arrayhashtag = array();
         $x = 0;
@@ -159,7 +162,7 @@ class ReviewController extends Controller
         $review = Review::find($id);
         $review->judul = $request->get('judul');
         $review->isi = $request->get('isi');
-        $review->toko = $request->get('toko');
+        $review->toko = $request->get('tempat_belanja');
         $review->kategori_id = $request->get('kategori');
         $review->brand_id = $request->get('brand');
         $review->harga = $request->get('harga');
