@@ -54,9 +54,13 @@ Route::get('makeup/{isinya}',['uses' => 'ReviewController@makeupEh', 'as' => 'ma
 Route::post('login', 'loginController@authenticate');
 Route::post('register', 'userController@register');
 
+
 Route::get('autocomplete', 'userController@autocomplete');
 Route::get('search/{term}', 'userController@search');
 
 // BACKEND PINA HEHEHEHE
 Route::get('newreview', 'ReviewController@newreview');
 Route::post('newreview', 'ReviewController@savenewreview');
+
+Route::get('editprofile/{id}', 'userController@editprofile');
+Route::post('editprofile', 'userController@updateprofile');

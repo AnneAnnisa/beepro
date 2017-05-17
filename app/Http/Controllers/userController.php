@@ -40,4 +40,51 @@ class userController extends Controller
         return $result;
         
     }
+
+
+public function editprofile($id)
+    {
+        $data['user'] = User::find($id);
+        return view('editprofile', $data);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->nama = $request->input('nama');
+        $user->email = $request->input('tanggallahir');
+        $user->password = $request->input('alamat');
+        //$user->telepon = $request->input('telepon');
+        $user->path_foto = $request->input('hp');
+        $user->aboutme = $request->input('tempatlahir');
+      
+        //$user->password = $request->input('password');
+        $user->save();
+
+        return redirect('users');
+    }
+
+// ----------------------------------
+//     public function editprofile()
+//    {
+//     return view('editprofile');
+//    }
+
+//   public function savenewreview(Request $req)
+//    {
+//      $user = new User;
+//         $user->nama = $req->input('nama');
+//         $user->email = $req->input('email');
+//         $user->password = bcrypt($req->input('password'));
+
+//         $user->save();
+//    }
+//  ---------------------------------  
 }
