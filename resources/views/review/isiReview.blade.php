@@ -22,15 +22,15 @@
 
 	<!-- <div class="col-md-12"><br></div> -->
 	@foreach($hashtag as $yy => $hash)
+		<div class="col-md-12"  style="">
 	<?php $tempId=-1; $tempAtas=-1 ?>
 	@foreach($isi as $a)
 		@if($a->nama_hashtag == $hash->nama_hashtag && $tempAtas==-1)
-		<div class="col-md-12"  style="margin:10px">
 			<p style="text-align: left; padding-bottom:1%; font-size:200%"><b>{{$hash->nama_hashtag}}<b></p>
 		<?php $tempAtas=0 ?>
 		@endif
 	@endforeach
-		<!-- INI ISINYA -->
+
 		@foreach($isi as $ii)
 		@if($ii->nama_hashtag == $hash->nama_hashtag && $ii->review_id!=$tempId)
 		<?php $tempId=$ii->review_id ?>		
@@ -41,8 +41,8 @@
 						<figure>
 							<div class="snipcart-item block" >
 								<div class="snipcart-thumb">
-									<a href="{{url('single')}}"><img title=" " alt=" " src="{{url('images')}}{{$ii->path}}" width="300" height="200" style="" name="review" value="$rev->review->id"/></a>
-									<h3 style="margin-bottom:16px">{{$ii->judul}}</h3>
+									<a href="{{url('single')}}"><img title=" " alt=" " src="{{url('images')}}{{$ii->path}}" width="300" height="250" style="" name="review" value="$rev->review->id"/></a>
+									<h3 style="margin-bottom:16px"><b>{{$ii->judul}}</b></h3>
 									<h4 style="text-align:left;">
 										<div class="col-md-3" style="padding:0"><p><img src="{{url('images')}}{{$ii->path_foto}}"  class="img-circle" alt="Cinque Terre" height="50px" width="50px"></p></div>
 										<div class="col-md-9"><p style="text-align:left; font-size:100%"> {{str_limit($ii->nama,11)}}</p></div>
@@ -63,6 +63,7 @@
 			</div>
 		</div>
 		@endif
+		<?php $tempId=0 ?>
 		@endforeach
 		@if($tempId==-1 && $tempAtas==-1 && $yy==0)
 		<div class="col-md-2"></div>
@@ -71,10 +72,11 @@
 		</div>
 		<div class="col-md-2"></div>
 		@endif
-		<!-- AKHIR ISI -->
-	</div>
+
+		</div>
 	@endforeach
-		<!--kiri-->
+
+
 
 </div>
 
