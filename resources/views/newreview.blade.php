@@ -36,7 +36,7 @@
 				<div class="w3_agile_signup_form agileits">
 					<h1 class="w3_agileits w3ls">New Review</h1>
 					<div class="agile_login_form">
-						<form action={{url('single')}}"" method="post" class="agileits_w3layouts_form">
+						<form action="" method="post" class="agileits_w3layouts_form">
 							<center>
 								<input type="text" name="judul" placeholder="Judul" required="">
 								<textarea type="message" name="isi" placeholder="What I think about the product..." required=""></textarea> 

@@ -54,7 +54,8 @@ Route::post('review/{isin}', 'ReviewController@lihatReview');
 Route::get('review/{isin}',['uses' => 'ReviewController@lihatReview', 'as' => 'isiReview.eh']);
 
 // Route::get('review', function () {return view('single');});
-Route::get('single', function () {return view('single');});
+//Route::get('single', function () {return view('single');});
+Route::get('single', 'ReviewController@single');
 
 //Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('loginx', 'loginController@authenticate');
@@ -71,6 +72,7 @@ Route::post('newreview', 'ReviewController@savenewreview');
 
 Route::get('editreview/{id}', 'ReviewController@editreview');
 Route::post('editreview/{id}', 'ReviewController@updatereview');
+Route::get('listreview', 'ReviewController@listreview');
 
 ///halaman profile
 Route::get('editprofile/{id}', 'userController@editprofile');

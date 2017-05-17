@@ -93,8 +93,11 @@ class ReviewController extends Controller
     $this->data['brand'] = DB::table('brand')->get();
     //dd($this->data['kategori']);
     return view('newreview', $this->data);
-
   }
+
+  public function single(){
+    return view('single');
+  } 
 
   public function savenewreview(Request $request){
     $review = new Review; // bikin variabel baru utk review yg disave
@@ -107,6 +110,7 @@ class ReviewController extends Controller
     $review->brand_id = $request->brand; //db->form
     $review->harga = $request->harga; //db->form
     $review->rating = $request->rating; //db->form
+    //dd($review);
     $review->save();
 
     $review_id = DB::table('review')->orderby('id', 'desc')->first();
@@ -171,5 +175,9 @@ class ReviewController extends Controller
         $review->save();
         return redirect('listreview');
     }
+  public function listreview(){
+    return view('listreview');
+  } 
+
 
 }
