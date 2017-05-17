@@ -1,9 +1,12 @@
-
+@extends('review.masterReview')
+@section('kat')
+	<h1>Search result for {{$query}}</h1>
+@endsection
 
 @section('item')
 <div class="col-md-12">
 	<!--atas-->
-<!-- 
+ 
 	@foreach($item as $index => $cont)
 	<div class="agile-tp"><h1 style="text-align: left; font-size:180%">{{$cont->nama_hashtag}}</h1></div>
 	
@@ -51,7 +54,7 @@
 		@endforeach
 	</div>
 	@endforeach
-		<!--kiri-->
+		<!--kiri
  -->
 </div>
 

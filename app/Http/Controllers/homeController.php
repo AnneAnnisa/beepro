@@ -52,32 +52,27 @@ class homeController extends Controller
     public function search(Request $request) 
     {
         $query = $request->get('search');
-        $item = Hashtag::where('nama_hashtag','LIKE','%'.$query.'%')->pluck('id')->toArray();
+        $item = Hashtag::where('nama_hashtag','LIKE','%'.$query.'%')->get();
+        $review = Review::whereHas('memiliki', function ($result) use ($query){
+            $result->join('review', 'review.id', '=', 'memiliki.review_id');    })    ->with(['memiliki' => function($result2) use ($query){
+        $result2->join('hashtag', 'hashtag.id', '=', 'memiliki.hashtag_id')->where('hashtag.nama_hashtag', 'like', '%'.$query.'%');
+    }])->get();
 
-        // foreach ($item as $key) {
-        //   # code...
-        //   $hashtag[$i] = $key->id;
-        //   $i++;
-        // }
+        $foto=DB::table('foto')
+        ->join('review', function ($join) {
+       $join->on('review.id', '=', 'foto.review_id');
+        })->get();
 
-        // $hash= Memiliki::join('memiliki','memiliki.hashtag_id','=',$item->id);
+        $brand=Brand::all();
+        $user=User::all();
 
-        // $i=0;
-        // foreach ($result as $key) {
-        //   $review = Review::get($key);
-        //   $review_id[$i] = Review::where('id_review','=','')->get();
-        //   $i++;
-        // }
-       
-        // return view('searchresult',[
-        //     'result' => $result,
-        // ]); 
-
-        // $result = DB::table('memiliki')->whereHas(function($result) use($query, $item) {
-        //     $result->join('hashtag', 'hashtag.id', '=', 'memiliki.hashtag_id')
-        //                 ->join('review', 'review.id', '=', 'memiliki.review_id')
-        //                 ->where('hashtag.id', '=', $item->id);
-        // })->get();
-
+        return view('searchresult',[
+            'review' => $review,
+            'query' => $query,
+            'item' => $item,
+            'user' => $user,
+            'foto' => $foto,
+            'brand' => $brand,
+        ]); 
     }
 }
