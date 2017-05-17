@@ -1,28 +1,33 @@
 <?php
 
 namespace App\Http\Controllers;
-
+  
 use Illuminate\Http\Request;
-
-class HomeController extends Controller
+use App\Hashtag;
+use App\Review;
+use App\Memiliki;
+use App\Brand;
+use App\User;
+use App\Foto;
+use App\Kategori;
+use DB;
+  
+class homeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function index1(Request $request)
     {
-        $this->middleware('auth');
-    }
+        $hash=Hashtag::all()->sortByDesc('updated_at');
+        $review=Review::all();
+        $memiliki=Memiliki::all();
+        $brand=Brand::all();
+        $user=User::all();
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('home');
+        $foto=DB::table('foto')
+               ->join('review', function ($join) {
+                   $join->on('review.id', '=', 'foto.review_id');
+               })
+               ->get();
+
+        return view('index',['hash' => $hash, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto]);
     }
 }
