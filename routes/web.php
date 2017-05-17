@@ -52,11 +52,15 @@ Route::get('brand/{isinya}',['uses' => 'ReviewController@brand', 'as' => 'brand.
 
 Route::post('review/{isin}', 'ReviewController@lihatReview');
 Route::get('review/{isin}',['uses' => 'ReviewController@lihatReview', 'as' => 'isiReview.eh']);
+
 // Route::get('review', function () {return view('single');});
+//Route::get('single', function () {return view('single');});
+Route::get('single', 'ReviewController@single');
 
 //Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('loginx', 'loginController@authenticate');
 Route::post('registerx', 'userController@register');
+Route::get('logout', 'loginController@logout');
 
 Route::get('autocomplete', 'homeController@autocomplete');
 Route::post('search', 'homeController@search');
@@ -68,12 +72,12 @@ Route::post('newreview', 'ReviewController@savenewreview');
 
 Route::get('editreview/{id}', 'ReviewController@editreview');
 Route::post('editreview/{id}', 'ReviewController@updatereview');
+Route::get('listreview', 'ReviewController@listreview');
 
 ///halaman profile
 Route::get('editprofile/{id}', 'userController@editprofile');
 Route::post('editprofile/{id}', 'userController@update');
 
-Route::post('editprofile', 'userController@updateprofile');
 
 Auth::routes();
 

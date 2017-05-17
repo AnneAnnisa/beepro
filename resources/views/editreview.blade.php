@@ -6,18 +6,17 @@
 	<div class="container">
 		<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
 			<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-			<li class="active">Make Up</li>
-			<li class="active">Face</li>
+			<li class="active">Profile</li>
+			<li class="active">Edit Review</li>
 		</ol>
 	</div>
 </div>
 <!-- //breadcrumbs -->
 
-
 <!-- REVIEW -->
 <html>
 <head>
-	<title>New Review</title>
+	<title>Edit Review</title>
 	<!-- custom-theme -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -38,9 +37,10 @@
 					<div class="agile_login_form">
 						<form action="" method="post" class="agileits_w3layouts_form">
 							<center>
-								<input type="text" name="judul" placeholder="Judul" required="">
-								<textarea type="message" name="isi" placeholder="What I think about the product..." required=""></textarea> 
-								<input type="text" name="tempat_belanja" placeholder="Tempat Belanja" required="">
+
+								<input type="text" name="judul" required="" value="{{$review->judul}}">
+								<textarea type="message" name="isi" required="" >{{$review->isi}}</textarea > 
+								<input type="text" name="tempat_belanja"  required="" value="{{$review->toko}}">
 								
 								<center>
 									<div class="col-md-12">
@@ -68,18 +68,18 @@
 								</center>
 								
 
-								<input type="number" name="harga" placeholder="Harga" required="" value="{{$review->}}">
-								<input type="text" name="hashtag" placeholder="Hashtag" required="">
-								<input type="file" name="foto" placeholder="Upload Foto">
+								<input type="number" name="harga" placeholder="Harga" required="" value="{{$review->harga}}">
+								<input type="text" name="hashtag" placeholder="Hashtag" required="" value="{{$hashtag}}">
+								<input type="file" name="foto" placeholder="Upload Foto" >
 								<input type="hidden" name="_token" value="{{csrf_token()}}">
 								
-								<div>
+								<div >
 									<label>Rating</label>
-									<label class="radio-inline"><input type="radio" name="rating" value="1">1</label>
-									<label class="radio-inline"><input type="radio" name="rating" value="2">2</label>
-									<label class="radio-inline"><input type="radio" name="rating" value="3">3</label>
-									<label class="radio-inline"><input type="radio" name="rating" value="4">4</label>
-									<label class="radio-inline"><input type="radio" name="rating" value="5">5</label>
+									<label class="radio-inline"><input type="radio" name="rating" value="1" {{$review->rating == 1 ? "checked" : ""}}>1</label>
+									<label class="radio-inline"><input type="radio" name="rating" value="2" {{$review->rating == 2 ? "checked" : ""}}>2</label>
+									<label class="radio-inline"><input type="radio" name="rating" value="3" {{$review->rating == 3 ? "checked" : ""}}>3</label>
+									<label class="radio-inline"><input type="radio" name="rating" value="4" {{$review->rating == 4 ? "checked" : ""}}>4</label>
+									<label class="radio-inline"><input type="radio" name="rating" value="5" {{$review->rating == 5 ? "checked" : ""}}>5</label>
 								</div>
 								<input type="submit" value="submit" name="submit">
 							</center>

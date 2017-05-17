@@ -31,12 +31,14 @@ class loginController extends Controller
         {
         	if(Hash::check($req->password, $user->password))
         	{
-        		        	echo "masuk";
-        		$datauser = array('email' => $user['email'], 'nama' => $user['nama']);
+        		        	//echo "masuk";
+        		$datauser = array('email' => $user['email'], 'nama' => $user['nama'], 'id' => $user['id'] );
+                // $ID = 'id'=> $user['id'];
         		// echo $user['email'];
-        		// dd($datauser);
+        		//dd($datauser);
         		//$req->session()->put('user',$datauser);
         		session(['user' => $datauser]);
+                //session(['id' => $ID]);
         		//dd($datauser);
         		//dd(session('user')["email"]);
         		return redirect('/home');
@@ -51,5 +53,11 @@ class loginController extends Controller
         }
 
     }
+
+    public function logout(Request $req){
+        Auth::logout();
+        Session::flush();
+        return Redirect('/home');
+    } 
 }
 

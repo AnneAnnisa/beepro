@@ -21,7 +21,7 @@ class homeController extends Controller
         $memiliki=Memiliki::all();
         $brand=Brand::all();
         $user=User::all();
-        //dd(session('user'));
+        // dd(session('user')['id']);
         $foto=DB::table('foto')
                ->join('review', function ($join) {
                    $join->on('review.id', '=', 'foto.review_id');

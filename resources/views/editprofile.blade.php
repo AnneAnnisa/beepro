@@ -35,14 +35,15 @@
 			<div class="w3layouts_main agileinfo w3">		
 				<div class="w3_agile_signup_form agileits">
 					<h1 class="w3_agileits w3ls">Edit Profile</h1>
-					<div class="agile_login_form">
-						<form action="{{url('editprofile/'.$user->id)}}" method="POST">
+					<div class="agile_login_form"><br><br><br><br><br>
+						<form action="{{url('editprofile/'.$user->id)}}" method="POST" >
 						{{csrf_field()}}
 						<div>
-						<input type="text" name="nama" value="{{$user->nama}}">
-						<input type="text" name="email"  value="{{$user->email}}" placeholder="email" required="">
-						<textarea type="text" name="aboutme" placeholder="I am..." required=""></textarea> 
-						<input type="text" name="foto" placeholder="foto belum" required="">
+
+						<input type="text" name="nama" value="{{$user->nama}}"><br>
+						<input type="text" name="email"  value="{{$user->email}}" placeholder="email" required=""><br>
+						<textarea type="text" name="aboutme" placeholder="I am..." required=""></textarea> <br>
+						<input type="text" name="foto" placeholder="foto belum" required=""><br>
 
 						</div>
 						<input type="submit" value="submit" name="submit">
