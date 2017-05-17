@@ -48,10 +48,12 @@ Route::get('review', function () {return back();});
 Route::post('makeup/{isinya}', 'ReviewController@makeupEh');
 Route::get('makeup/{isinya}',['uses' => 'ReviewController@makeupEh', 'as' => 'makeup.eh']);
 
+Route::post('brand/{isinya}', 'ReviewController@brand');
+Route::get('brand/{isinya}',['uses' => 'ReviewController@brand', 'as' => 'brand.eh']);
 
 
 //Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('login', 'loginController@authenticate');
+Route::post('loginx', 'loginController@authenticate');
 Route::post('registerx', 'userController@register');
 
 Route::get('autocomplete', 'homeController@autocomplete');
@@ -61,13 +63,20 @@ Route::post('search', 'homeController@search');
 Route::get('newreview', 'ReviewController@newreview');
 Route::post('newreview', 'ReviewController@savenewreview');
 
+<<<<<<< HEAD
 Route::get('editreview/{id}', 'ReviewController@editreview');
 Route::post('editreview/{id}', 'ReviewController@updatereview');
 
 ///halaman profile
+=======
+>>>>>>> a50fe5815602680d32cf92bb33db7f2d9aad4ac9
 Route::get('editprofile/{id}', 'userController@editprofile');
+Route::post('editprofile/{id}', 'userController@update');
+
+Auth::routes();
 Route::post('editprofile', 'userController@updateprofile');
 
+<<<<<<< HEAD
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
@@ -75,3 +84,12 @@ Auth::routes();
 
 
 
+=======
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
+>>>>>>> a50fe5815602680d32cf92bb33db7f2d9aad4ac9

@@ -37,34 +37,25 @@ class ReviewController extends Controller
 	    // return view('review.isiReview',['hashtag' => $hashtag, 'memiliki' =>$memiliki]);
 	}
 
-  public function makeup(Request $request)
+  public function brand($isinya)
   {
-      $kategori=Kategori::where('nama_kategori','=',$request->kategori)->get();
-      $hashtag=Hashtag::all();
+      $brand=Brand::where('nama_brand','=',$isinya)->get();
+      $kategori=Kategori::all();
       $memiliki=Memiliki::all();
       $review=Review::all();
-      // $foto=Foto::where('review_id','=', $review->id);
-      // $user=User::where('id','=', $review->user_id);
-      // $product=Product::where('id','=', $review->product_id);
-      // $brand=Brand::where('id','=',$product->brand_id);
-      // $kategori=Kategori::where('id','=',$product->kategori_id);
-      // $review=Review::all();
-      // $hash=Hashtag::all();
-      // $memiliki=Memiliki::all();
-      $brand=Brand::all();
+
+
+      $isi = DB::select("select * from kategori, foto, review, users, memiliki, hashtag, brand where review.kategori_id=kategori.id and foto.review_id=review.id and review.brand_id=brand.id and brand.nama_brand='$isinya' and review.users_id=users.id and memiliki.review_id=review.id and memiliki.hashtag_id=hashtag.id order by hashtag.updated_at, hashtag.id, foto.id");
+      // dd($isi);
       $user=User::all();
       $foto=Foto::all();
+      $hashtag = DB::table('hashtag')
+                      ->orderBy('updated_at', 'desc')
+                      ->get();
+      // $tag = DB::select("select * from")
+      // dd($tag);
 
-      $isi = DB::table('review')
-            ->join('memiliki', 'review.id', '=', 'memiliki.review_id')
-            ->join('foto', 'review.id', '=', 'foto.review_id')
-            ->join('users', 'users.id', '=', 'review.users_id')
-            ->join('brand', 'brand.id', '=', 'review.brand_id')
-            ->join('kategori', 'kategori.id', '=', 'review.kategori_id')
-            ->select('review.*', 'memiliki.*', 'foto.*', 'users.*', 'product.*')
-            ->get();
-
-      return view('review.isiReview',['hashtag' => $hashtag, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori, 'isi' =>$isi]);
+      return view('review.isiReviewBrand',['hashtag' => $hashtag, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori, 'isi' =>$isi]);
       // return view('review.isiReview',['hashtag' => $hashtag, 'memiliki' =>$memiliki]);
   }
 
@@ -73,21 +64,7 @@ class ReviewController extends Controller
       $kategori=Kategori::where('nama_kategori','=',$isinya)->get();
       $memiliki=Memiliki::all();
       $review=Review::all();
-      // $foto=Foto::where('review_id','=', $review->id);
-      // $user=User::where('id','=', $review->user_id);
-      // $product=Product::where('id','=', $review->product_id);
-      // $brand=Brand::where('id','=',$product->brand_id);
-      // $kategori=Kategori::where('id','=',$product->kategori_id);
-      // $review=Review::all();
-      // $hash=Hashtag::all();
-      // $memiliki=Memiliki::all();
 
-      // $isi = DB::table('review')
-      //       ->join('memiliki', 'review.id', '=', 'memiliki.review_id')
-      //       ->join('users', 'users.id', '=', 'review.users_id')
-      //       ->join('product', 'product.id', '=', 'review.product_id')
-      //       ->select('review.*', 'memiliki.*', 'users.*', 'product.*')
-      //       ->distinct()->get();
 
       $isi = DB::select("select * from kategori, foto, review, users, memiliki, hashtag, brand where review.kategori_id=kategori.id and foto.review_id=review.id and review.brand_id=brand.id and kategori.nama_kategori='$isinya' and review.users_id=users.id and memiliki.review_id=review.id and memiliki.hashtag_id=hashtag.id order by hashtag.updated_at, hashtag.id, foto.id");
       // dd($isi);

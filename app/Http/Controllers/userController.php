@@ -12,7 +12,6 @@ class userController extends Controller
     public function register(Request $req)
     {
     	// dd ($req->all(), "this is laptop");
-        //dd('masuk');
         $user = new User;
         $user->nama = $req->input('nama');
         $user->email = $req->input('email');
@@ -23,11 +22,18 @@ class userController extends Controller
         return redirect()->back();
     }
 
-
-public function editprofile($id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editprofile($id)
     {
-        $data['user'] = User::find($id);
-        return view('editprofile', $data);
+        $user = User::find($id);
+        return view('editprofile', compact('user'));
+
     }
 
     /**
@@ -41,32 +47,26 @@ public function editprofile($id)
     {
         $user = User::find($id);
         $user->nama = $request->input('nama');
-        $user->email = $request->input('tanggallahir');
-        $user->password = $request->input('alamat');
-        //$user->telepon = $request->input('telepon');
-        $user->path_foto = $request->input('hp');
-        $user->aboutme = $request->input('tempatlahir');
+         $user->email = $request->input('email');
+        // $user->password = $request->input('password');
+        // //$user->telepon = $request->input('telepon');
+        // $user->path_foto = $request->input('path_foto');
+        $user->aboutme = $request->input('about_me');
       
         //$user->password = $request->input('password');
         $user->save();
 
-        return redirect('users');
+        return redirect('home');
     }
 
-// ----------------------------------
-//     public function editprofile()
-//    {
-//     return view('editprofile');
-//    }
+  public function savenewreview(Request $req)
+   {
+     $user = new User;
+        $user->nama = $req->input('nama');
+        $user->email = $req->input('email');
+        $user->password = bcrypt($req->input('password'));
 
-//   public function savenewreview(Request $req)
-//    {
-//      $user = new User;
-//         $user->nama = $req->input('nama');
-//         $user->email = $req->input('email');
-//         $user->password = bcrypt($req->input('password'));
-
-//         $user->save();
-//    }
-//  ---------------------------------  
+        $user->save();
+   }
+   
 }
