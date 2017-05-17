@@ -54,9 +54,8 @@ Route::get('makeup/{isinya}',['uses' => 'ReviewController@makeupEh', 'as' => 'ma
 Route::post('login', 'loginController@authenticate');
 Route::post('registerx', 'userController@register');
 
-
-Route::get('autocomplete', 'userController@autocomplete');
-Route::get('search', 'userController@search');
+Route::get('autocomplete', 'homeController@autocomplete');
+Route::post('search', 'homeController@search');
 
 // BACKEND PINA HEHEHEHE
 Route::get('newreview', 'ReviewController@newreview');

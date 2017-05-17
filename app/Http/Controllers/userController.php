@@ -23,43 +23,6 @@ class userController extends Controller
         return redirect()->back();
     }
 
-    public function autocomplete(Request $request) 
-    {
-        $query = $request->get('term');
-        $item = Hashtag::where('nama_hashtag','LIKE','%'.$query.'%')->get();
-
-        if(count($item) == 0) {
-            $result[] =  'Not found';
-        }
-        else {
-            foreach($item as $key=>$value) {
-            $result[] = $value->nama_hashtag;
-            }
-        }
-
-        return $result;
-        
-    }
-
-    public function search(Request $request) 
-    {
-        $query = $request->get('term');
-        $item = Hashtag::where('nama_hashtag','LIKE','%'.$query.'%')->get();
-
-        if(count($item) == 0) {
-            $result[] =  'Not found';
-        }
-        else {
-            foreach($item as $key=>$value) {
-            $result[] = $value->nama_hashtag;
-
-            }
-        }
-
-        return $result;
-        
-    }
-
 
 public function editprofile($id)
     {
