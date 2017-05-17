@@ -23,48 +23,18 @@ class userController extends Controller
         return redirect()->back();
     }
 
-    public function autocomplete(Request $request) 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editprofile($id)
     {
-        $query = $request->get('term');
-        $item = Hashtag::where('nama_hashtag','LIKE','%'.$query.'%')->get();
+        $user = User::find($id);
+        return view('editprofile', compact('user'));
 
-        if(count($item) == 0) {
-            $result[] =  'Not found';
-        }
-        else {
-            foreach($item as $key=>$value) {
-            $result[] = $value->nama_hashtag;
-            }
-        }
-
-        return $result;
-        
-    }
-
-    public function search(Request $request) 
-    {
-        $query = $request->get('term');
-        $item = Hashtag::where('nama_hashtag','LIKE','%'.$query.'%')->get();
-
-        if(count($item) == 0) {
-            $result[] =  'Not found';
-        }
-        else {
-            foreach($item as $key=>$value) {
-            $result[] = $value->nama_hashtag;
-
-            }
-        }
-
-        return $result;
-        
-    }
-
-
-public function editprofile($id)
-    {
-        $data['user'] = User::find($id);
-        return view('editprofile', $data);
     }
 
     /**
@@ -78,32 +48,26 @@ public function editprofile($id)
     {
         $user = User::find($id);
         $user->nama = $request->input('nama');
-        $user->email = $request->input('tanggallahir');
-        $user->password = $request->input('alamat');
-        //$user->telepon = $request->input('telepon');
-        $user->path_foto = $request->input('hp');
-        $user->aboutme = $request->input('tempatlahir');
+         $user->email = $request->input('email');
+        // $user->password = $request->input('password');
+        // //$user->telepon = $request->input('telepon');
+        // $user->path_foto = $request->input('path_foto');
+        $user->aboutme = $request->input('about_me');
       
         //$user->password = $request->input('password');
         $user->save();
 
-        return redirect('users');
+        return redirect('home');
     }
 
-// ----------------------------------
-//     public function editprofile()
-//    {
-//     return view('editprofile');
-//    }
+  public function savenewreview(Request $req)
+   {
+     $user = new User;
+        $user->nama = $req->input('nama');
+        $user->email = $req->input('email');
+        $user->password = bcrypt($req->input('password'));
 
-//   public function savenewreview(Request $req)
-//    {
-//      $user = new User;
-//         $user->nama = $req->input('nama');
-//         $user->email = $req->input('email');
-//         $user->password = bcrypt($req->input('password'));
-
-//         $user->save();
-//    }
-//  ---------------------------------  
+        $user->save();
+   }
+   
 }

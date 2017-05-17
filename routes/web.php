@@ -56,16 +56,23 @@ Route::get('brand/{isinya}',['uses' => 'ReviewController@brand', 'as' => 'brand.
 Route::post('login', 'loginController@authenticate');
 Route::post('registerx', 'userController@register');
 
-
-Route::get('autocomplete', 'userController@autocomplete');
-Route::get('search', 'userController@search');
+Route::get('autocomplete', 'homeController@autocomplete');
+Route::post('search', 'homeController@search');
 
 // BACKEND PINA HEHEHEHE
 Route::get('newreview', 'ReviewController@newreview');
 Route::post('newreview', 'ReviewController@savenewreview');
 
 Route::get('editprofile/{id}', 'userController@editprofile');
+Route::post('editprofile/{id}', 'userController@update');
+
+Auth::routes();
 Route::post('editprofile', 'userController@updateprofile');
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
+
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');

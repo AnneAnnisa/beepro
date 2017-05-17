@@ -30,4 +30,50 @@ class homeController extends Controller
 
         return view('index',['hash' => $hash, 'review' =>$review, 'memiliki' =>$memiliki, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto]);
     }
+
+    public function autocomplete(Request $request) 
+    {
+        $query = $request->get('term');
+        $item = Hashtag::where('nama_hashtag','LIKE','%'.$query.'%')->get();
+
+        if(count($item) == 0) {
+            $result[] =  'Hashtag not found';
+        }
+        else {
+            foreach($item as $key=>$value) {
+            $result[] = $value->nama_hashtag;
+            }
+        }
+
+        return $result;
+        
+    }
+
+    public function search(Request $request) 
+    {
+        $query = $request->get('term');
+        $item = Hashtag::where('nama_hashtag','LIKE','%'.$query.'%')->get();
+
+        if(count($item) == 0) {
+            $result[] =  'Not found';
+        }
+        else {
+            foreach($item as $key=>$value) {
+            $result[] = $value->nama_hashtag;
+
+            }
+        }
+
+        $hashtag=Hashtag::where('nama_hashtag','LIKE','%'.$query.'%')->get();
+        $review=Review::where('judul','LIKE','%'.$query.'%')->get();
+
+        // $brand=Brand::all();
+        // $user=User::all();
+        // $kategori=Kategori::all();
+        // $foto=Foto::all();
+
+        // return view('review.isiReviewHash',['hashtag' => $hashtag, 'review' =>$review, 'brand' =>$brand, 'user' =>$user, 'foto' =>$foto, 'kategori'=>$kategori]);
+        // return $result;
+        dd($review);        
+    }
 }
