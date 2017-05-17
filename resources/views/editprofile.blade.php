@@ -36,8 +36,10 @@
 				<div class="w3_agile_signup_form agileits">
 					<h1 class="w3_agileits w3ls">Edit Profile</h1>
 					<div class="agile_login_form">
-						<form action="" method="post" class="agileits_w3layouts_form">
+						<form action="editprofile" method="post" class="agileits_w3layouts_form">
 							<center>
+							<input  type="hidden" name="nama" placeholder="nama" required="" value="{!! csrf_field() !!}">
+							 <!-- <input  type="text" name="nama" placeholder="nama" required="" "> -->
 								<input type="text" name="nama" placeholder="nama" required="">
 								<!-- //<textarea type="text" name="email" placeholder="email" required=""></textarea>  -->
 								<input type="text" name="email" placeholder="email" required="">

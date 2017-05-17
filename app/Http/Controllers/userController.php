@@ -74,21 +74,22 @@ public function editprofile($id)
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateprofile(Request $request, $id)
     {
         $user = User::find($id);
         $user->nama = $request->input('nama');
-        $user->email = $request->input('tanggallahir');
-        $user->password = $request->input('alamat');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
         //$user->telepon = $request->input('telepon');
-        $user->path_foto = $request->input('hp');
-        $user->aboutme = $request->input('tempatlahir');
+        $user->path_foto = $request->input('path_foto');
+        $user->aboutme = $request->input('aboutme');
       
         //$user->password = $request->input('password');
         $user->save();
 
         return redirect('users');
     }
+
 
 // ----------------------------------
 //     public function editprofile()
