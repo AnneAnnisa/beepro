@@ -62,15 +62,11 @@ Route::get('newreview', 'ReviewController@newreview');
 Route::post('newreview', 'ReviewController@savenewreview');
 
 Route::get('editprofile/{id}', 'userController@editprofile');
-<<<<<<< HEAD
 Route::post('editprofile/{id}', 'userController@update');
 
 Auth::routes();
-=======
 Route::post('editprofile', 'userController@updateprofile');
 
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
-
->>>>>>> 5ce3bfb10e02c51b64d7964ee84bb1a1e73f5a71
