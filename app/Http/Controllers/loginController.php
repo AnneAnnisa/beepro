@@ -31,11 +31,11 @@ class loginController extends Controller
         {
         	if(Hash::check($req->password, $user->password))
         	{
-        		        	echo "masuk";
+        		        	//echo "masuk";
         		$datauser = array('email' => $user['email'], 'nama' => $user['nama'], 'id' => $user['id'] );
                 // $ID = 'id'=> $user['id'];
         		// echo $user['email'];
-        		dd($datauser);
+        		//dd($datauser);
         		//$req->session()->put('user',$datauser);
         		session(['user' => $datauser]);
                 //session(['id' => $ID]);

@@ -98,13 +98,9 @@
 									</li>
 									<li><a href="{{url('about-us')}}">About Us</a></li>
 									<li><a href="{{url('contact-us')}}">Contact Us</a></li>
-<<<<<<< HEAD
-=======
-									@if(Auth::check())
-									<li><a href="{{url('contact-us')}}">SELESAI_LOGIN</a></li>
-									@endif
+
 									
->>>>>>> 6aae97f1526c40f445d83414f320c8e9672c0e62
+
 
 
 									<li class="dropdown">

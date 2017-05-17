@@ -74,12 +74,6 @@ Route::post('editreview/{id}', 'ReviewController@updatereview');
 Route::get('editprofile/{id}', 'userController@editprofile');
 Route::post('editprofile/{id}', 'userController@update');
 
-<<<<<<< HEAD
-Auth::routes();
-// Route::post('editprofile', 'userController@updateprofile');
-=======
-Route::post('editprofile', 'userController@updateprofile');
->>>>>>> 6aae97f1526c40f445d83414f320c8e9672c0e62
 
 Auth::routes();
 
