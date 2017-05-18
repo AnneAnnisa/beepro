@@ -119,7 +119,7 @@
 			</div>
 			<!-- //footer -->	
 			<!-- Bootstrap Core JavaScript -->
-			<script src="js/bootstrap.min.js"></script>
+			<script src="{{url('')}}/js/bootstrap.min.js"></script>
 
 			<!-- top-header and slider -->
 			<!-- here stars scrolling icon -->

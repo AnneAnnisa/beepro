@@ -33,7 +33,7 @@
 		<div class="main">	
 			<div class="w3layouts_main agileinfo w3">		
 				<div class="w3_agile_signup_form agileits">
-					<h1 class="w3_agileits w3ls">New Review</h1>
+					<h1 class="w3_agileits w3ls">Edit Review</h1>
 					<div class="agile_login_form">
 						<form action="" method="post" class="agileits_w3layouts_form">
 							<center>
@@ -149,7 +149,7 @@
 			</div>
 			<!-- //footer -->	
 			<!-- Bootstrap Core JavaScript -->
-			<script src="js/bootstrap.min.js"></script>
+			<script src="{{url('')}}/js/bootstrap.min.js"></script>
 
 			<!-- top-header and slider -->
 			<!-- here stars scrolling icon -->

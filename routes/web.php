@@ -72,7 +72,8 @@ Route::get('newreview', 'ReviewController@newreview');
 Route::post('newreview', 'ReviewController@savenewreview');
 
 
-Route::get('editreview/{id}', 'ReviewController@editreview');
+Route::get('editreview/{id}',['uses' => 'ReviewController@editreview', 'as' => 'eddd.eh']);
+// Route::get('editreview/{id}', 'ReviewController@editreview');
 Route::post('editreview/{id}', 'ReviewController@updatereview');
 Route::get('listreview', 'ReviewController@listreview');
 

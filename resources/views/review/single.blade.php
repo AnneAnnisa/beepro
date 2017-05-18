@@ -17,7 +17,13 @@
 	<div class="container">
 		<div class="agileinfo_single">
 			<div class="col-md-12">
+				<?php if(session('user')["id"] == $rev->users_id){ ?>
+				<h1 style="text-align:center;margin-bottom:1%;font-size:200%" title="edit review">{{$rev->judul}}
+				<a href="{{ route('eddd.eh', ['id' => $rev->review_id ]) }}"><span class="glyphicon glyphicon-edit" style="color:orange"></span></a>
+				</h1>
+				<?php } else { ?>
 				<h1 style="text-align:center;margin-bottom:1%;font-size:200%">{{$rev->judul}}</h1>
+				<?php } ?>
 			</div>
 			<div class="col-md-12" style="padding-bottom:1%">
 				<div class="col-md-1">

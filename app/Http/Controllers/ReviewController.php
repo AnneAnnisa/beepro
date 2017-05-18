@@ -218,7 +218,7 @@ class ReviewController extends Controller
         $review->rating = $request->get('rating');
 
         $review->save();
-        return redirect('listreview');
+        return redirect('review/'.$id);
     }
   public function listreview(){
     return view('listreview');

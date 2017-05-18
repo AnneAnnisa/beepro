@@ -35,7 +35,7 @@
 				<div class="w3_agile_signup_form agileits">
 					<h1 class="w3_agileits w3ls">New Review</h1>
 					<div class="agile_login_form">
-						<form action="" method="post" class="agileits_w3layouts_form">
+						<form action="" method="post" class="agileits_w3layouts_form" enctype="multipart/form-data">
 							<center>
 								<?php if(session('user') != NULL){ ?>
 								<input type="hidden" name="idid" placeholder="Judul" value="<?php echo session ('user')["id"]; ?>">
