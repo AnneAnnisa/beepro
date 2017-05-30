@@ -6,7 +6,7 @@
 	<div class="container">
 		<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
 			<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-			<li class="active">Write Review!</li>
+			<li class="active">New Review</li>
 		</ol>
 	</div>
 </div>
@@ -25,7 +25,7 @@
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 		<!-- //custom-theme -->
-		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="css/style2.css" rel="stylesheet" type="text/css" media="all" />
 		<!-- js -->
 		<link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
 	</head>
@@ -40,15 +40,15 @@
 								<?php if(session('user') != NULL){ ?>
 								<input type="hidden" name="idid" placeholder="Judul" value="<?php echo session ('user')["id"]; ?>">
 								<?php } ?>
-								<input type="text" name="judul" placeholder="Judul" required="">
+								<input type="text" name="judul" placeholder="Title" required="">
 								<textarea type="message" name="isi" placeholder="What I think about the product..." required=""></textarea> 
-								<input type="text" name="tempat_belanja" placeholder="Tempat Belanja" required="">
+								<input type="text" name="tempat_belanja" placeholder="Shopping Store" required="">
 								
 								<center>
 									<div class="col-md-12">
 										<div class="col-md-5">
-											<label>Kategori</label><br>
-											<select name="kategori" placeholder="Kategori">
+											<label>Category</label><br>
+											<select name="kategori" placeholder="Category">
 												<datalist id="Kategori">
 													@foreach($kategori as $kategori)
 														<option value="{{$kategori->id}}">{{$kategori->nama_kategori}}</option>
@@ -70,9 +70,9 @@
 								</center>
 								
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
-								<input type="number" name="harga" placeholder="Harga" required="">
+								<input type="number" name="harga" placeholder="Price" required="">
 								<input type="text" name="hashtag" placeholder="Hashtag" required="">
-								<input type="file" name="photo" id="photo" placeholder="Upload Foto">
+								<input type="file" name="photo" id="photo" placeholder="Upload Photo">
 								<input type="hidden" name="_token" value="{{csrf_token()}}">
 								
 								<div>

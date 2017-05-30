@@ -25,7 +25,7 @@
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 		<!-- //custom-theme -->
-		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="css/style2.css" rel="stylesheet" type="text/css" media="all" />
 		<!-- js -->
 		<link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
 	</head>
@@ -37,16 +37,18 @@
 					<div class="agile_login_form">
 						<form action="" method="post" class="agileits_w3layouts_form">
 							<center>
-
-								<input type="text" name="judul" required="" value="{{$review->judul}}">
-								<textarea type="message" name="isi" required="" >{{$review->isi}}</textarea > 
-								<input type="text" name="tempat_belanja"  required="" value="{{$review->toko}}">
+								<label>Title:</label><br>
+								<input type="text" name="judul" required="Title" value="{{$review->judul}}">
+								<label>The review of product:</label><br>
+								<textarea type="message" name="isi" required="What I think about the product..." >{{$review->isi}}</textarea > 
+								<label>Shopping Store:</label><br>
+								<input type="text" name="tempat_belanja"  required="Shopping Store" value="{{$review->toko}}">
 								
 								<center>
 									<div class="col-md-12">
 										<div class="col-md-5">
-											<label>Kategori</label><br>
-											<select name="kategori" placeholder="Kategori">
+											<label>Category</label><br>
+											<select name="kategori" placeholder="Category">
 												<datalist id="Kategori">
 													@foreach($kategori as $kategori)
 														<option value="{{$kategori->id}}">{{$kategori->nama_kategori}}</option>
@@ -67,10 +69,12 @@
 									</div>
 								</center>
 								
-
-								<input type="number" name="harga" placeholder="Harga" required="" value="{{$review->harga}}">
-								<input type="text" name="hashtag" placeholder="Hashtag" required="" value="{{$hashtag}}">
-								<input type="file" name="foto" placeholder="Upload Foto" >
+								<label>Price:</label><br>
+								<input type="number" name="harga" placeholder="Harga" required="Price" value="{{$review->harga}}">
+								<label>Hashtag:</label><br>
+								<input type="text" name="hashtag" placeholder="Hashtag" required="Hashtag" value="{{$hashtag}}">
+								<label>Upload Photo:</label><br>
+								<input type="file" name="foto" placeholder="Upload Photo" >
 								<input type="hidden" name="_token" value="{{csrf_token()}}">
 								
 								<div >

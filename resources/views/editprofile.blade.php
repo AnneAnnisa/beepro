@@ -39,10 +39,12 @@
 						<form action="{{url('editprofile/'.$user->id)}}" method="POST" >
 						{{csrf_field()}}
 						<div>
-
-						<input type="text" name="nama" value="{{$user->nama}}"><br>
-						<input type="text" name="email"  value="{{$user->email}}" placeholder="email" required=""><br>
-						<textarea type="message" name="aboutme" placeholder="I am..." value="" required="">{{$user->aboutme}}</textarea> <br>
+						<label>Full Name:</label><br>
+							<input type="text" name="nama" value="{{$user->nama}}"><br>
+						<label>Email:</label><br>
+							<input type="text" name="email"  value="{{$user->email}}" placeholder="email" required=""><br>
+						<label>About Me:</label><br>
+							<textarea type="message" name="aboutme" placeholder="I am..." value="" required="">{{$user->aboutme}}</textarea> <br>
 						<!-- <input type="text" name="foto" placeholder="foto belum" required=""><br> -->
 
 						</div>
